@@ -12,6 +12,8 @@
 		842948512A0C8190001FA318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842948502A0C8190001FA318 /* Assets.xcassets */; };
 		842948542A0C8190001FA318 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842948532A0C8190001FA318 /* Preview Assets.xcassets */; };
 		8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */; };
+		8429485E2A0C9342001FA318 /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485D2A0C9342001FA318 /* Editor.swift */; };
+		842948602A0C93E6001FA318 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485F2A0C93E6001FA318 /* ColorList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		842948532A0C8190001FA318 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		842948552A0C8190001FA318 /* Solid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solid.entitlements; sourceTree = "<group>"; };
 		8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightnessSlider.swift; sourceTree = "<group>"; };
+		8429485D2A0C9342001FA318 /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
+		8429485F2A0C93E6001FA318 /* ColorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				8429484C2A0C818E001FA318 /* SolidApp.swift */,
 				8429484E2A0C818E001FA318 /* ContentView.swift */,
+				8429485F2A0C93E6001FA318 /* ColorList.swift */,
+				8429485D2A0C9342001FA318 /* Editor.swift */,
 				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
 				842948502A0C8190001FA318 /* Assets.xcassets */,
 				842948552A0C8190001FA318 /* Solid.entitlements */,
@@ -144,6 +150,8 @@
 			files = (
 				8429484F2A0C818E001FA318 /* ContentView.swift in Sources */,
 				8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */,
+				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
+				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

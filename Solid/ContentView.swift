@@ -1,91 +1,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var colors = [Color]()
-
-    @State private var hue = 1.0
-    @State private var saturation = 1.0
-    @State private var brightness = 1.0
-    @State private var alpha = 1.0
+    @State private var tab = Tab.editor
+    @State private var colors = [NSColor]()
 
     var body: some View {
-        VStack {
-            SaturationBrightnessSlider(
-                saturation: $saturation,
-                brightness: $brightness
-            )
-            .aspectRatio(1, contentMode: .fit)
-
-            HStack {
-                Button {
-                    NSColorSampler()
-                        .show { pickedColor in
-                            if let pickedColor {
-                                hue = pickedColor.hueComponent
-                                saturation = pickedColor.saturationComponent
-                                brightness = pickedColor.brightnessComponent
-                                alpha = pickedColor.alphaComponent
-                            }
-                        }
-                } label: {
-                    Image(systemName: "eyedropper")
-                        .imageScale(.large)
+        TabView(selection: $tab) {
+            Editor(colors: $colors)
+                .tabItem {
+                    Text("Editor")
                 }
+                .tag(Tab.editor)
 
-                VStack {
-                    Slider(value: $hue) {
-                        Text("H")
-                    }
-
-                    Slider(value: $alpha) {
-                        Text("A")
-                    }
+            ColorList(colors: $colors)
+                .tabItem {
+                    Text("Colors")
                 }
-
-                color
-                    .frame(width: 32, height: 32)
-            }
-
-            HStack {
-                ForEach(colors, id: \.self) { color in
-                    color
-                        .frame(width: 32, height: 32)
-                }
-
-                Button {
-                    colors.append(color)
-                } label: {
-                    Rectangle()
-                        .fill(.quaternary)
-                        .overlay {
-                            Rectangle()
-                                .strokeBorder()
-                        }
-                        .overlay {
-                            Image(systemName: "plus")
-                        }
-                        .frame(width: 32, height: 32)
-                }
-                .buttonStyle(.plain)
-
-                Spacer()
-            }
-            .padding(.top, 32)
-
-            Spacer()
+                .tag(Tab.colors)
         }
-        .padding()
         .frame(minWidth: 320)
     }
+}
 
-    private var color: Color {
-        Color(
-            hue: hue,
-            saturation: saturation,
-            brightness: brightness,
-            opacity: alpha
-        )
-    }
+private enum Tab {
+    case editor
+    case colors
 }
 
 struct ContentView_Previews: PreviewProvider {
