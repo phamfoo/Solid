@@ -14,6 +14,8 @@
 		8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */; };
 		8429485E2A0C9342001FA318 /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485D2A0C9342001FA318 /* Editor.swift */; };
 		842948602A0C93E6001FA318 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485F2A0C93E6001FA318 /* ColorList.swift */; };
+		842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842948612A0C97B2001FA318 /* Solid.xcdatamodeld */; };
+		842948652A0C9853001FA318 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842948642A0C9853001FA318 /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightnessSlider.swift; sourceTree = "<group>"; };
 		8429485D2A0C9342001FA318 /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
 		8429485F2A0C93E6001FA318 /* ColorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorList.swift; sourceTree = "<group>"; };
+		842948622A0C97B2001FA318 /* Solid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Solid.xcdatamodel; sourceTree = "<group>"; };
+		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
 				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
+				842948642A0C9853001FA318 /* PersistenceController.swift */,
+				842948612A0C97B2001FA318 /* Solid.xcdatamodeld */,
 				842948502A0C8190001FA318 /* Assets.xcassets */,
 				842948552A0C8190001FA318 /* Solid.entitlements */,
 				842948522A0C8190001FA318 /* Preview Content */,
@@ -149,8 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8429484F2A0C818E001FA318 /* ContentView.swift in Sources */,
+				842948652A0C9853001FA318 /* PersistenceController.swift in Sources */,
 				8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */,
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
+				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 			);
@@ -350,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		842948612A0C97B2001FA318 /* Solid.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				842948622A0C97B2001FA318 /* Solid.xcdatamodel */,
+			);
+			currentVersion = 842948622A0C97B2001FA318 /* Solid.xcdatamodel */;
+			path = Solid.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 842948412A0C818E001FA318 /* Project object */;
 }

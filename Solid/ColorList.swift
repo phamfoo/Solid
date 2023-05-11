@@ -1,15 +1,28 @@
 import SwiftUI
 
 struct ColorList: View {
-    @Binding var colors: [NSColor]
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(
+            keyPath: \SolidColor.timestamp,
+            ascending: true
+        )]
+    )
+    private var colors: FetchedResults<SolidColor>
 
     var body: some View {
-        List(colors, id: \.self) { color in
+        List(colors) { color in
+            let nsColor = NSColor(
+                hue: color.hue,
+                saturation: color.saturation,
+                brightness: color.brightness,
+                alpha: color.alpha
+            )
+
             HStack {
-                Color(nsColor: color)
+                Color(nsColor: nsColor)
                     .frame(width: 32, height: 32)
 
-                listItem(for: color)
+                listItem(for: nsColor)
             }
         }
     }
@@ -28,7 +41,11 @@ struct ColorList: View {
 
 struct ColorList_Previews: PreviewProvider {
     static var previews: some View {
-        ColorList(colors: .constant([.red, .green, .blue]))
+        ColorList()
             .previewLayout(.fixed(width: 320, height: 480))
+            .environment(
+                \.managedObjectContext,
+                PersistenceController.preview.container.viewContext
+            )
     }
 }

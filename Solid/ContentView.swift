@@ -2,17 +2,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var tab = Tab.editor
-    @State private var colors = [NSColor]()
 
     var body: some View {
         TabView(selection: $tab) {
-            Editor(colors: $colors)
+            Editor()
                 .tabItem {
                     Text("Editor")
                 }
                 .tag(Tab.editor)
 
-            ColorList(colors: $colors)
+            ColorList()
                 .tabItem {
                     Text("Colors")
                 }

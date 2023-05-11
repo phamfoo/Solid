@@ -1,7 +1,14 @@
 import SwiftUI
 
 struct Editor: View {
-    @Binding var colors: [NSColor]
+    @Environment(\.managedObjectContext) private var moc
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(
+            keyPath: \SolidColor.timestamp,
+            ascending: true
+        )]
+    )
+    private var colors: FetchedResults<SolidColor>
 
     @State private var hue = 1.0
     @State private var saturation = 1.0
@@ -47,13 +54,26 @@ struct Editor: View {
             }
 
             HStack {
-                ForEach(colors, id: \.self) { color in
-                    Color(nsColor: color)
-                        .frame(width: 32, height: 32)
+                ForEach(colors) { color in
+                    Color(
+                        hue: color.hue,
+                        saturation: color.saturation,
+                        brightness: color.brightness,
+                        opacity: color.alpha
+                    )
+                    .frame(width: 32, height: 32)
                 }
 
                 Button {
-                    colors.append(nsColor)
+                    let solidColor = SolidColor(context: moc)
+                    solidColor.id = UUID()
+                    solidColor.hue = nsColor.hueComponent
+                    solidColor.saturation = nsColor.saturationComponent
+                    solidColor.brightness = nsColor.brightnessComponent
+                    solidColor.alpha = nsColor.alphaComponent
+                    solidColor.timestamp = .now
+
+                    try? moc.save()
                 } label: {
                     Rectangle()
                         .fill(.quaternary)
@@ -93,7 +113,11 @@ struct Editor: View {
 
 struct Editor_Previews: PreviewProvider {
     static var previews: some View {
-        Editor(colors: .constant([.red, .green, .blue]))
+        Editor()
             .previewLayout(.fixed(width: 320, height: 480))
+            .environment(
+                \.managedObjectContext,
+                PersistenceController.preview.container.viewContext
+            )
     }
 }
