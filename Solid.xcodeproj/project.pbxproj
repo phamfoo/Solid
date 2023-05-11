@@ -11,6 +11,7 @@
 		8429484F2A0C818E001FA318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429484E2A0C818E001FA318 /* ContentView.swift */; };
 		842948512A0C8190001FA318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842948502A0C8190001FA318 /* Assets.xcassets */; };
 		842948542A0C8190001FA318 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842948532A0C8190001FA318 /* Preview Assets.xcassets */; };
+		8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		842948502A0C8190001FA318 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		842948532A0C8190001FA318 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		842948552A0C8190001FA318 /* Solid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Solid.entitlements; sourceTree = "<group>"; };
+		8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBrightnessSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				8429484C2A0C818E001FA318 /* SolidApp.swift */,
 				8429484E2A0C818E001FA318 /* ContentView.swift */,
+				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
 				842948502A0C8190001FA318 /* Assets.xcassets */,
 				842948552A0C8190001FA318 /* Solid.entitlements */,
 				842948522A0C8190001FA318 /* Preview Content */,
@@ -141,6 +144,7 @@
 			files = (
 				8429484F2A0C818E001FA318 /* ContentView.swift in Sources */,
 				8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */,
+				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

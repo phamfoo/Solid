@@ -8,15 +8,11 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            VStack {
-                Slider(value: $saturation) {
-                    Text("S")
-                }
-
-                Slider(value: $brightness) {
-                    Text("B")
-                }
-            }
+            SaturationBrightnessSlider(
+                saturation: $saturation,
+                brightness: $brightness
+            )
+            .aspectRatio(1, contentMode: .fit)
 
             HStack {
                 Button {
@@ -47,6 +43,8 @@ struct ContentView: View {
                 color
                     .frame(width: 32, height: 32)
             }
+
+            Spacer()
         }
         .padding()
         .frame(minWidth: 320)
