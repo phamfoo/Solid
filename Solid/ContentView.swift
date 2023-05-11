@@ -1,12 +1,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var color = Color.red
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button {
+                NSColorSampler()
+                    .show { pickedColor in
+                        if let pickedColor {
+                            color = Color(nsColor: pickedColor)
+                        }
+                    }
+            } label: {
+                Image(systemName: "eyedropper")
+                    .imageScale(.large)
+            }
+
+            color
+                .frame(width: 32, height: 32)
         }
         .padding()
     }
