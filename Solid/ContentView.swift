@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var colors = [Color]()
+
     @State private var hue = 1.0
     @State private var saturation = 1.0
     @State private var brightness = 1.0
@@ -43,6 +45,32 @@ struct ContentView: View {
                 color
                     .frame(width: 32, height: 32)
             }
+
+            HStack {
+                ForEach(colors, id: \.self) { color in
+                    color
+                        .frame(width: 32, height: 32)
+                }
+
+                Button {
+                    colors.append(color)
+                } label: {
+                    Rectangle()
+                        .fill(.quaternary)
+                        .overlay {
+                            Rectangle()
+                                .strokeBorder()
+                        }
+                        .overlay {
+                            Image(systemName: "plus")
+                        }
+                        .frame(width: 32, height: 32)
+                }
+                .buttonStyle(.plain)
+
+                Spacer()
+            }
+            .padding(.top, 32)
 
             Spacer()
         }
