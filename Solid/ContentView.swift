@@ -8,6 +8,16 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            VStack {
+                Slider(value: $saturation) {
+                    Text("S")
+                }
+
+                Slider(value: $brightness) {
+                    Text("B")
+                }
+            }
+
             HStack {
                 Button {
                     NSColorSampler()
