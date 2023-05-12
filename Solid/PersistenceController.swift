@@ -9,15 +9,8 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         let colors: [NSColor] = [
             .red,
-            .blue,
-            .brown,
-            .cyan,
             .green,
-            .magenta,
-            .orange,
-            .purple,
-            .white,
-            .yellow,
+            .blue
         ]
         for color in colors {
             let newItem = SolidColor(context: viewContext)
