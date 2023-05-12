@@ -4,7 +4,7 @@ struct SaturationBrightnessSlider: View {
     var hue: Double
     @Binding var saturation: Double
     @Binding var brightness: Double
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -35,12 +35,21 @@ struct SaturationBrightnessSlider: View {
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { value in
-                        saturation = value.location.x / geometry.size.width
+                        saturation = (value.location.x / geometry.size.width)
+                            .clamped(to: 0 ... 1)
                         brightness = 1 -
-                            value.location.y / geometry.size.height
+                            (value.location.y / geometry.size.height)
+                            .clamped(to: 0 ... 1)
                     }
             )
         }
+    }
+}
+
+// https://stackoverflow.com/questions/36110620/standard-way-to-clamp-a-number-between-two-values-in-swift/40868784#40868784
+private extension Comparable {
+    func clamped(to limits: ClosedRange<Self>) -> Self {
+        return min(max(self, limits.lowerBound), limits.upperBound)
     }
 }
 
