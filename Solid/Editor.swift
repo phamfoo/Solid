@@ -25,21 +25,9 @@ struct Editor: View {
             .aspectRatio(1, contentMode: .fit)
 
             HStack {
-                Button {
-                    NSColorSampler()
-                        .show { pickedColor in
-                            if let pickedColor {
-                                hue = pickedColor.hueComponent
-                                saturation = pickedColor.saturationComponent
-                                brightness = pickedColor.brightnessComponent
-                                alpha = pickedColor.alphaComponent
-                            }
-                        }
-                } label: {
-                    Image(systemName: "eyedropper")
-                        .imageScale(.large)
+                ColorSampler { pickedColor in
+                    syncComponents(from: pickedColor)
                 }
-                .buttonStyle(.plain)
 
                 VStack {
                     Slider(value: $hue) {
@@ -119,6 +107,13 @@ struct Editor: View {
             brightness: brightness,
             alpha: alpha
         )
+    }
+
+    private func syncComponents(from color: NSColor) {
+        hue = color.hueComponent
+        saturation = color.saturationComponent
+        brightness = color.brightnessComponent
+        alpha = color.alphaComponent
     }
 }
 

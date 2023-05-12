@@ -16,6 +16,7 @@
 		842948602A0C93E6001FA318 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429485F2A0C93E6001FA318 /* ColorList.swift */; };
 		842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842948612A0C97B2001FA318 /* Solid.xcdatamodeld */; };
 		842948652A0C9853001FA318 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842948642A0C9853001FA318 /* PersistenceController.swift */; };
+		8429488C2A0E6E26001FA318 /* ColorSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429488B2A0E6E26001FA318 /* ColorSampler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8429485F2A0C93E6001FA318 /* ColorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorList.swift; sourceTree = "<group>"; };
 		842948622A0C97B2001FA318 /* Solid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Solid.xcdatamodel; sourceTree = "<group>"; };
 		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		8429488B2A0E6E26001FA318 /* ColorSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSampler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				8429484E2A0C818E001FA318 /* ContentView.swift */,
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
+				8429488B2A0E6E26001FA318 /* ColorSampler.swift */,
 				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
 				842948642A0C9853001FA318 /* PersistenceController.swift */,
 				842948612A0C97B2001FA318 /* Solid.xcdatamodeld */,
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8429488C2A0E6E26001FA318 /* ColorSampler.swift in Sources */,
 				8429484F2A0C818E001FA318 /* ContentView.swift in Sources */,
 				842948652A0C9853001FA318 /* PersistenceController.swift in Sources */,
 				8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */,
