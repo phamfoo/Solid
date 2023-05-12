@@ -53,6 +53,7 @@ struct Editor: View {
                 color
                     .frame(width: 32, height: 32)
             }
+            .padding(.horizontal)
 
             HStack {
                 ForEach(colors) { color in
@@ -91,11 +92,11 @@ struct Editor: View {
 
                 Spacer()
             }
+            .padding(.horizontal)
             .padding(.top, 32)
 
             Spacer()
         }
-        .padding()
     }
 
     private var color: Color {
