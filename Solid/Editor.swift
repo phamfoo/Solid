@@ -18,6 +18,7 @@ struct Editor: View {
     var body: some View {
         VStack {
             SaturationBrightnessSlider(
+                hue: hue,
                 saturation: $saturation,
                 brightness: $brightness
             )
