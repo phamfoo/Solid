@@ -39,31 +39,37 @@ struct Editor: View {
                     Image(systemName: "eyedropper")
                         .imageScale(.large)
                 }
+                .buttonStyle(.plain)
 
                 VStack {
                     Slider(value: $hue) {
-                        Text("H")
+                        Text("Hue")
                     }
 
                     Slider(value: $alpha) {
-                        Text("A")
+                        Text("Alpha")
                     }
                 }
+                .labelsHidden()
 
-                color
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(color)
                     .frame(width: 32, height: 32)
             }
             .padding(.horizontal)
 
             HStack {
                 ForEach(colors) { color in
-                    Color(
-                        hue: color.hue,
-                        saturation: color.saturation,
-                        brightness: color.brightness,
-                        opacity: color.alpha
-                    )
-                    .frame(width: 32, height: 32)
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(
+                            Color(
+                                hue: color.hue,
+                                saturation: color.saturation,
+                                brightness: color.brightness,
+                                opacity: color.alpha
+                            )
+                        )
+                        .frame(width: 32, height: 32)
                 }
 
                 Button {
@@ -77,11 +83,14 @@ struct Editor: View {
 
                     try? moc.save()
                 } label: {
-                    Rectangle()
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
                         .fill(.quaternary)
                         .overlay {
-                            Rectangle()
-                                .strokeBorder()
+                            RoundedRectangle(
+                                cornerRadius: 4,
+                                style: .continuous
+                            )
+                            .strokeBorder()
                         }
                         .overlay {
                             Image(systemName: "plus")
