@@ -5,7 +5,7 @@ struct Editor: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(
             keyPath: \SolidColor.timestamp,
-            ascending: true
+            ascending: false
         )]
     )
     private var colors: FetchedResults<SolidColor>
@@ -59,19 +59,6 @@ struct Editor: View {
             .padding(.horizontal)
 
             HStack {
-                ForEach(colors) { color in
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(
-                            Color(
-                                hue: color.hue,
-                                saturation: color.saturation,
-                                brightness: color.brightness,
-                                opacity: color.alpha
-                            )
-                        )
-                        .frame(width: 32, height: 32)
-                }
-
                 Button {
                     let solidColor = SolidColor(context: moc)
                     solidColor.id = UUID()
@@ -98,6 +85,19 @@ struct Editor: View {
                         .frame(width: 32, height: 32)
                 }
                 .buttonStyle(.plain)
+
+                ForEach(colors) { color in
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(
+                            Color(
+                                hue: color.hue,
+                                saturation: color.saturation,
+                                brightness: color.brightness,
+                                opacity: color.alpha
+                            )
+                        )
+                        .frame(width: 32, height: 32)
+                }
 
                 Spacer()
             }

@@ -4,7 +4,7 @@ struct ColorList: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(
             keyPath: \SolidColor.timestamp,
-            ascending: true
+            ascending: false
         )]
     )
     private var colors: FetchedResults<SolidColor>
