@@ -8,7 +8,7 @@ struct SaturationBrightnessSlider: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color(hue: hue, saturation: 1, brightness: 1)
+                fullySaturatedColor
 
                 LinearGradient(
                     colors: [.white, .white.opacity(0)],
@@ -24,7 +24,11 @@ struct SaturationBrightnessSlider: View {
             }
             .overlay(alignment: .bottomLeading) {
                 Circle()
-                    .strokeBorder(.white, lineWidth: 2)
+                    .fill(currentColor)
+                    .overlay {
+                        Circle()
+                            .strokeBorder(.white, lineWidth: 2)
+                    }
                     .frame(width: 16, height: 16)
                     .offset(x: -8, y: 8)
                     .offset(
@@ -43,6 +47,14 @@ struct SaturationBrightnessSlider: View {
                     }
             )
         }
+    }
+
+    private var fullySaturatedColor: Color {
+        Color(hue: hue, saturation: 1, brightness: 1)
+    }
+
+    private var currentColor: Color {
+        Color(hue: hue, saturation: saturation, brightness: brightness)
     }
 }
 
