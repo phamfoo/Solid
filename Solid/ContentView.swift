@@ -4,26 +4,37 @@ struct ContentView: View {
     @State private var tab = Tab.editor
 
     var body: some View {
-        TabView(selection: $tab) {
-            Editor()
-                .tabItem {
-                    Text("Editor")
-                }
-                .tag(Tab.editor)
-
-            ColorList()
-                .tabItem {
-                    Text("Colors")
-                }
-                .tag(Tab.colors)
-        }
+        SolidTabView(
+            tabs: [
+                TabConfig(
+                    title: "Editor",
+                    content: AnyView(Editor()),
+                    tab: .editor
+                ),
+                TabConfig(
+                    title: "Colors",
+                    content: AnyView(ColorList()),
+                    tab: .colors
+                ),
+            ],
+            currentTab: tab
+        )
         .frame(minWidth: 320)
-    }
-}
+        .toolbar {
+            ToolbarItemGroup {
+                Spacer()
 
-private enum Tab {
-    case editor
-    case colors
+                Picker("Tab", selection: $tab) {
+                    Label("Editor", systemImage: "slider.horizontal.3")
+                        .tag(Tab.editor)
+
+                    Label("Colors", systemImage: "paintpalette")
+                        .tag(Tab.colors)
+                }
+                .pickerStyle(.segmented)
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

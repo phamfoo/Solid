@@ -23,6 +23,7 @@
 		842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842948612A0C97B2001FA318 /* Solid.xcdatamodeld */; };
 		842948652A0C9853001FA318 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842948642A0C9853001FA318 /* PersistenceController.swift */; };
 		8429488C2A0E6E26001FA318 /* ColorSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429488B2A0E6E26001FA318 /* ColorSampler.swift */; };
+		843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4C552A0F860600C04536 /* SolidTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		842948622A0C97B2001FA318 /* Solid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Solid.xcdatamodel; sourceTree = "<group>"; };
 		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8429488B2A0E6E26001FA318 /* ColorSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSampler.swift; sourceTree = "<group>"; };
+		843D4C552A0F860600C04536 /* SolidTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				8429484C2A0C818E001FA318 /* SolidApp.swift */,
 				8429484E2A0C818E001FA318 /* ContentView.swift */,
+				843D4C552A0F860600C04536 /* SolidTabView.swift */,
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 				8402C3B32A0F770C00CCC582 /* ColorListItem.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
@@ -185,6 +188,7 @@
 				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
 				8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */,
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
+				843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */,
 				8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */,
 				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,

@@ -12,5 +12,6 @@ struct SolidApp: App {
                     persistenceController.container.viewContext
                 )
         }
+        .windowToolbarStyle(.unified(showsTitle: false))
     }
 }
