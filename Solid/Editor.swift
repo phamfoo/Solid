@@ -1,15 +1,6 @@
 import SwiftUI
 
 struct Editor: View {
-    @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(
-            keyPath: \SolidColor.timestamp,
-            ascending: false
-        )]
-    )
-    private var colors: FetchedResults<SolidColor>
-
     @State private var hue = 1.0
     @State private var saturation = 1.0
     @State private var brightness = 1.0
@@ -46,51 +37,9 @@ struct Editor: View {
             }
             .padding(.horizontal)
 
-            HStack {
-                Button {
-                    let solidColor = SolidColor(context: moc)
-                    solidColor.id = UUID()
-                    solidColor.hue = nsColor.hueComponent
-                    solidColor.saturation = nsColor.saturationComponent
-                    solidColor.brightness = nsColor.brightnessComponent
-                    solidColor.alpha = nsColor.alphaComponent
-                    solidColor.timestamp = .now
-
-                    try? moc.save()
-                } label: {
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(.quaternary)
-                        .overlay {
-                            RoundedRectangle(
-                                cornerRadius: 4,
-                                style: .continuous
-                            )
-                            .strokeBorder()
-                        }
-                        .overlay {
-                            Image(systemName: "plus")
-                        }
-                        .frame(width: 32, height: 32)
-                }
-                .buttonStyle(.plain)
-
-                ForEach(colors) { color in
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(
-                            Color(
-                                hue: color.hue,
-                                saturation: color.saturation,
-                                brightness: color.brightness,
-                                opacity: color.alpha
-                            )
-                        )
-                        .frame(width: 32, height: 32)
-                }
-
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.top, 32)
+            RecentColors(color: nsColor)
+                .padding(.horizontal)
+                .padding(.top, 32)
 
             Spacer()
         }
