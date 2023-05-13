@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3AF2A0F734000CCC582 /* RecentColors.swift */; };
+		8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B12A0F752500CCC582 /* SaveColorForm.swift */; };
 		8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429484C2A0C818E001FA318 /* SolidApp.swift */; };
 		8429484F2A0C818E001FA318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429484E2A0C818E001FA318 /* ContentView.swift */; };
 		842948512A0C8190001FA318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842948502A0C8190001FA318 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		8402C3AF2A0F734000CCC582 /* RecentColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentColors.swift; sourceTree = "<group>"; };
+		8402C3B12A0F752500CCC582 /* SaveColorForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveColorForm.swift; sourceTree = "<group>"; };
 		842948492A0C818E001FA318 /* Solid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8429484C2A0C818E001FA318 /* SolidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidApp.swift; sourceTree = "<group>"; };
 		8429484E2A0C818E001FA318 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				8429484E2A0C818E001FA318 /* ContentView.swift */,
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
+				8402C3B12A0F752500CCC582 /* SaveColorForm.swift */,
 				8402C3AF2A0F734000CCC582 /* RecentColors.swift */,
 				8429488B2A0E6E26001FA318 /* ColorSampler.swift */,
 				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
@@ -168,6 +171,7 @@
 				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
 				8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */,
+				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

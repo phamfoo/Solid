@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct RecentColors: View {
-    @Environment(\.managedObjectContext) private var moc
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(
             keyPath: \SolidColor.timestamp,
@@ -9,21 +8,15 @@ struct RecentColors: View {
         )]
     )
     private var colors: FetchedResults<SolidColor>
-    
+
+    @State private var showingSavePopover = false
+
     var color: NSColor
 
     var body: some View {
         HStack {
             Button {
-                let solidColor = SolidColor(context: moc)
-                solidColor.id = UUID()
-                solidColor.hue = color.hueComponent
-                solidColor.saturation = color.saturationComponent
-                solidColor.brightness = color.brightnessComponent
-                solidColor.alpha = color.alphaComponent
-                solidColor.timestamp = .now
-
-                try? moc.save()
+                showingSavePopover = true
             } label: {
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .fill(.quaternary)
@@ -40,6 +33,11 @@ struct RecentColors: View {
                     .frame(width: 32, height: 32)
             }
             .buttonStyle(.plain)
+            .popover(isPresented: $showingSavePopover) {
+                SaveColorForm(color: color)
+                    .frame(width: 200)
+                    .padding()
+            }
 
             ForEach(colors) { color in
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
