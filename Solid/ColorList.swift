@@ -11,31 +11,8 @@ struct ColorList: View {
 
     var body: some View {
         List(colors) { color in
-            let nsColor = NSColor(
-                hue: color.hue,
-                saturation: color.saturation,
-                brightness: color.brightness,
-                alpha: color.alpha
-            )
-
-            HStack {
-                Color(nsColor: nsColor)
-                    .frame(width: 32, height: 32)
-
-                listItem(for: nsColor)
-            }
+            ColorListItem(color: color)
         }
-    }
-
-    private func listItem(for color: NSColor) -> some View {
-        let red = Int((color.redComponent * 255).rounded())
-        let green = Int((color.greenComponent * 255).rounded())
-        let blue = Int((color.blueComponent * 255).rounded())
-
-        let hexString = String(format: "#%02x%02x%02x", red, green, blue)
-
-        return Text(hexString)
-            .foregroundColor(.secondary)
     }
 }
 
