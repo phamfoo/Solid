@@ -28,21 +28,13 @@ struct _ColorListItem: View {
                 Text(name)
                     .font(.headline)
 
-                Text(hexString)
+                Text(color.hexString)
                     .foregroundColor(.secondary)
                     .font(.subheadline)
             }
 
             Spacer()
         }
-    }
-
-    private var hexString: String {
-        let red = Int((color.redComponent * 255).rounded())
-        let green = Int((color.greenComponent * 255).rounded())
-        let blue = Int((color.blueComponent * 255).rounded())
-
-        return String(format: "#%02x%02x%02x", red, green, blue)
     }
 }
 

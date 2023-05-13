@@ -30,12 +30,19 @@ struct Editor: View {
                     }
                 }
                 .labelsHidden()
-
-                ColorSwatch(color: nsColor)
             }
             .padding(.horizontal)
 
-            RecentColors(color: nsColor)
+            VStack(alignment: .leading) {
+                Text("Output")
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+
+                ColorOutput(color: color)
+            }
+            .padding(.horizontal)
+
+            RecentColors(color: color)
                 .padding(.horizontal)
                 .padding(.top, 32)
 
@@ -43,11 +50,7 @@ struct Editor: View {
         }
     }
 
-    private var color: Color {
-        Color(nsColor: nsColor)
-    }
-
-    private var nsColor: NSColor {
+    private var color: NSColor {
         NSColor(
             hue: hue,
             saturation: saturation,
@@ -67,7 +70,7 @@ struct Editor: View {
 struct Editor_Previews: PreviewProvider {
     static var previews: some View {
         Editor()
-            .previewLayout(.fixed(width: 320, height: 480))
+            .previewLayout(.fixed(width: 320, height: 540))
             .environment(
                 \.managedObjectContext,
                 PersistenceController.preview.container.viewContext
