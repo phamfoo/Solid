@@ -40,16 +40,14 @@ struct RecentColors: View {
             }
 
             ForEach(colors) { color in
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(
-                        Color(
-                            hue: color.hue,
-                            saturation: color.saturation,
-                            brightness: color.brightness,
-                            opacity: color.alpha
-                        )
+                ColorSwatch(
+                    color: NSColor(
+                        hue: color.hue,
+                        saturation: color.saturation,
+                        brightness: color.brightness,
+                        alpha: color.alpha
                     )
-                    .frame(width: 32, height: 32)
+                )
             }
 
             Spacer()

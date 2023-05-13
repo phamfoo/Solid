@@ -31,9 +31,7 @@ struct Editor: View {
                 }
                 .labelsHidden()
 
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(color)
-                    .frame(width: 32, height: 32)
+                ColorSwatch(color: nsColor)
             }
             .padding(.horizontal)
 
