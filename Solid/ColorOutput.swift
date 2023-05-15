@@ -9,6 +9,16 @@ struct ColorOutput: View {
             Text(color.hexString)
 
             Spacer()
+
+            Button {
+                let pasteboard = NSPasteboard.general
+                pasteboard.clearContents()
+                pasteboard.setString(color.hexString, forType: .string)
+            } label: {
+                Image(systemName: "square.on.square")
+                    .imageScale(.large)
+            }
+            .buttonStyle(.plain)
         }
     }
 }
