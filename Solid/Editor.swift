@@ -34,35 +34,11 @@ struct Editor: View {
             .padding(.horizontal)
 
             HStack {
-                TextField(
-                    "H",
-                    value: $hue,
-                    format: .number
-                        .scale(255)
-                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
-                )
-                TextField(
-                    "S",
-                    value: $saturation,
-                    format: .number
-                        .scale(255)
-                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
-                )
+                NumberInput("H", normalizedValue: $hue, in: 0 ... 255)
+                NumberInput("S", normalizedValue: $saturation, in: 0 ... 255)
+                NumberInput("B", normalizedValue: $brightness, in: 0 ... 255)
 
-                TextField(
-                    "B",
-                    value: $brightness,
-                    format: .number
-                        .scale(255)
-                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
-                )
-
-                TextField(
-                    "A",
-                    value: $alpha,
-                    format: .percent
-                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
-                )
+                PercentageInput("A", normalizedValue: $alpha)
             }
             .padding(.horizontal)
             .padding(.top, 16)
@@ -99,6 +75,91 @@ struct Editor: View {
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
         alpha = color.alphaComponent
+    }
+}
+
+struct NumberInput: View {
+    private var label: String
+    @Binding private var normalizedValue: Double
+    private var range: ClosedRange<Int>
+    @State private var value: Int
+
+    init(
+        _ label: String,
+        normalizedValue: Binding<Double>,
+        in range: ClosedRange<Int>
+    ) {
+        self.label = label
+        self.range = range
+        _normalizedValue = normalizedValue
+        value = Self.getValue(
+            normalizedValue: normalizedValue.wrappedValue,
+            in: range
+        )
+    }
+
+    var body: some View {
+        TextField(label, value: $value, format: .number)
+            .onChange(of: normalizedValue) { newNormalizedValue in
+                value = Self.getValue(
+                    normalizedValue: newNormalizedValue,
+                    in: range
+                )
+            }
+            .onSubmit {
+                normalizedValue = Double(value) /
+                    Double(range.upperBound - range.lowerBound)
+            }
+    }
+
+    private static func getValue(
+        normalizedValue: Double,
+        in range: ClosedRange<Int>
+    ) -> Int {
+        let value = normalizedValue *
+            Double(range.upperBound - range.lowerBound)
+
+        let roundedValue = Int(round(value))
+
+        return roundedValue
+    }
+}
+
+struct PercentageInput: View {
+    private var label: String
+    @Binding private var normalizedValue: Double
+    @State private var value: Int
+
+    init(
+        _ label: String,
+        normalizedValue: Binding<Double>
+    ) {
+        self.label = label
+        _normalizedValue = normalizedValue
+        value = Self.getValue(
+            normalizedValue: normalizedValue.wrappedValue
+        )
+    }
+
+    var body: some View {
+        TextField(label, value: $value, format: .percent)
+            .onChange(of: normalizedValue) { newNormalizedValue in
+                value = Self.getValue(
+                    normalizedValue: newNormalizedValue
+                )
+            }
+            .onSubmit {
+                normalizedValue = Double(value) / 100
+            }
+    }
+
+    private static func getValue(
+        normalizedValue: Double
+    ) -> Int {
+        let value = normalizedValue * 100
+        let roundedValue = Int(round(value))
+
+        return roundedValue
     }
 }
 
