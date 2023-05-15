@@ -34,9 +34,9 @@ struct Editor: View {
             .padding(.horizontal)
 
             HStack {
-                NumberInput("H", normalizedValue: $hue, in: 0 ... 255)
-                NumberInput("S", normalizedValue: $saturation, in: 0 ... 255)
-                NumberInput("B", normalizedValue: $brightness, in: 0 ... 255)
+                NumberInput("H", normalizedValue: $hue, in: 0 ... 360)
+                NumberInput("S", normalizedValue: $saturation, in: 0 ... 100)
+                NumberInput("B", normalizedValue: $brightness, in: 0 ... 100)
 
                 PercentageInput("A", normalizedValue: $alpha)
             }
