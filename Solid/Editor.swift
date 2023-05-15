@@ -79,6 +79,8 @@ struct Editor: View {
 }
 
 struct NumberInput: View {
+    @FocusState private var focused: Bool
+
     private var label: String
     @Binding private var normalizedValue: Double
     private var range: ClosedRange<Int>
@@ -100,6 +102,7 @@ struct NumberInput: View {
 
     var body: some View {
         TextField(label, value: $value, format: .number)
+            .focused($focused)
             .onChange(of: normalizedValue) { newNormalizedValue in
                 value = Self.getValue(
                     normalizedValue: newNormalizedValue,
@@ -107,9 +110,18 @@ struct NumberInput: View {
                 )
             }
             .onSubmit {
-                normalizedValue = Double(value) /
-                    Double(range.upperBound - range.lowerBound)
+                syncNormalizedValue()
             }
+            .onChange(of: focused) { focused in
+                if !focused {
+                    syncNormalizedValue()
+                }
+            }
+    }
+
+    private func syncNormalizedValue() {
+        normalizedValue = Double(value) /
+            Double(range.upperBound - range.lowerBound)
     }
 
     private static func getValue(
@@ -126,6 +138,8 @@ struct NumberInput: View {
 }
 
 struct PercentageInput: View {
+    @FocusState private var focused: Bool
+
     private var label: String
     @Binding private var normalizedValue: Double
     @State private var value: Int
@@ -143,6 +157,7 @@ struct PercentageInput: View {
 
     var body: some View {
         TextField(label, value: $value, format: .percent)
+            .focused($focused)
             .onChange(of: normalizedValue) { newNormalizedValue in
                 value = Self.getValue(
                     normalizedValue: newNormalizedValue
@@ -151,6 +166,15 @@ struct PercentageInput: View {
             .onSubmit {
                 normalizedValue = Double(value) / 100
             }
+            .onChange(of: focused) { focused in
+                if !focused {
+                    syncNormalizedValue()
+                }
+            }
+    }
+
+    private func syncNormalizedValue() {
+        normalizedValue = Double(value) / 100
     }
 
     private static func getValue(
