@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct Editor: View {
+    @State private var colorModel = ColorModel.hsb
+
     @State private var hue = 1.0
     @State private var saturation = 1.0
     @State private var brightness = 1.0
@@ -34,12 +36,43 @@ struct Editor: View {
             .padding(.horizontal)
 
             HStack {
-                NumberInput("H", normalizedValue: $hue, in: 0 ... 360)
-                NumberInput("S", normalizedValue: $saturation, in: 0 ... 100)
-                NumberInput("B", normalizedValue: $brightness, in: 0 ... 100)
+                Picker("Color Model", selection: $colorModel) {
+                    ForEach(ColorModel.allCases) { colorModel in
+                        Text(colorModel.displayName)
+                            .tag(colorModel)
+                    }
+                }
+                .labelsHidden()
+                .fixedSize()
 
-                PercentageInput("A", normalizedValue: $alpha)
+                switch colorModel {
+                case .hsb:
+                    HStack {
+                        NumberInput("H", normalizedValue: $hue, in: 0 ... 360)
+                        NumberInput(
+                            "S",
+                            normalizedValue: $saturation,
+                            in: 0 ... 100
+                        )
+                        NumberInput(
+                            "B",
+                            normalizedValue: $brightness,
+                            in: 0 ... 100
+                        )
+
+                        PercentageInput("A", normalizedValue: $alpha)
+                    }
+                case .rgb:
+                    HStack {
+                        NumberInput("R", normalizedValue: red, in: 0 ... 255)
+                        NumberInput("G", normalizedValue: green, in: 0 ... 255)
+                        NumberInput("B", normalizedValue: blue, in: 0 ... 255)
+
+                        PercentageInput("A", normalizedValue: $alpha)
+                    }
+                }
             }
+
             .padding(.horizontal)
             .padding(.top, 16)
 
@@ -75,6 +108,66 @@ struct Editor: View {
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
         alpha = color.alphaComponent
+    }
+
+    private var red: Binding<Double> {
+        .init {
+            color.redComponent
+        } set: { newValue in
+            let newColor = NSColor(
+                red: newValue,
+                green: color.greenComponent,
+                blue: color.blueComponent,
+                alpha: color.alphaComponent
+            )
+            syncComponents(from: newColor)
+        }
+    }
+
+    private var green: Binding<Double> {
+        .init {
+            color.greenComponent
+        } set: { newValue in
+            let newColor = NSColor(
+                red: color.redComponent,
+                green: newValue,
+                blue: color.blueComponent,
+                alpha: color.alphaComponent
+            )
+            syncComponents(from: newColor)
+        }
+    }
+
+    private var blue: Binding<Double> {
+        .init {
+            color.blueComponent
+        } set: { newValue in
+            let newColor = NSColor(
+                red: color.redComponent,
+                green: color.greenComponent,
+                blue: newValue,
+                alpha: color.alphaComponent
+            )
+            syncComponents(from: newColor)
+        }
+    }
+}
+
+private enum ColorModel: CaseIterable, Identifiable {
+    case hsb
+    case rgb
+
+    var id: String {
+        displayName
+    }
+
+    var displayName: String {
+        switch self {
+        case .hsb:
+            return "HSB"
+        case .rgb:
+            return "RGB"
+        }
     }
 }
 
