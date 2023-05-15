@@ -33,6 +33,40 @@ struct Editor: View {
             }
             .padding(.horizontal)
 
+            HStack {
+                TextField(
+                    "H",
+                    value: $hue,
+                    format: .number
+                        .scale(255)
+                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
+                )
+                TextField(
+                    "S",
+                    value: $saturation,
+                    format: .number
+                        .scale(255)
+                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
+                )
+
+                TextField(
+                    "B",
+                    value: $brightness,
+                    format: .number
+                        .scale(255)
+                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
+                )
+
+                TextField(
+                    "A",
+                    value: $alpha,
+                    format: .percent
+                        .rounded(rule: .toNearestOrAwayFromZero, increment: 1)
+                )
+            }
+            .padding(.horizontal)
+            .padding(.top, 16)
+
             VStack(alignment: .leading) {
                 Text("Output")
                     .font(.headline)
@@ -41,6 +75,7 @@ struct Editor: View {
                 ColorOutput(color: color)
             }
             .padding(.horizontal)
+            .padding(.top, 16)
 
             RecentColors(color: color)
                 .padding(.horizontal)
@@ -70,7 +105,7 @@ struct Editor: View {
 struct Editor_Previews: PreviewProvider {
     static var previews: some View {
         Editor()
-            .previewLayout(.fixed(width: 320, height: 540))
+            .previewLayout(.fixed(width: 320, height: 640))
             .environment(
                 \.managedObjectContext,
                 PersistenceController.preview.container.viewContext
