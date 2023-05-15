@@ -47,21 +47,12 @@ struct Editor: View {
 
                 switch colorModel {
                 case .hsb:
-                    HStack {
-                        NumberInput("H", normalizedValue: $hue, in: 0 ... 360)
-                        NumberInput(
-                            "S",
-                            normalizedValue: $saturation,
-                            in: 0 ... 100
-                        )
-                        NumberInput(
-                            "B",
-                            normalizedValue: $brightness,
-                            in: 0 ... 100
-                        )
-
-                        PercentageInput("A", normalizedValue: $alpha)
-                    }
+                    HSBAInputGroup(
+                        hue: $hue,
+                        saturation: $saturation,
+                        brightness: $brightness,
+                        alpha: $alpha
+                    )
                 case .rgb:
                     HStack {
                         NumberInput("R", normalizedValue: red, in: 0 ... 255)
@@ -70,9 +61,9 @@ struct Editor: View {
 
                         PercentageInput("A", normalizedValue: $alpha)
                     }
+                    .textFieldStyle(.plain)
                 }
             }
-
             .padding(.horizontal)
             .padding(.top, 16)
 

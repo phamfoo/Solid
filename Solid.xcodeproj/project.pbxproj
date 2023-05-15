@@ -24,6 +24,7 @@
 		842948652A0C9853001FA318 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842948642A0C9853001FA318 /* PersistenceController.swift */; };
 		8429488C2A0E6E26001FA318 /* ColorSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429488B2A0E6E26001FA318 /* ColorSampler.swift */; };
 		843ADD712A11C92600DCCCF0 /* ComponentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD702A11C92600DCCCF0 /* ComponentInput.swift */; };
+		843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */; };
 		843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4C552A0F860600C04536 /* SolidTabView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8429488B2A0E6E26001FA318 /* ColorSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSampler.swift; sourceTree = "<group>"; };
 		843ADD702A11C92600DCCCF0 /* ComponentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInput.swift; sourceTree = "<group>"; };
+		843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBAInputGroup.swift; sourceTree = "<group>"; };
 		843D4C552A0F860600C04536 /* SolidTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 				8402C3B32A0F770C00CCC582 /* ColorListItem.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
+				843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */,
 				843ADD702A11C92600DCCCF0 /* ComponentInput.swift */,
 				8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */,
 				8402C3B52A0F794D00CCC582 /* ColorSwatch.swift */,
@@ -191,6 +194,7 @@
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
 				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
 				8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */,
+				843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */,
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
 				843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */,
 				8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */,
