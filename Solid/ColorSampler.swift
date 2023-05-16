@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ColorSampler: View {
-    @State private var hovered = false
     @State private var sampling = false
 
     var onPick: (NSColor) -> Void
@@ -20,21 +19,12 @@ struct ColorSampler: View {
         } label: {
             Image(systemName: "eyedropper")
                 .imageScale(.large)
-                .padding(8)
-                .background {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(.quaternary)
-                        .opacity(hovered ? 1 : 0)
-                }
-                .background {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.accentColor)
-                        .opacity(sampling ? 1 : 0)
-                }
         }
-        .buttonStyle(.plain)
-        .onHover { hovered in
-            self.hovered = hovered
+        .buttonStyle(.solid)
+        .background {
+            RoundedRectangle(cornerRadius: 4)
+                .fill(Color.accentColor)
+                .opacity(sampling ? 1 : 0)
         }
     }
 }

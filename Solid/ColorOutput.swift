@@ -27,7 +27,7 @@ struct ColorOutput: View {
                 Image(systemName: "square.on.square")
                     .imageScale(.large)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.solid)
         }
     }
 }
