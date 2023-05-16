@@ -26,9 +26,14 @@ struct Editor: View {
                     HueSlider(hue: $hue)
                         .frame(height: 18)
 
-                    Slider(value: $alpha) {
-                        Text("Alpha")
-                    }
+                    AlphaSlider(
+                        alpha: $alpha,
+                        fullyOpaqueColor: Color(
+                            nsColor: color
+                                .withAlphaComponent(1)
+                        )
+                    )
+                    .frame(height: 18)
                 }
                 .labelsHidden()
             }
