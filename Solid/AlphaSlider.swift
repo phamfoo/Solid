@@ -6,41 +6,17 @@ struct AlphaSlider: View {
 
     var body: some View {
         Slider(value: $alpha) {
-            Canvas { context, size in
-                context.fill(
-                    Path(CGRect(origin: .zero, size: size)),
-                    with: .color(.white)
-                )
-
-                let numberOfRows = 4
-                let cellSize = size.height / Double(numberOfRows)
-                let numberOfColumns = Int(round(size.width / cellSize))
-
-                for row in 0 ..< numberOfRows {
-                    for column in 0 ..< numberOfColumns {
-                        let cellRect = CGRect(
-                            x: CGFloat(column) * cellSize,
-                            y: CGFloat(row) * cellSize,
-                            width: cellSize,
-                            height: cellSize
-                        )
-
-                        if (row + column) % 2 == 0 {
-                            context.fill(Path(cellRect), with: .color(.gray))
-                        }
-                    }
+            CheckerBoardBackground(numberOfRows: 4)
+                .overlay {
+                    LinearGradient(
+                        colors: [
+                            fullyOpaqueColor.opacity(0),
+                            fullyOpaqueColor,
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
                 }
-            }
-            .overlay {
-                LinearGradient(
-                    colors: [
-                        fullyOpaqueColor.opacity(0),
-                        fullyOpaqueColor,
-                    ],
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-            }
         } thumb: {
             Circle()
                 .fill(Color.white)

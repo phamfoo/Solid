@@ -5,7 +5,16 @@ struct ColorOutput: View {
 
     var body: some View {
         HStack {
-            ColorSwatch(color: color)
+            HStack(spacing: 0) {
+                Color(nsColor: color.withAlphaComponent(1))
+                Color(nsColor: color)
+            }
+            .background {
+                CheckerBoardBackground(numberOfRows: 8)
+            }
+            .frame(width: 40, height: 40)
+            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+
             Text(color.hexString)
 
             Spacer()
@@ -25,7 +34,7 @@ struct ColorOutput: View {
 
 struct ColorOutput_Previews: PreviewProvider {
     static var previews: some View {
-        ColorOutput(color: .red)
+        ColorOutput(color: .red.withAlphaComponent(0.5))
             .frame(width: 320)
     }
 }

@@ -30,6 +30,7 @@
 		846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E52A1373F90009E048 /* Comparable+Clamped.swift */; };
 		846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E72A1376A70009E048 /* AlphaSlider.swift */; };
 		846211EA2A137E3E0009E048 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E92A137E3E0009E048 /* Slider.swift */; };
+		846211EC2A1380B90009E048 /* CheckerBoardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		846211E52A1373F90009E048 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		846211E72A1376A70009E048 /* AlphaSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaSlider.swift; sourceTree = "<group>"; };
 		846211E92A137E3E0009E048 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerBoardBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				842948642A0C9853001FA318 /* PersistenceController.swift */,
 				8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */,
 				846211E52A1373F90009E048 /* Comparable+Clamped.swift */,
+				846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */,
 				842948612A0C97B2001FA318 /* Solid.xcdatamodeld */,
 				842948502A0C8190001FA318 /* Assets.xcassets */,
 				842948552A0C8190001FA318 /* Solid.entitlements */,
@@ -212,6 +215,7 @@
 				846211EA2A137E3E0009E048 /* Slider.swift in Sources */,
 				846211E42A13711A0009E048 /* HueSlider.swift in Sources */,
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
+				846211EC2A1380B90009E048 /* CheckerBoardBackground.swift in Sources */,
 				843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */,
 				8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */,
 				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
