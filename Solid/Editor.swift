@@ -37,7 +37,7 @@ struct Editor: View {
                 }
                 .labelsHidden()
             }
-            .padding(.horizontal)
+            .padding()
 
             HStack {
                 Picker("Color Model", selection: $colorModel) {
@@ -69,7 +69,6 @@ struct Editor: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.top, 16)
 
             VStack(alignment: .leading) {
                 Text("Output")

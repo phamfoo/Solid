@@ -29,6 +29,7 @@
 		846211E42A13711A0009E048 /* HueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E32A13711A0009E048 /* HueSlider.swift */; };
 		846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E52A1373F90009E048 /* Comparable+Clamped.swift */; };
 		846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E72A1376A70009E048 /* AlphaSlider.swift */; };
+		846211EA2A137E3E0009E048 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E92A137E3E0009E048 /* Slider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		846211E32A13711A0009E048 /* HueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueSlider.swift; sourceTree = "<group>"; };
 		846211E52A1373F90009E048 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		846211E72A1376A70009E048 /* AlphaSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaSlider.swift; sourceTree = "<group>"; };
+		846211E92A137E3E0009E048 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				8429485D2A0C9342001FA318 /* Editor.swift */,
 				846211E32A13711A0009E048 /* HueSlider.swift */,
 				846211E72A1376A70009E048 /* AlphaSlider.swift */,
+				846211E92A137E3E0009E048 /* Slider.swift */,
 				843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */,
 				843ADD702A11C92600DCCCF0 /* ComponentInput.swift */,
 				8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */,
@@ -206,6 +209,7 @@
 				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
 				8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */,
 				843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */,
+				846211EA2A137E3E0009E048 /* Slider.swift in Sources */,
 				846211E42A13711A0009E048 /* HueSlider.swift in Sources */,
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
 				843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */,

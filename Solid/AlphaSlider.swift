@@ -5,9 +5,7 @@ struct AlphaSlider: View {
     var fullyOpaqueColor: Color
 
     var body: some View {
-        GeometryReader { geometry in
-            let maxTravelDistance = geometry.size.width - geometry.size.height
-
+        Slider(value: $alpha) {
             Canvas { context, size in
                 context.fill(
                     Path(CGRect(origin: .zero, size: size)),
@@ -35,35 +33,25 @@ struct AlphaSlider: View {
             }
             .overlay {
                 LinearGradient(
-                    colors: [fullyOpaqueColor.opacity(0), fullyOpaqueColor],
+                    colors: [
+                        fullyOpaqueColor.opacity(0),
+                        fullyOpaqueColor,
+                    ],
                     startPoint: .leading,
                     endPoint: .trailing
                 )
             }
-            .clipShape(Capsule())
-            .overlay(alignment: .leading) {
-                Circle()
-                    .fill(Color.white)
-                    .overlay {
-                        Circle()
-                            .fill(fullyOpaqueColor.opacity(alpha))
-                    }
-                    .overlay {
-                        Circle()
-                            .strokeBorder(Color.white, lineWidth: 2)
-                    }
-                    .aspectRatio(1, contentMode: .fit)
-                    .offset(x: alpha * maxTravelDistance)
-            }
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        let start = geometry.size.height / 2
-                        let location = value.location.x - start
-                        alpha = (location / maxTravelDistance)
-                            .clamped(to: 0 ... 1)
-                    }
-            )
+        } thumb: {
+            Circle()
+                .fill(Color.white)
+                .overlay {
+                    Circle()
+                        .fill(fullyOpaqueColor.opacity(alpha))
+                }
+                .overlay {
+                    Circle()
+                        .strokeBorder(Color.white, lineWidth: 2)
+                }
         }
     }
 }

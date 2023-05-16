@@ -4,34 +4,19 @@ struct HueSlider: View {
     @Binding var hue: Double
 
     var body: some View {
-        GeometryReader { geometry in
-            let maxTravelDistance = geometry.size.width - geometry.size.height
-
+        Slider(value: $hue) {
             LinearGradient(
                 colors: colors,
                 startPoint: .leading,
                 endPoint: .trailing
             )
-            .clipShape(Capsule())
-            .overlay(alignment: .leading) {
-                Circle()
-                    .fill(fullySaturatedColor)
-                    .overlay {
-                        Circle()
-                            .strokeBorder(Color.white, lineWidth: 2)
-                    }
-                    .aspectRatio(1, contentMode: .fit)
-                    .offset(x: hue * maxTravelDistance)
-            }
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        let start = geometry.size.height / 2
-                        let location = value.location.x - start
-                        hue = (location / maxTravelDistance)
-                            .clamped(to: 0 ... 1)
-                    }
-            )
+        } thumb: {
+            Circle()
+                .fill(fullySaturatedColor)
+                .overlay {
+                    Circle()
+                        .strokeBorder(Color.white, lineWidth: 2)
+                }
         }
     }
 
