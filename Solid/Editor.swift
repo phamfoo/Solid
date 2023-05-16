@@ -23,9 +23,8 @@ struct Editor: View {
                 }
 
                 VStack {
-                    Slider(value: $hue) {
-                        Text("Hue")
-                    }
+                    HueSlider(hue: $hue)
+                        .frame(height: 18)
 
                     Slider(value: $alpha) {
                         Text("Alpha")
