@@ -33,6 +33,7 @@
 		846211EC2A1380B90009E048 /* CheckerBoardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */; };
 		846211EE2A13B7640009E048 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211ED2A13B7640009E048 /* SolidButtonStyle.swift */; };
 		84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323752A146971000292D9 /* ColorModelPicker.swift */; };
+		84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerBoardBackground.swift; sourceTree = "<group>"; };
 		846211ED2A13B7640009E048 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
 		84D323752A146971000292D9 /* ColorModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelPicker.swift; sourceTree = "<group>"; };
+		84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBAInputGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				846211E32A13711A0009E048 /* HueSlider.swift */,
 				846211E72A1376A70009E048 /* AlphaSlider.swift */,
 				846211E92A137E3E0009E048 /* Slider.swift */,
+				84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */,
 				843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */,
 				843ADD702A11C92600DCCCF0 /* ComponentInput.swift */,
 				8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */,
@@ -210,6 +213,7 @@
 				843ADD712A11C92600DCCCF0 /* ComponentInput.swift in Sources */,
 				842948652A0C9853001FA318 /* PersistenceController.swift in Sources */,
 				8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */,
+				84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */,
 				846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */,
 				8402C3B42A0F770C00CCC582 /* ColorListItem.swift in Sources */,
 				8402C3B62A0F794D00CCC582 /* ColorSwatch.swift in Sources */,

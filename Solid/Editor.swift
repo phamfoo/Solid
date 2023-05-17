@@ -52,14 +52,13 @@ struct Editor: View {
                     )
                     .frame(maxHeight: .infinity)
                 case .rgb:
-                    HStack {
-                        NumberInput("R", normalizedValue: red, in: 0 ... 255)
-                        NumberInput("G", normalizedValue: green, in: 0 ... 255)
-                        NumberInput("B", normalizedValue: blue, in: 0 ... 255)
-
-                        PercentageInput("A", normalizedValue: $alpha)
-                    }
-                    .textFieldStyle(.plain)
+                    RGBAInputGroup(
+                        red: red,
+                        green: green,
+                        blue: blue,
+                        alpha: $alpha
+                    )
+                    .frame(maxHeight: .infinity)
                 }
             }
             .fixedSize(horizontal: false, vertical: true)
