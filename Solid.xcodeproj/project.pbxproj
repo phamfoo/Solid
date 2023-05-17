@@ -32,6 +32,7 @@
 		846211EA2A137E3E0009E048 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E92A137E3E0009E048 /* Slider.swift */; };
 		846211EC2A1380B90009E048 /* CheckerBoardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */; };
 		846211EE2A13B7640009E048 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211ED2A13B7640009E048 /* SolidButtonStyle.swift */; };
+		84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323752A146971000292D9 /* ColorModelPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		846211E92A137E3E0009E048 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerBoardBackground.swift; sourceTree = "<group>"; };
 		846211ED2A13B7640009E048 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
+		84D323752A146971000292D9 /* ColorModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 				8402C3B32A0F770C00CCC582 /* ColorListItem.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
+				84D323752A146971000292D9 /* ColorModelPicker.swift */,
 				846211E32A13711A0009E048 /* HueSlider.swift */,
 				846211E72A1376A70009E048 /* AlphaSlider.swift */,
 				846211E92A137E3E0009E048 /* Slider.swift */,
@@ -225,6 +228,7 @@
 				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 				8402C3B82A0F7BD900CCC582 /* ColorOutput.swift in Sources */,
+				84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

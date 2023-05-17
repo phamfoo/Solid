@@ -40,14 +40,7 @@ struct Editor: View {
             .padding()
 
             HStack {
-                Picker("Color Model", selection: $colorModel) {
-                    ForEach(ColorModel.allCases) { colorModel in
-                        Text(colorModel.displayName)
-                            .tag(colorModel)
-                    }
-                }
-                .labelsHidden()
-                .fixedSize()
+                ColorModelPicker(colorModel: $colorModel)
 
                 switch colorModel {
                 case .hsb:
@@ -57,6 +50,7 @@ struct Editor: View {
                         brightness: $brightness,
                         alpha: $alpha
                     )
+                    .frame(maxHeight: .infinity)
                 case .rgb:
                     HStack {
                         NumberInput("R", normalizedValue: red, in: 0 ... 255)
@@ -68,6 +62,7 @@ struct Editor: View {
                     .textFieldStyle(.plain)
                 }
             }
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal)
 
             VStack(alignment: .leading) {
@@ -143,24 +138,6 @@ struct Editor: View {
                 alpha: color.alphaComponent
             )
             syncComponents(from: newColor)
-        }
-    }
-}
-
-private enum ColorModel: CaseIterable, Identifiable {
-    case hsb
-    case rgb
-
-    var id: String {
-        displayName
-    }
-
-    var displayName: String {
-        switch self {
-        case .hsb:
-            return "HSB"
-        case .rgb:
-            return "RGB"
         }
     }
 }
