@@ -22,7 +22,9 @@ struct _ColorListItem: View {
 
     var body: some View {
         HStack {
-            ColorSwatch(color: color)
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .fill(Color(nsColor: color))
+                .frame(width: 44, height: 44)
 
             VStack(alignment: .leading) {
                 Text(name)
