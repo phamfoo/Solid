@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3AF2A0F734000CCC582 /* RecentColors.swift */; };
 		8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B12A0F752500CCC582 /* SaveColorForm.swift */; };
 		8402C3B42A0F770C00CCC582 /* ColorListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B32A0F770C00CCC582 /* ColorListItem.swift */; };
-		8402C3B62A0F794D00CCC582 /* ColorSwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B52A0F794D00CCC582 /* ColorSwatch.swift */; };
 		8402C3B82A0F7BD900CCC582 /* ColorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */; };
 		8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */; };
 		8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429484C2A0C818E001FA318 /* SolidApp.swift */; };
@@ -37,10 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8402C3AF2A0F734000CCC582 /* RecentColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentColors.swift; sourceTree = "<group>"; };
 		8402C3B12A0F752500CCC582 /* SaveColorForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveColorForm.swift; sourceTree = "<group>"; };
 		8402C3B32A0F770C00CCC582 /* ColorListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListItem.swift; sourceTree = "<group>"; };
-		8402C3B52A0F794D00CCC582 /* ColorSwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatch.swift; sourceTree = "<group>"; };
 		8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOutput.swift; sourceTree = "<group>"; };
 		8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
 		842948492A0C818E001FA318 /* Solid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,15 +138,6 @@
 			path = Inputs;
 			sourceTree = "<group>";
 		};
-		844A96222A15C94F00E62376 /* RecentColors */ = {
-			isa = PBXGroup;
-			children = (
-				8402C3B12A0F752500CCC582 /* SaveColorForm.swift */,
-				8402C3AF2A0F734000CCC582 /* RecentColors.swift */,
-			);
-			path = RecentColors;
-			sourceTree = "<group>";
-		};
 		8472FCF62A15C9AF00F3B862 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +155,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		8472FCFA2A161A2B00F3B862 /* ColorOutput */ = {
+			isa = PBXGroup;
+			children = (
+				8402C3B12A0F752500CCC582 /* SaveColorForm.swift */,
+				8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */,
+			);
+			path = ColorOutput;
+			sourceTree = "<group>";
+		};
 		84BB73572A15C6880017B9DF /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,10 +176,9 @@
 		84BB73582A15C6920017B9DF /* Editor */ = {
 			isa = PBXGroup;
 			children = (
-				844A96222A15C94F00E62376 /* RecentColors */,
+				8472FCFA2A161A2B00F3B862 /* ColorOutput */,
 				844A96212A15C90D00E62376 /* Inputs */,
 				844A96202A15C8AA00E62376 /* Sliders */,
-				8402C3B72A0F7BD900CCC582 /* ColorOutput.swift */,
 				8429488B2A0E6E26001FA318 /* ColorSampler.swift */,
 				84D323752A146971000292D9 /* ColorModelPicker.swift */,
 				8429485D2A0C9342001FA318 /* Editor.swift */,
@@ -204,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */,
-				8402C3B52A0F794D00CCC582 /* ColorSwatch.swift */,
 				846211ED2A13B7640009E048 /* SolidButtonStyle.swift */,
 			);
 			path = UI;
@@ -288,7 +282,6 @@
 				84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */,
 				846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */,
 				8402C3B42A0F770C00CCC582 /* ColorListItem.swift in Sources */,
-				8402C3B62A0F794D00CCC582 /* ColorSwatch.swift in Sources */,
 				846211EE2A13B7640009E048 /* SolidButtonStyle.swift in Sources */,
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
 				846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */,
@@ -300,7 +293,6 @@
 				842948602A0C93E6001FA318 /* ColorList.swift in Sources */,
 				846211EC2A1380B90009E048 /* CheckerBoardBackground.swift in Sources */,
 				843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */,
-				8402C3B02A0F734000CCC582 /* RecentColors.swift in Sources */,
 				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 				8402C3B82A0F7BD900CCC582 /* ColorOutput.swift in Sources */,
