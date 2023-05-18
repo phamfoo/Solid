@@ -53,12 +53,12 @@ private struct LabelView: View {
         .padding(.horizontal, 8)
         .frame(maxHeight: .infinity)
         .background {
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .fill(.white)
                 .opacity(hovered ? 0.1 : 0)
         }
         .background {
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .strokeBorder(.quaternary)
                 .opacity(hovered ? 1 : 0)
         }

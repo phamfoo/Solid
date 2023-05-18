@@ -54,12 +54,12 @@ struct HSBAInputGroup: View {
             focusField = nil
         }
         .background {
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .strokeBorder(.quaternary)
                 .opacity(hovered ? 1 : 0)
         }
         .background {
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .strokeBorder(Color.accentColor)
                 .opacity(focused ? 1 : 0)
         }
