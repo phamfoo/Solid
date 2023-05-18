@@ -9,7 +9,7 @@ struct Editor: View {
     @State private var alpha = 1.0
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             SaturationBrightnessSlider(
                 hue: hue,
                 saturation: $saturation,
@@ -17,10 +17,11 @@ struct Editor: View {
             )
             .aspectRatio(1, contentMode: .fit)
 
-            HStack {
+            HStack(spacing: 0) {
                 ColorSampler { pickedColor in
                     syncComponents(from: pickedColor)
                 }
+                .padding(8)
 
                 VStack {
                     HueSlider(hue: $hue)
@@ -35,9 +36,9 @@ struct Editor: View {
                     )
                     .frame(height: 24)
                 }
-                .labelsHidden()
+                .padding(8)
             }
-            .padding()
+            .padding(8)
 
             HStack {
                 ColorModelPicker(colorModel: $colorModel)
@@ -62,7 +63,10 @@ struct Editor: View {
                 }
             }
             .fixedSize(horizontal: false, vertical: true)
-            .padding(.horizontal)
+            .padding(.horizontal, 16)
+
+            Divider()
+                .padding(.vertical)
 
             VStack(alignment: .leading) {
                 Text("Output")
@@ -71,12 +75,8 @@ struct Editor: View {
 
                 ColorOutput(color: color)
             }
-            .padding(.horizontal)
-            .padding(.top, 16)
-
-            RecentColors(color: color)
-                .padding(.horizontal)
-                .padding(.top, 32)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
 
             Spacer()
         }
