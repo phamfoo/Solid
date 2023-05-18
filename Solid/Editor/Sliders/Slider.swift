@@ -9,22 +9,26 @@ struct Slider<Track, Thumb>: View where Track: View, Thumb: View {
         GeometryReader { geometry in
             let maxTravelDistance = geometry.size.width - geometry.size.height
 
-            track
-                .clipShape(Capsule())
-                .overlay(alignment: .leading) {
-                    thumb
-                        .aspectRatio(1, contentMode: .fit)
-                        .offset(x: value * maxTravelDistance)
-                }
-                .gesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            let start = geometry.size.height / 2
-                            let location = value.location.x - start
-                            self.value = (location / maxTravelDistance)
-                                .clamped(to: 0 ... 1)
-                        }
+            track.clipShape(
+                RoundedRectangle(
+                    cornerRadius: .infinity,
+                    style: .continuous
                 )
+            )
+            .overlay(alignment: .leading) {
+                thumb
+                    .aspectRatio(1, contentMode: .fit)
+                    .offset(x: value * maxTravelDistance)
+            }
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        let start = geometry.size.height / 2
+                        let location = value.location.x - start
+                        self.value = (location / maxTravelDistance)
+                            .clamped(to: 0 ... 1)
+                    }
+            )
         }
     }
 }

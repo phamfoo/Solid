@@ -28,6 +28,7 @@ struct AlphaSlider: View {
                     Circle()
                         .strokeBorder(Color.white, lineWidth: 2)
                 }
+                .padding(2)
         }
     }
 }

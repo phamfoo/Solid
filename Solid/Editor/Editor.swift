@@ -24,7 +24,7 @@ struct Editor: View {
 
                 VStack {
                     HueSlider(hue: $hue)
-                        .frame(height: 18)
+                        .frame(height: 24)
 
                     AlphaSlider(
                         alpha: $alpha,
@@ -33,7 +33,7 @@ struct Editor: View {
                                 .withAlphaComponent(1)
                         )
                     )
-                    .frame(height: 18)
+                    .frame(height: 24)
                 }
                 .labelsHidden()
             }
