@@ -6,6 +6,8 @@ struct ColorListItem: View {
     var body: some View {
         _ColorListItem(
             color: NSColor(
+                colorSpace: ColorSpace(rawValue: color.colorSpace!)!
+                    .nsColorSpace,
                 hue: color.hue,
                 saturation: color.saturation,
                 brightness: color.brightness,

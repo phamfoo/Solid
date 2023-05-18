@@ -6,6 +6,7 @@ struct SaveColorForm: View {
     @State private var colorName = "New color"
 
     var color: NSColor
+    var colorSpace: ColorSpace
 
     var body: some View {
         VStack {
@@ -20,6 +21,7 @@ struct SaveColorForm: View {
                 let solidColor = SolidColor(context: moc)
                 solidColor.id = UUID()
                 solidColor.name = colorName
+                solidColor.colorSpace = colorSpace.rawValue
                 solidColor.hue = color.hueComponent
                 solidColor.saturation = color.saturationComponent
                 solidColor.brightness = color.brightnessComponent
@@ -38,7 +40,7 @@ struct SaveColorForm: View {
 
 struct SaveColorForm_Previews: PreviewProvider {
     static var previews: some View {
-        SaveColorForm(color: .red)
+        SaveColorForm(color: .red, colorSpace: .sRGB)
             .frame(width: 200)
     }
 }

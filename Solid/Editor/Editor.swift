@@ -83,7 +83,7 @@ struct Editor: View {
                 }
                 .buttonStyle(.link)
 
-                ColorOutput(color: color)
+                ColorOutput(color: color, colorSpace: colorSpace)
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
@@ -152,20 +152,6 @@ struct Editor: View {
                 alpha: color.alphaComponent
             )
             syncComponents(from: newColor)
-        }
-    }
-}
-
-enum ColorSpace {
-    case sRGB
-    case displayP3
-
-    var nsColorSpace: NSColorSpace {
-        switch self {
-        case .sRGB:
-            return .sRGB
-        case .displayP3:
-            return .displayP3
         }
     }
 }

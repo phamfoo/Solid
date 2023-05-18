@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct ColorOutput: View {
-    var color: NSColor
     @State private var showingSavePopover = false
+    var color: NSColor
+    var colorSpace: ColorSpace
 
     var body: some View {
         HStack {
@@ -39,9 +40,12 @@ struct ColorOutput: View {
                 }
                 .buttonStyle(.solid)
                 .popover(isPresented: $showingSavePopover) {
-                    SaveColorForm(color: color)
-                        .frame(width: 200)
-                        .padding()
+                    SaveColorForm(
+                        color: color,
+                        colorSpace: colorSpace
+                    )
+                    .frame(width: 200)
+                    .padding()
                 }
             }
         }
@@ -50,7 +54,7 @@ struct ColorOutput: View {
 
 struct ColorOutput_Previews: PreviewProvider {
     static var previews: some View {
-        ColorOutput(color: .red.withAlphaComponent(0.5))
+        ColorOutput(color: .red.withAlphaComponent(0.5), colorSpace: .sRGB)
             .frame(width: 320)
     }
 }

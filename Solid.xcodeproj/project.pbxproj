@@ -24,6 +24,7 @@
 		843ADD712A11C92600DCCCF0 /* ComponentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD702A11C92600DCCCF0 /* ComponentInput.swift */; };
 		843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */; };
 		843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4C552A0F860600C04536 /* SolidTabView.swift */; };
+		8455B1E52A1632CD00EB335B /* ColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455B1E42A1632CD00EB335B /* ColorSpace.swift */; };
 		846211E42A13711A0009E048 /* HueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E32A13711A0009E048 /* HueSlider.swift */; };
 		846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E52A1373F90009E048 /* Comparable+Clamped.swift */; };
 		846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E72A1376A70009E048 /* AlphaSlider.swift */; };
@@ -54,6 +55,7 @@
 		843ADD702A11C92600DCCCF0 /* ComponentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInput.swift; sourceTree = "<group>"; };
 		843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBAInputGroup.swift; sourceTree = "<group>"; };
 		843D4C552A0F860600C04536 /* SolidTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTabView.swift; sourceTree = "<group>"; };
+		8455B1E42A1632CD00EB335B /* ColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSpace.swift; sourceTree = "<group>"; };
 		846211E32A13711A0009E048 /* HueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueSlider.swift; sourceTree = "<group>"; };
 		846211E52A1373F90009E048 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		846211E72A1376A70009E048 /* AlphaSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaSlider.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				842948642A0C9853001FA318 /* PersistenceController.swift */,
+				8455B1E42A1632CD00EB335B /* ColorSpace.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 				8402C3B82A0F7BD900CCC582 /* ColorOutput.swift in Sources */,
+				8455B1E52A1632CD00EB335B /* ColorSpace.swift in Sources */,
 				84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
