@@ -63,6 +63,8 @@ struct HSBAInputGroup: View {
                 .strokeBorder(Color.accentColor)
                 .opacity(focused ? 1 : 0)
         }
+        .animation(.easeInOut(duration: 0.1), value: hovered)
+        .animation(.easeInOut(duration: 0.1), value: focused)
     }
 
     private var focused: Bool {

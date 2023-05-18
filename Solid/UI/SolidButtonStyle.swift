@@ -16,6 +16,7 @@ struct SolidButtonStyle: ButtonStyle {
             .onHover { hovered in
                 self.hovered = hovered
             }
+            .animation(.easeInOut(duration: 0.1), value: hovered)
     }
 }
 
