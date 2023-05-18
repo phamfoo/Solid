@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct Editor: View {
+    @State private var colorSpace = ColorSpace.sRGB
     @State private var colorModel = ColorModel.hsb
 
     @State private var hue = 1.0
@@ -13,26 +14,28 @@ struct Editor: View {
             SaturationBrightnessSlider(
                 hue: hue,
                 saturation: $saturation,
-                brightness: $brightness
+                brightness: $brightness,
+                colorSpace: colorSpace
             )
             .aspectRatio(1, contentMode: .fit)
 
             HStack(spacing: 0) {
                 ColorSampler { pickedColor in
-                    syncComponents(from: pickedColor)
+                    if let pickedColorInCurrentColorSpace =
+                        pickedColor.usingColorSpace(colorSpace.nsColorSpace)
+                    {
+                        syncComponents(from: pickedColorInCurrentColorSpace)
+                    }
                 }
                 .padding(8)
 
                 VStack {
-                    HueSlider(hue: $hue)
+                    HueSlider(hue: $hue, colorSpace: colorSpace)
                         .frame(height: 24)
 
                     AlphaSlider(
                         alpha: $alpha,
-                        fullyOpaqueColor: Color(
-                            nsColor: color
-                                .withAlphaComponent(1)
-                        )
+                        color: fullyOpaqueColor
                     )
                     .frame(height: 24)
                 }
@@ -69,9 +72,16 @@ struct Editor: View {
                 .padding(.vertical)
 
             VStack(alignment: .leading) {
-                Text("Output")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
+                Button {} label: {
+                    HStack(spacing: 2) {
+                        Text("sRGB")
+                            .font(.headline)
+
+                        Image(systemName: "questionmark.circle.fill")
+                            .imageScale(.small)
+                    }
+                }
+                .buttonStyle(.link)
 
                 ColorOutput(color: color)
             }
@@ -84,11 +94,16 @@ struct Editor: View {
 
     private var color: NSColor {
         NSColor(
+            colorSpace: colorSpace.nsColorSpace,
             hue: hue,
             saturation: saturation,
             brightness: brightness,
             alpha: alpha
         )
+    }
+
+    private var fullyOpaqueColor: Color {
+        Color(nsColor: color.withAlphaComponent(1))
     }
 
     private func syncComponents(from color: NSColor) {
@@ -137,6 +152,20 @@ struct Editor: View {
                 alpha: color.alphaComponent
             )
             syncComponents(from: newColor)
+        }
+    }
+}
+
+enum ColorSpace {
+    case sRGB
+    case displayP3
+
+    var nsColorSpace: NSColorSpace {
+        switch self {
+        case .sRGB:
+            return .sRGB
+        case .displayP3:
+            return .displayP3
         }
     }
 }

@@ -4,6 +4,7 @@ struct SaturationBrightnessSlider: View {
     var hue: Double
     @Binding var saturation: Double
     @Binding var brightness: Double
+    var colorSpace: ColorSpace
 
     var body: some View {
         GeometryReader { geometry in
@@ -50,11 +51,27 @@ struct SaturationBrightnessSlider: View {
     }
 
     private var fullySaturatedColor: Color {
-        Color(hue: hue, saturation: 1, brightness: 1)
+        Color(
+            nsColor: NSColor(
+                colorSpace: colorSpace.nsColorSpace,
+                hue: hue,
+                saturation: 1,
+                brightness: 1,
+                alpha: 1
+            )
+        )
     }
 
     private var currentColor: Color {
-        Color(hue: hue, saturation: saturation, brightness: brightness)
+        Color(
+            nsColor: NSColor(
+                colorSpace: colorSpace.nsColorSpace,
+                hue: hue,
+                saturation: saturation,
+                brightness: brightness,
+                alpha: 1
+            )
+        )
     }
 }
 
@@ -63,7 +80,8 @@ struct SaturationBrightnessSlider_Previews: PreviewProvider {
         SaturationBrightnessSlider(
             hue: 1,
             saturation: .constant(1),
-            brightness: .constant(1)
+            brightness: .constant(1),
+            colorSpace: .sRGB
         )
         .previewLayout(.fixed(width: 320, height: 320))
     }

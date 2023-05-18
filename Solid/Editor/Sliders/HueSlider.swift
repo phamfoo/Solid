@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HueSlider: View {
     @Binding var hue: Double
+    var colorSpace: ColorSpace
 
     var body: some View {
         Slider(value: $hue) {
@@ -24,17 +25,35 @@ struct HueSlider: View {
     private var colors: [Color] {
         Array(stride(from: 0.0, to: 361.0, by: 30.0))
             .map { $0 / 360 }
-            .map { Color(hue: $0, saturation: 1, brightness: 1) }
+            .map { normalizedHue in
+                Color(
+                    nsColor: NSColor(
+                        colorSpace: colorSpace.nsColorSpace,
+                        hue: normalizedHue,
+                        saturation: 1,
+                        brightness: 1,
+                        alpha: 1
+                    )
+                )
+            }
     }
 
     private var fullySaturatedColor: Color {
-        Color(hue: hue, saturation: 1, brightness: 1)
+        Color(
+            nsColor: NSColor(
+                colorSpace: colorSpace.nsColorSpace,
+                hue: hue,
+                saturation: 1,
+                brightness: 1,
+                alpha: 1
+            )
+        )
     }
 }
 
 struct HueSlider_Previews: PreviewProvider {
     static var previews: some View {
-        HueSlider(hue: .constant(0.5))
+        HueSlider(hue: .constant(0.5), colorSpace: .sRGB)
             .frame(width: 320, height: 32)
     }
 }
