@@ -13,8 +13,8 @@ struct ColorOutput: View {
             .background {
                 CheckerBoardBackground(numberOfRows: 8)
             }
-            .frame(width: 40, height: 40)
-            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+            .frame(width: 44, height: 44)
+            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
 
             Text(color.hexString)
 
