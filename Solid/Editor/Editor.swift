@@ -71,22 +71,9 @@ struct Editor: View {
             Divider()
                 .padding(.vertical)
 
-            VStack(alignment: .leading) {
-                Button {} label: {
-                    HStack(spacing: 2) {
-                        Text("sRGB")
-                            .font(.headline)
-
-                        Image(systemName: "questionmark.circle.fill")
-                            .imageScale(.small)
-                    }
-                }
-                .buttonStyle(.link)
-
-                ColorOutput(color: color, colorSpace: colorSpace)
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
+            ColorInfo(color: color, colorSpace: colorSpace)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 16)
 
             Spacer()
         }
