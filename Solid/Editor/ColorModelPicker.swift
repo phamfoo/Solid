@@ -120,27 +120,6 @@ protocol MenuViewControllerDelegate: AnyObject {
     func onSelect(itemIndex: Int)
 }
 
-enum ColorModel: CaseIterable, Identifiable {
-    case hsb
-    case rgb
-    case hsl
-
-    var id: String {
-        displayName
-    }
-
-    var displayName: String {
-        switch self {
-        case .hsb:
-            return "HSB"
-        case .rgb:
-            return "RGB"
-        case .hsl:
-            return "HSL"
-        }
-    }
-}
-
 struct ColorModelPicker_Previews: PreviewProvider {
     static var previews: some View {
         ColorModelPicker(colorModel: .constant(.hsb))
