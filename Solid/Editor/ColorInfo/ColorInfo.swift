@@ -17,6 +17,7 @@ struct ColorInfo: View {
                     CheckerBoardBackground(numberOfRows: 8)
                 }
                 .frame(width: 44, height: 44)
+                .drawingGroup()
                 .clipShape(
                     RoundedRectangle(
                         cornerRadius: 6,

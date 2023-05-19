@@ -17,6 +17,7 @@ struct AlphaSlider: View {
                         endPoint: .trailing
                     )
                 }
+                .drawingGroup()
         } thumb: {
             Circle()
                 .fill(Color.white)
