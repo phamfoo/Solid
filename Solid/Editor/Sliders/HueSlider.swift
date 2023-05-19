@@ -6,11 +6,21 @@ struct HueSlider: View {
 
     var body: some View {
         Slider(value: $hue) {
-            LinearGradient(
-                colors: colors,
-                startPoint: .leading,
-                endPoint: .trailing
-            )
+            GeometryReader { geometry in
+                HStack(spacing: 0) {
+                    colors
+                        .first
+                        .frame(width: geometry.size.height / 2)
+                    LinearGradient(
+                        colors: colors,
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                    colors
+                        .last
+                        .frame(width: geometry.size.height / 2)
+                }
+            }
         } thumb: {
             Circle()
                 .fill(fullySaturatedColor)
