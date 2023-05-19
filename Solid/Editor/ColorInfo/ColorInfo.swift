@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct ColorInfo: View {
-    @State private var isShowingSaveColorForm = false
-
     var color: NSColor
     var colorSpace: ColorSpace
 
@@ -41,21 +39,7 @@ struct ColorInfo: View {
                     }
                     .buttonStyle(.solid)
 
-                    Button {
-                        isShowingSaveColorForm = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .imageScale(.large)
-                    }
-                    .buttonStyle(.solid)
-                    .popover(isPresented: $isShowingSaveColorForm) {
-                        SaveColorForm(
-                            color: color,
-                            colorSpace: colorSpace
-                        )
-                        .frame(width: 200)
-                        .padding()
-                    }
+                    SaveColorButton(color: color, colorSpace: colorSpace)
                 }
             }
         }
