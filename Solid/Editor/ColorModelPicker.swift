@@ -123,6 +123,7 @@ protocol MenuViewControllerDelegate: AnyObject {
 enum ColorModel: CaseIterable, Identifiable {
     case hsb
     case rgb
+    case hsl
 
     var id: String {
         displayName
@@ -134,6 +135,8 @@ enum ColorModel: CaseIterable, Identifiable {
             return "HSB"
         case .rgb:
             return "RGB"
+        case .hsl:
+            return "HSL"
         }
     }
 }
