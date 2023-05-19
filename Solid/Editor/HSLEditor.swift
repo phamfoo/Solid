@@ -63,10 +63,10 @@ struct HSLEditor: View {
             HStack {
                 ColorModelPicker(colorModel: $colorModel)
 
-                HSBAInputGroup(
+                HSLAInputGroup(
                     hue: $hue,
                     saturation: $saturation,
-                    brightness: $lightness,
+                    lightness: $lightness,
                     alpha: $alpha
                 )
                 .frame(maxHeight: .infinity)
