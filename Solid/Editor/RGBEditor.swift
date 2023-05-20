@@ -105,10 +105,14 @@ struct RGBEditor: View {
             color.redComponent
         } set: { newValue in
             let newColor = NSColor(
-                red: newValue,
-                green: color.greenComponent,
-                blue: color.blueComponent,
-                alpha: color.alphaComponent
+                colorSpace: colorSpace.nsColorSpace,
+                components: [
+                    newValue,
+                    color.greenComponent,
+                    color.blueComponent,
+                    color.alphaComponent,
+                ],
+                count: 4
             )
             syncComponents(from: newColor)
         }
@@ -118,11 +122,16 @@ struct RGBEditor: View {
         .init {
             color.greenComponent
         } set: { newValue in
+
             let newColor = NSColor(
-                red: color.redComponent,
-                green: newValue,
-                blue: color.blueComponent,
-                alpha: color.alphaComponent
+                colorSpace: colorSpace.nsColorSpace,
+                components: [
+                    color.redComponent,
+                    newValue,
+                    color.blueComponent,
+                    color.alphaComponent,
+                ],
+                count: 4
             )
             syncComponents(from: newColor)
         }
@@ -133,10 +142,14 @@ struct RGBEditor: View {
             color.blueComponent
         } set: { newValue in
             let newColor = NSColor(
-                red: color.redComponent,
-                green: color.greenComponent,
-                blue: newValue,
-                alpha: color.alphaComponent
+                colorSpace: colorSpace.nsColorSpace,
+                components: [
+                    color.redComponent,
+                    color.greenComponent,
+                    newValue,
+                    color.alphaComponent,
+                ],
+                count: 4
             )
             syncComponents(from: newColor)
         }
