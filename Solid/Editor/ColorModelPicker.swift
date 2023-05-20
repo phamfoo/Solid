@@ -1,50 +1,13 @@
 import SwiftUI
 
-struct ColorModelPicker: NSViewControllerRepresentable {
-    @Binding var colorModel: ColorModel
-
-    func makeNSViewController(context: Context) -> MenuViewController {
-        let labelView =
-            NSHostingView(rootView: LabelView(title: colorModel.displayName))
-        let menuViewController = MenuViewController(
-            labelView: labelView,
-            items: ColorModel.allCases.map { $0.displayName },
-            selectedIndex: 0
-        )
-        menuViewController.delegate = context.coordinator
-
-        return menuViewController
-    }
-
-    func updateNSViewController(
-        _: MenuViewController,
-        context _: Context
-    ) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(parent: self)
-    }
-
-    class Coordinator: NSObject, MenuViewControllerDelegate {
-        var parent: ColorModelPicker
-        init(parent: ColorModelPicker) {
-            self.parent = parent
-        }
-
-        func onSelect(itemIndex: Int) {
-            let selectedColorModel = ColorModel.allCases[itemIndex]
-            parent.colorModel = selectedColorModel
-        }
-    }
-}
-
-private struct LabelView: View {
+struct ColorModelPicker: View {
     @State private var hovered = false
-    var title: String
+
+    @Binding var colorModel: ColorModel
 
     var body: some View {
         HStack(spacing: 4) {
-            Text(title)
+            Text(colorModel.displayName)
 
             Image(systemName: "chevron.down")
                 .imageScale(.small)
@@ -65,6 +28,48 @@ private struct LabelView: View {
         .onHover { hovered in
             self.hovered = hovered
         }
+        .overlay {
+            // I had a layout issue when trying to put the label
+            // inside an NSHostingView.
+            // Now we just render the label in SwiftUI land normally
+            // and have this overlay show the menu instead.
+            ColorModelPickerOverlay(colorModel: $colorModel)
+        }
+    }
+}
+
+struct ColorModelPickerOverlay: NSViewControllerRepresentable {
+    @Binding var colorModel: ColorModel
+
+    func makeNSViewController(context: Context) -> MenuViewController {
+        let menuViewController = MenuViewController(
+            items: ColorModel.allCases.map { $0.displayName },
+            selectedIndex: 0
+        )
+        menuViewController.delegate = context.coordinator
+
+        return menuViewController
+    }
+
+    func updateNSViewController(
+        _: MenuViewController,
+        context _: Context
+    ) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(parent: self)
+    }
+
+    class Coordinator: NSObject, MenuViewControllerDelegate {
+        var parent: ColorModelPickerOverlay
+        init(parent: ColorModelPickerOverlay) {
+            self.parent = parent
+        }
+
+        func onSelect(itemIndex: Int) {
+            let selectedColorModel = ColorModel.allCases[itemIndex]
+            parent.colorModel = selectedColorModel
+        }
     }
 }
 
@@ -73,12 +78,12 @@ class MenuViewController: NSViewController {
     var selectedIndex: Int
     weak var delegate: MenuViewControllerDelegate?
 
-    init(labelView: NSView, items: [String], selectedIndex: Int) {
+    init(items: [String], selectedIndex: Int) {
         self.items = items
         self.selectedIndex = selectedIndex
         super.init(nibName: nil, bundle: nil)
 
-        view = labelView
+        view = NSView(frame: .zero)
     }
 
     @available(*, unavailable)
