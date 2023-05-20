@@ -13,7 +13,7 @@ struct ColorList: View {
             ForEach(sections) { section in
                 Section(sectionHeader(fromDate: section.id)) {
                     ForEach(section) { color in
-                        ColorListItem(color: color)
+                        ColorListRow(color: color)
                     }
                 }
             }

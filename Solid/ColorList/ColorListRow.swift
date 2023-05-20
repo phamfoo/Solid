@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct ColorListItem: View {
+struct ColorListRow: View {
     var color: SolidColor
 
     var body: some View {
-        _ColorListItem(
+        _ColorListRow(
             color: NSColor(
                 colorSpace: ColorSpace(rawValue: color.colorSpace!)!
                     .nsColorSpace,
@@ -18,7 +18,7 @@ struct ColorListItem: View {
     }
 }
 
-struct _ColorListItem: View {
+struct _ColorListRow: View {
     var color: NSColor
     var name: String
 
@@ -42,9 +42,9 @@ struct _ColorListItem: View {
     }
 }
 
-struct ColorListItem_Previews: PreviewProvider {
+struct ColorListRow_Previews: PreviewProvider {
     static var previews: some View {
-        _ColorListItem(
+        _ColorListRow(
             color: .red,
             name: "red"
         )

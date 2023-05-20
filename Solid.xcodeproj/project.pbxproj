@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B12A0F752500CCC582 /* SaveColorForm.swift */; };
-		8402C3B42A0F770C00CCC582 /* ColorListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B32A0F770C00CCC582 /* ColorListItem.swift */; };
+		8402C3B42A0F770C00CCC582 /* ColorListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B32A0F770C00CCC582 /* ColorListRow.swift */; };
 		8402C3B82A0F7BD900CCC582 /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B72A0F7BD900CCC582 /* ColorInfo.swift */; };
 		8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */; };
 		842423472A17057500056AC5 /* CurrentColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842423462A17057500056AC5 /* CurrentColorProfile.swift */; };
@@ -48,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		8402C3B12A0F752500CCC582 /* SaveColorForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveColorForm.swift; sourceTree = "<group>"; };
-		8402C3B32A0F770C00CCC582 /* ColorListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListItem.swift; sourceTree = "<group>"; };
+		8402C3B32A0F770C00CCC582 /* ColorListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListRow.swift; sourceTree = "<group>"; };
 		8402C3B72A0F7BD900CCC582 /* ColorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
 		8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
 		842423462A17057500056AC5 /* CurrentColorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentColorProfile.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		84BB73592A15C6AB0017B9DF /* ColorList */ = {
 			isa = PBXGroup;
 			children = (
-				8402C3B32A0F770C00CCC582 /* ColorListItem.swift */,
+				8402C3B32A0F770C00CCC582 /* ColorListRow.swift */,
 				8429485F2A0C93E6001FA318 /* ColorList.swift */,
 			);
 			path = ColorList;
@@ -333,7 +333,7 @@
 				8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */,
 				84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */,
 				846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */,
-				8402C3B42A0F770C00CCC582 /* ColorListItem.swift in Sources */,
+				8402C3B42A0F770C00CCC582 /* ColorListRow.swift in Sources */,
 				846211EE2A13B7640009E048 /* SolidButtonStyle.swift in Sources */,
 				84757BE12A170FA9004B9EE0 /* SaveColorButton.swift in Sources */,
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
