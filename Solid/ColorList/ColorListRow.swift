@@ -33,8 +33,10 @@ struct _ColorListRow: View {
                     .font(.headline)
 
                 Text(color.hexString)
-                    .foregroundColor(.secondary)
                     .font(.subheadline)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .foregroundColor(.secondary)
             }
 
             Spacer()

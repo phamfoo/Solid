@@ -30,6 +30,9 @@ struct ColorInfo: View {
                 )
 
                 Text(color.hexString)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .foregroundColor(.secondary)
 
                 Spacer()
 
