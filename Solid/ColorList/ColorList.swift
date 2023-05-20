@@ -1,18 +1,44 @@
 import SwiftUI
 
 struct ColorList: View {
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(
-            keyPath: \SolidColor.timestamp,
-            ascending: false
-        )]
+    @SectionedFetchRequest<Date, SolidColor>(
+        sectionIdentifier: \.startOfDay,
+        sortDescriptors: [SortDescriptor(\.timestamp, order: .reverse)],
+        animation: .default
     )
-    private var colors: FetchedResults<SolidColor>
+    private var sections: SectionedFetchResults<Date, SolidColor>
 
     var body: some View {
-        List(colors) { color in
-            ColorListItem(color: color)
+        List {
+            ForEach(sections) { section in
+                Section(sectionHeader(fromDate: section.id)) {
+                    ForEach(section) { color in
+                        ColorListItem(color: color)
+                    }
+                }
+            }
         }
+    }
+
+    private func sectionHeader(fromDate date: Date) -> String {
+        let calendar = Calendar.current
+
+        if calendar.isDateInToday(date) {
+            return "Today"
+        } else if calendar.isDateInYesterday(date) {
+            return "Yesterday"
+        }
+
+        return date.formatted(
+            date: .abbreviated,
+            time: .omitted
+        )
+    }
+}
+
+extension SolidColor {
+    @objc var startOfDay: Date {
+        Calendar.current.startOfDay(for: timestamp!)
     }
 }
 
