@@ -1,10 +1,14 @@
+import Combine
 import SwiftUI
 
 struct ColorInfo: View {
-    var color: NSColor
+    var colorPublisher: ColorPublisher
     var colorSpace: ColorSpace
+    @State private var color: NSColor?
 
     var body: some View {
+        let color = self.color ?? colorPublisher.value.color
+
         VStack(alignment: .leading) {
             CurrentColorProfile()
 
@@ -41,15 +45,47 @@ struct ColorInfo: View {
                     .buttonStyle(.solid)
 
                     SaveColorButton(color: color, colorSpace: colorSpace)
+
+                    Menu {
+                        Button("Import from clipboard") {
+                            if let copiedString = NSPasteboard.general
+                                .string(forType: .string),
+                                let color = NSColor(
+                                    colorSpace: colorSpace.nsColorSpace,
+                                    hexString: copiedString
+                                )
+                            {
+                                colorPublisher
+                                    .send(
+                                        .init(
+                                            color: color,
+                                            source: "Clipboard"
+                                        )
+                                    )
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .imageScale(.large)
+                    }
+                    .fixedSize()
+                    .menuStyle(.borderlessButton)
+                    .menuIndicator(.hidden)
                 }
             }
+        }
+        .onReceive(colorPublisher) { publishedColor in
+            self.color = publishedColor.color
         }
     }
 }
 
 struct ColorInfo_Previews: PreviewProvider {
     static var previews: some View {
-        ColorInfo(color: .red.withAlphaComponent(0.5), colorSpace: .sRGB)
-            .frame(width: 320)
+        ColorInfo(
+            colorPublisher: .init(.init(color: .red, source: "")),
+            colorSpace: .sRGB
+        )
+        .frame(width: 320)
     }
 }

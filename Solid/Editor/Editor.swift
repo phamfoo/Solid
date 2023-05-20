@@ -1,9 +1,16 @@
+import Combine
 import SwiftUI
+
+typealias ColorPublisher = CurrentValueSubject<
+    ColorUpdate,
+    Never
+>
 
 struct Editor: View {
     @State private var colorSpace = ColorSpace.sRGB
     @State private var colorModel = ColorModel.hsb
-    @State private var color = NSColor.red
+    @State private var colorPublisher =
+        ColorPublisher(.init(color: .red, source: "Root"))
 
     var body: some View {
         VStack(spacing: 0) {
@@ -12,32 +19,37 @@ struct Editor: View {
                 HSBEditor(
                     colorSpace: $colorSpace,
                     colorModel: $colorModel,
-                    color: $color
+                    colorPublisher: colorPublisher
                 )
             case .rgb:
                 RGBEditor(
                     colorSpace: $colorSpace,
                     colorModel: $colorModel,
-                    color: $color
+                    colorPublisher: colorPublisher
                 )
             case .hsl:
                 HSLEditor(
                     colorSpace: $colorSpace,
                     colorModel: $colorModel,
-                    color: $color
+                    colorPublisher: colorPublisher
                 )
             }
 
             Divider()
                 .padding(.vertical)
 
-            ColorInfo(color: color, colorSpace: colorSpace)
+            ColorInfo(colorPublisher: colorPublisher, colorSpace: colorSpace)
                 .padding(.horizontal, 16)
                 .padding(.bottom, 16)
 
             Spacer()
         }
     }
+}
+
+struct ColorUpdate {
+    var color: NSColor
+    var source: String
 }
 
 struct Editor_Previews: PreviewProvider {

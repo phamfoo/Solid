@@ -3,7 +3,7 @@ import SwiftUI
 struct HSLEditor: View {
     @Binding var colorSpace: ColorSpace
     @Binding var colorModel: ColorModel
-    @Binding var color: NSColor
+    var colorPublisher: ColorPublisher
 
     @State private var hue: Double
     @State private var saturation: Double
@@ -13,13 +13,13 @@ struct HSLEditor: View {
     init(
         colorSpace: Binding<ColorSpace>,
         colorModel: Binding<ColorModel>,
-        color: Binding<NSColor>
+        colorPublisher: ColorPublisher
     ) {
         _colorSpace = colorSpace
         _colorModel = colorModel
-        _color = color
+        self.colorPublisher = colorPublisher
 
-        let color = _color.wrappedValue
+        let color = colorPublisher.value.color
         hue = color.hueComponent
         saturation = color.hslSaturation
         lightness = color.lightness
@@ -75,7 +75,13 @@ struct HSLEditor: View {
             .padding(.horizontal, 16)
         }
         .onChange(of: nsColor) { nsColor in
-            color = nsColor
+            colorPublisher.send(.init(color: nsColor, source: "HSLEditor"))
+        }
+        .onReceive(
+            colorPublisher
+                .filter { $0.source != "HSLEditor" }
+        ) { publishedColor in
+            syncComponents(from: publishedColor.color)
         }
     }
 
@@ -106,7 +112,7 @@ struct HSLEditor_Previews: PreviewProvider {
         HSLEditor(
             colorSpace: .constant(.sRGB),
             colorModel: .constant(.hsl),
-            color: .constant(.red)
+            colorPublisher: .init(.init(color: .red, source: ""))
         )
         .frame(width: 320)
     }

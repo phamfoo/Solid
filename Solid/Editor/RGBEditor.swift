@@ -3,7 +3,7 @@ import SwiftUI
 struct RGBEditor: View {
     @Binding var colorSpace: ColorSpace
     @Binding var colorModel: ColorModel
-    @Binding var color: NSColor
+    var colorPublisher: ColorPublisher
 
     @State private var hue: Double
     @State private var saturation: Double
@@ -13,13 +13,13 @@ struct RGBEditor: View {
     init(
         colorSpace: Binding<ColorSpace>,
         colorModel: Binding<ColorModel>,
-        color: Binding<NSColor>
+        colorPublisher: ColorPublisher
     ) {
         _colorSpace = colorSpace
         _colorModel = colorModel
-        _color = color
+        self.colorPublisher = colorPublisher
 
-        let color = _color.wrappedValue
+        let color = colorPublisher.value.color
         hue = color.hueComponent
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
@@ -75,7 +75,13 @@ struct RGBEditor: View {
             .padding(.horizontal, 16)
         }
         .onChange(of: nsColor) { nsColor in
-            color = nsColor
+            colorPublisher.send(.init(color: nsColor, source: "RGBEditor"))
+        }
+        .onReceive(
+            colorPublisher
+                .filter { $0.source != "RGBEditor" }
+        ) { publishedColor in
+            syncComponents(from: publishedColor.color)
         }
     }
 
@@ -102,15 +108,15 @@ struct RGBEditor: View {
 
     private var red: Binding<Double> {
         .init {
-            color.redComponent
+            nsColor.redComponent
         } set: { newValue in
             let newColor = NSColor(
                 colorSpace: colorSpace.nsColorSpace,
                 components: [
                     newValue,
-                    color.greenComponent,
-                    color.blueComponent,
-                    color.alphaComponent,
+                    nsColor.greenComponent,
+                    nsColor.blueComponent,
+                    nsColor.alphaComponent,
                 ],
                 count: 4
             )
@@ -120,16 +126,16 @@ struct RGBEditor: View {
 
     private var green: Binding<Double> {
         .init {
-            color.greenComponent
+            nsColor.greenComponent
         } set: { newValue in
 
             let newColor = NSColor(
                 colorSpace: colorSpace.nsColorSpace,
                 components: [
-                    color.redComponent,
+                    nsColor.redComponent,
                     newValue,
-                    color.blueComponent,
-                    color.alphaComponent,
+                    nsColor.blueComponent,
+                    nsColor.alphaComponent,
                 ],
                 count: 4
             )
@@ -139,15 +145,15 @@ struct RGBEditor: View {
 
     private var blue: Binding<Double> {
         .init {
-            color.blueComponent
+            nsColor.blueComponent
         } set: { newValue in
             let newColor = NSColor(
                 colorSpace: colorSpace.nsColorSpace,
                 components: [
-                    color.redComponent,
-                    color.greenComponent,
+                    nsColor.redComponent,
+                    nsColor.greenComponent,
                     newValue,
-                    color.alphaComponent,
+                    nsColor.alphaComponent,
                 ],
                 count: 4
             )
@@ -161,7 +167,7 @@ struct RGBEditor_Previews: PreviewProvider {
         RGBEditor(
             colorSpace: .constant(.sRGB),
             colorModel: .constant(.rgb),
-            color: .constant(.red)
+            colorPublisher: .init(.init(color: .red, source: ""))
         )
         .frame(width: 320)
     }
