@@ -25,6 +25,7 @@
 		843ADD712A11C92600DCCCF0 /* ComponentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD702A11C92600DCCCF0 /* ComponentInput.swift */; };
 		843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */; };
 		843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4C552A0F860600C04536 /* SolidTabView.swift */; };
+		844488C12A185E4E001F41B0 /* InputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844488C02A185E4E001F41B0 /* InputGroup.swift */; };
 		8455B1E52A1632CD00EB335B /* ColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455B1E42A1632CD00EB335B /* ColorSpace.swift */; };
 		8455B2022A1662B400EB335B /* ColorProfileSupportDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455B2012A1662B400EB335B /* ColorProfileSupportDetail.swift */; };
 		846211E42A13711A0009E048 /* HueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846211E32A13711A0009E048 /* HueSlider.swift */; };
@@ -66,6 +67,7 @@
 		843ADD702A11C92600DCCCF0 /* ComponentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInput.swift; sourceTree = "<group>"; };
 		843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBAInputGroup.swift; sourceTree = "<group>"; };
 		843D4C552A0F860600C04536 /* SolidTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTabView.swift; sourceTree = "<group>"; };
+		844488C02A185E4E001F41B0 /* InputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGroup.swift; sourceTree = "<group>"; };
 		8455B1E42A1632CD00EB335B /* ColorSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSpace.swift; sourceTree = "<group>"; };
 		8455B2012A1662B400EB335B /* ColorProfileSupportDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProfileSupportDetail.swift; sourceTree = "<group>"; };
 		846211E32A13711A0009E048 /* HueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueSlider.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */,
 				843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */,
 				84757BF02A177CA6004B9EE0 /* HSLAInputGroup.swift */,
+				844488C02A185E4E001F41B0 /* InputGroup.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				84757BE12A170FA9004B9EE0 /* SaveColorButton.swift in Sources */,
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
 				846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */,
+				844488C12A185E4E001F41B0 /* InputGroup.swift in Sources */,
 				84757BE82A175956004B9EE0 /* HSLEditor.swift in Sources */,
 				8455B2022A1662B400EB335B /* ColorProfileSupportDetail.swift in Sources */,
 				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
