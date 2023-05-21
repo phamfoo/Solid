@@ -7,6 +7,8 @@ typealias ColorPublisher = CurrentValueSubject<
 >
 
 struct Editor: View {
+    @FocusState private var focused: Bool
+
     @State private var colorSpace = ColorSpace.sRGB
     @State private var colorModel = ColorModel.hsb
     @State private var colorPublisher =
@@ -43,6 +45,11 @@ struct Editor: View {
                 .padding(.bottom, 16)
 
             Spacer()
+        }
+        .focused($focused)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            focused = false
         }
     }
 }
