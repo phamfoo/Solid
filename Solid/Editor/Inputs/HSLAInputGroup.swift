@@ -13,24 +13,20 @@ struct HSLAInputGroup: View {
                 normalizedValue: $hue,
                 in: 0 ... 360
             )
-            .padding(.vertical, 12)
 
             NumberInput(
                 "S",
                 normalizedValue: $saturation,
                 in: 0 ... 100
             )
-            .padding(.vertical, 12)
 
             NumberInput(
                 "L",
                 normalizedValue: $lightness,
                 in: 0 ... 100
             )
-            .padding(.vertical, 12)
 
             PercentageInput("A", normalizedValue: $alpha)
-                .padding(.vertical, 12)
         }
     }
 }

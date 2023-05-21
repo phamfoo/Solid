@@ -13,24 +13,20 @@ struct RGBAInputGroup: View {
                 normalizedValue: $red,
                 in: 0 ... 255
             )
-            .padding(.vertical, 12)
 
             NumberInput(
                 "G",
                 normalizedValue: $green,
                 in: 0 ... 255
             )
-            .padding(.vertical, 12)
 
             NumberInput(
                 "B",
                 normalizedValue: $blue,
                 in: 0 ... 255
             )
-            .padding(.vertical, 12)
 
             PercentageInput("A", normalizedValue: $alpha)
-                .padding(.vertical, 12)
         }
     }
 }

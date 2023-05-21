@@ -25,6 +25,11 @@ struct NumberInput: View {
     var body: some View {
         TextField(label, value: $value, format: .number)
             .focused($focused)
+            .padding(.vertical, 12)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                focused = true
+            }
             .onChange(of: normalizedValue) { newNormalizedValue in
                 value = Self.getValue(
                     normalizedValue: newNormalizedValue,
@@ -80,6 +85,11 @@ struct PercentageInput: View {
     var body: some View {
         TextField(label, value: $value, format: .percent)
             .focused($focused)
+            .padding(.vertical, 12)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                focused = true
+            }
             .onChange(of: normalizedValue) { newNormalizedValue in
                 value = Self.getValue(
                     normalizedValue: newNormalizedValue
