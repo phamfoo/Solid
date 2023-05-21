@@ -43,8 +43,7 @@ struct ColorModelPickerOverlay: NSViewControllerRepresentable {
 
     func makeNSViewController(context: Context) -> MenuViewController {
         let menuViewController = MenuViewController(
-            items: ColorModel.allCases.map { $0.displayName },
-            selectedIndex: 0
+            items: ColorModel.allCases.map { $0.displayName }
         )
         menuViewController.delegate = context.coordinator
 
@@ -52,9 +51,14 @@ struct ColorModelPickerOverlay: NSViewControllerRepresentable {
     }
 
     func updateNSViewController(
-        _: MenuViewController,
+        _ menuViewController: MenuViewController,
         context _: Context
-    ) {}
+    ) {
+        let selectedIndex = ColorModel.allCases
+            .firstIndex { $0.id == colorModel.id }!
+
+        menuViewController.selectedIndex = selectedIndex
+    }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
@@ -78,9 +82,9 @@ class MenuViewController: NSViewController {
     var selectedIndex: Int
     weak var delegate: MenuViewControllerDelegate?
 
-    init(items: [String], selectedIndex: Int) {
+    init(items: [String]) {
         self.items = items
-        self.selectedIndex = selectedIndex
+        selectedIndex = 0
         super.init(nibName: nil, bundle: nil)
 
         view = NSView(frame: .zero)
