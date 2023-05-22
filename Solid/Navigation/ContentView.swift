@@ -19,7 +19,6 @@ struct ContentView: View {
             ],
             currentTab: tab
         )
-        .frame(minWidth: 320)
         .toolbar {
             ToolbarItemGroup {
                 Spacer()

@@ -1,28 +1,39 @@
 import SwiftUI
 
-struct SolidTabView: NSViewControllerRepresentable {
+struct SolidTabView: NSViewRepresentable {
     var tabs: [TabConfig]
     var currentTab: Tab
 
-    func makeNSViewController(context _: Context) -> NSTabViewController {
-        let tabViewController = NSTabViewController()
-        tabViewController.tabStyle = .unspecified
+    func makeNSView(context _: Context) -> NSTabView {
+        let tabView = NSTabView()
+        tabView.tabViewType = .noTabsNoBorder
 
         for tab in tabs {
-            let tabItemController = NSHostingController(rootView: tab.content)
-            let tabItem = NSTabViewItem(viewController: tabItemController)
+            let tabItemView = NSHostingView(rootView: tab.content)
+            tabItemView.translatesAutoresizingMaskIntoConstraints = false
+            tabItemView.setContentCompressionResistancePriority(
+                .defaultHigh,
+                for: .vertical
+            )
+            tabItemView.setContentCompressionResistancePriority(
+                .defaultHigh,
+                for: .horizontal
+            )
+
+            let tabItem = NSTabViewItem()
+            tabItem.view = tabItemView
             tabItem.label = tab.title
-            tabViewController.addTabViewItem(tabItem)
+            tabView.addTabViewItem(tabItem)
         }
 
-        return tabViewController
+        return tabView
     }
 
-    func updateNSViewController(
-        _ tabViewController: NSTabViewController,
+    func updateNSView(
+        _ tabView: NSTabView,
         context _: Context
     ) {
-        tabViewController.selectedTabViewItemIndex = currentIndex
+        tabView.selectTabViewItem(at: currentIndex)
     }
 
     private var currentIndex: Int {
