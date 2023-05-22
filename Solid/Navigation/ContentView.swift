@@ -28,7 +28,7 @@ struct ContentView: View {
                     Label("Editor", systemImage: "slider.horizontal.3")
                         .tag(Tab.editor)
 
-                    Label("Colors", systemImage: "paintpalette")
+                    Label("Colors", systemImage: "rectangle.grid.2x2")
                         .tag(Tab.colors)
                 }
                 .pickerStyle(.segmented)
