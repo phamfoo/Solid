@@ -75,7 +75,7 @@ struct HSBEditor: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 16)
         }
-        .onChange(of: nsColor) { nsColor in
+        .onChange(of: hsbaColor) { nsColor in
             colorPublisher.send(.init(color: nsColor, source: "HSBEditor"))
         }
         .onReceive(
@@ -87,10 +87,10 @@ struct HSBEditor: View {
     }
 
     private var fullyOpaqueColor: Color {
-        Color(nsColor: nsColor.withAlphaComponent(1))
+        Color(nsColor: hsbaColor.withAlphaComponent(1))
     }
 
-    private var nsColor: NSColor {
+    private var hsbaColor: NSColor {
         NSColor(
             colorSpace: colorSpace.nsColorSpace,
             hue: hue,

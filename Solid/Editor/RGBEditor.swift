@@ -10,6 +10,10 @@ struct RGBEditor: View {
     @State private var brightness: Double
     @State private var alpha: Double
 
+    @State private var red: Double
+    @State private var green: Double
+    @State private var blue: Double
+
     init(
         colorSpace: Binding<ColorSpace>,
         colorModel: Binding<ColorModel>,
@@ -24,6 +28,10 @@ struct RGBEditor: View {
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
         alpha = color.alphaComponent
+
+        red = color.redComponent
+        green = color.greenComponent
+        blue = color.blueComponent
     }
 
     var body: some View {
@@ -42,7 +50,12 @@ struct RGBEditor: View {
                     if let pickedColorInCurrentColorSpace =
                         pickedColor.usingColorSpace(colorSpace.nsColorSpace)
                     {
-                        syncComponents(from: pickedColorInCurrentColorSpace)
+                        colorPublisher.send(
+                            .init(
+                                color: pickedColorInCurrentColorSpace,
+                                source: "ColorPicker"
+                            )
+                        )
                     }
                 }
                 .padding(8)
@@ -65,9 +78,9 @@ struct RGBEditor: View {
                 ColorModelPicker(colorModel: $colorModel)
 
                 RGBAInputGroup(
-                    red: red,
-                    green: green,
-                    blue: blue,
+                    red: $red,
+                    green: $green,
+                    blue: $blue,
                     alpha: $alpha
                 )
                 .frame(maxHeight: .infinity)
@@ -75,18 +88,34 @@ struct RGBEditor: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 16)
         }
-        .onChange(of: nsColor) { nsColor in
-            colorPublisher.send(.init(color: nsColor, source: "RGBEditor"))
+        .onChange(of: rgbaColor) { nsColor in
+            colorPublisher.send(.init(color: nsColor, source: "RGBEditor_RGB"))
         }
         .onReceive(
             colorPublisher
-                .filter { $0.source != "RGBEditor" }
+                .filter { $0.source != "RGBEditor_RGB" }
         ) { publishedColor in
-            syncComponents(from: publishedColor.color)
+            if rgbaColor != publishedColor.color {
+                syncRGBComponents(from: publishedColor.color)
+            }
+        }
+        .onChange(of: hsbaColor) { nsColor in
+            colorPublisher.send(.init(color: nsColor, source: "RGBEditor_HSB"))
+        }
+        .onReceive(
+            colorPublisher
+                .filter { $0.source != "RGBEditor_HSB" }
+        ) { publishedColor in
+            if hsbaColor != publishedColor.color {
+                syncHSBComponents(from: publishedColor.color)
+            }
+        }
+        .onReceive(colorPublisher) { publishedColor in
+            alpha = publishedColor.color.alphaComponent
         }
     }
 
-    private var nsColor: NSColor {
+    private var hsbaColor: NSColor {
         NSColor(
             colorSpace: colorSpace.nsColorSpace,
             hue: hue,
@@ -96,70 +125,28 @@ struct RGBEditor: View {
         )
     }
 
-    private var fullyOpaqueColor: Color {
-        Color(nsColor: nsColor.withAlphaComponent(1))
+    private var rgbaColor: NSColor {
+        NSColor(
+            colorSpace: colorSpace.nsColorSpace,
+            components: [red, green, blue, alpha],
+            count: 4
+        )
     }
 
-    private func syncComponents(from color: NSColor) {
+    private var fullyOpaqueColor: Color {
+        Color(nsColor: rgbaColor.withAlphaComponent(1))
+    }
+
+    private func syncHSBComponents(from color: NSColor) {
         hue = color.hueComponent
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
-        alpha = color.alphaComponent
     }
 
-    private var red: Binding<Double> {
-        .init {
-            nsColor.redComponent
-        } set: { newValue in
-            let newColor = NSColor(
-                colorSpace: colorSpace.nsColorSpace,
-                components: [
-                    newValue,
-                    nsColor.greenComponent,
-                    nsColor.blueComponent,
-                    nsColor.alphaComponent,
-                ],
-                count: 4
-            )
-            syncComponents(from: newColor)
-        }
-    }
-
-    private var green: Binding<Double> {
-        .init {
-            nsColor.greenComponent
-        } set: { newValue in
-
-            let newColor = NSColor(
-                colorSpace: colorSpace.nsColorSpace,
-                components: [
-                    nsColor.redComponent,
-                    newValue,
-                    nsColor.blueComponent,
-                    nsColor.alphaComponent,
-                ],
-                count: 4
-            )
-            syncComponents(from: newColor)
-        }
-    }
-
-    private var blue: Binding<Double> {
-        .init {
-            nsColor.blueComponent
-        } set: { newValue in
-            let newColor = NSColor(
-                colorSpace: colorSpace.nsColorSpace,
-                components: [
-                    nsColor.redComponent,
-                    nsColor.greenComponent,
-                    newValue,
-                    nsColor.alphaComponent,
-                ],
-                count: 4
-            )
-            syncComponents(from: newColor)
-        }
+    private func syncRGBComponents(from color: NSColor) {
+        red = color.redComponent
+        green = color.greenComponent
+        blue = color.blueComponent
     }
 }
 
