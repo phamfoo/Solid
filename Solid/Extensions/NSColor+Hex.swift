@@ -8,9 +8,9 @@ extension NSColor {
         let alpha = Int((alphaComponent * 255).rounded())
 
         if alpha == 255 {
-            return String(format: "#%02x%02x%02x", red, green, blue)
+            return String(format: "%02x%02x%02x", red, green, blue)
         } else {
-            return String(format: "#%02x%02x%02x%02x", red, green, blue, alpha)
+            return String(format: "%02x%02x%02x%02x", red, green, blue, alpha)
         }
     }
 }

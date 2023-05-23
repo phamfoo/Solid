@@ -1,3 +1,4 @@
+import Defaults
 import SwiftUI
 
 struct ColorListRow: View {
@@ -19,6 +20,9 @@ struct ColorListRow: View {
 }
 
 struct _ColorListRow: View {
+    @Default(.includeHashPrefix) private var includeHashPrefix
+    @Default(.lowerCaseHex) private var lowerCaseHex
+
     var color: NSColor
     var name: String
 
@@ -32,7 +36,7 @@ struct _ColorListRow: View {
                 Text(name)
                     .font(.headline)
 
-                Text(color.hexString)
+                Text(hexString)
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .textCase(.uppercase)
@@ -40,6 +44,18 @@ struct _ColorListRow: View {
             }
 
             Spacer()
+        }
+    }
+
+    private var hexString: String {
+        let prefix = includeHashPrefix ? "#" : ""
+
+        let hex = (prefix + color.hexString)
+
+        if lowerCaseHex {
+            return hex
+        } else {
+            return hex.uppercased()
         }
     }
 }

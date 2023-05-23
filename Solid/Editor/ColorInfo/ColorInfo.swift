@@ -1,10 +1,13 @@
 import Combine
+import Defaults
 import SwiftUI
 
 struct ColorInfo: View {
     var colorPublisher: ColorPublisher
     var colorSpace: ColorSpace
     @State private var color: NSColor?
+    @Default(.includeHashPrefix) private var includeHashPrefix
+    @Default(.lowerCaseHex) private var lowerCaseHex
 
     var body: some View {
         let color = self.color ?? colorPublisher.value.color
@@ -29,9 +32,8 @@ struct ColorInfo: View {
                     )
                 )
 
-                Text(color.hexString)
+                Text(hexString)
                     .fontWeight(.medium)
-                    .textCase(.uppercase)
                     .foregroundColor(.secondary)
 
                 Spacer()
@@ -40,7 +42,7 @@ struct ColorInfo: View {
                     Button {
                         let pasteboard = NSPasteboard.general
                         pasteboard.clearContents()
-                        pasteboard.setString(color.hexString, forType: .string)
+                        pasteboard.setString(hexString, forType: .string)
                     } label: {
                         Image(systemName: "square.on.square")
                             .imageScale(.large)
@@ -79,6 +81,19 @@ struct ColorInfo: View {
         }
         .onReceive(colorPublisher) { publishedColor in
             self.color = publishedColor.color
+        }
+    }
+
+    private var hexString: String {
+        let color = self.color ?? colorPublisher.value.color
+        let prefix = includeHashPrefix ? "#" : ""
+
+        let hex = (prefix + color.hexString)
+
+        if lowerCaseHex {
+            return hex
+        } else {
+            return hex.uppercased()
         }
     }
 }
