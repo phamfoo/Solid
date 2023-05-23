@@ -13,5 +13,9 @@ struct SolidApp: App {
                 )
         }
         .windowToolbarStyle(.unified(showsTitle: false))
+
+        Settings {
+            AppSettings()
+        }
     }
 }

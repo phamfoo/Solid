@@ -24,6 +24,9 @@
 		8429488C2A0E6E26001FA318 /* ColorSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429488B2A0E6E26001FA318 /* ColorSampler.swift */; };
 		8430593B2A1CC121005C53D8 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8430593A2A1CC121005C53D8 /* Defaults */; };
 		8430593D2A1CC1B1005C53D8 /* EditorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */; };
+		843059402A1CC4AA005C53D8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430593F2A1CC4AA005C53D8 /* AppSettings.swift */; };
+		843059442A1CC61C005C53D8 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843059432A1CC61C005C53D8 /* GeneralSettings.swift */; };
+		843059462A1CC7BE005C53D8 /* ColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843059452A1CC7BE005C53D8 /* ColorSettings.swift */; };
 		843ADD712A11C92600DCCCF0 /* ComponentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD702A11C92600DCCCF0 /* ComponentInput.swift */; };
 		843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */; };
 		843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4C552A0F860600C04536 /* SolidTabView.swift */; };
@@ -67,6 +70,9 @@
 		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8429488B2A0E6E26001FA318 /* ColorSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSampler.swift; sourceTree = "<group>"; };
 		8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettings.swift; sourceTree = "<group>"; };
+		8430593F2A1CC4AA005C53D8 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		843059432A1CC61C005C53D8 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
+		843059452A1CC7BE005C53D8 /* ColorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettings.swift; sourceTree = "<group>"; };
 		843ADD702A11C92600DCCCF0 /* ComponentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInput.swift; sourceTree = "<group>"; };
 		843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBAInputGroup.swift; sourceTree = "<group>"; };
 		843D4C552A0F860600C04536 /* SolidTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTabView.swift; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 				84BB73572A15C6880017B9DF /* Navigation */,
 				84BB73582A15C6920017B9DF /* Editor */,
 				84BB73592A15C6AB0017B9DF /* ColorList */,
+				8430593E2A1CC49C005C53D8 /* AppSettings */,
 				8472FCF72A15C9C100F3B862 /* Data */,
 				84BB735A2A15C6D80017B9DF /* UI */,
 				8472FCF62A15C9AF00F3B862 /* Extensions */,
@@ -143,6 +150,16 @@
 				842948532A0C8190001FA318 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8430593E2A1CC49C005C53D8 /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				8430593F2A1CC4AA005C53D8 /* AppSettings.swift */,
+				843059432A1CC61C005C53D8 /* GeneralSettings.swift */,
+				843059452A1CC7BE005C53D8 /* ColorSettings.swift */,
+			);
+			path = AppSettings;
 			sourceTree = "<group>";
 		};
 		844A96202A15C8AA00E62376 /* Sliders */ = {
@@ -351,7 +368,10 @@
 				846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */,
 				844488C12A185E4E001F41B0 /* InputGroup.swift in Sources */,
 				84757BE82A175956004B9EE0 /* HSLEditor.swift in Sources */,
+				843059462A1CC7BE005C53D8 /* ColorSettings.swift in Sources */,
+				843059402A1CC4AA005C53D8 /* AppSettings.swift in Sources */,
 				8455B2022A1662B400EB335B /* ColorProfileSupportDetail.swift in Sources */,
+				843059442A1CC61C005C53D8 /* GeneralSettings.swift in Sources */,
 				842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */,
 				8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */,
 				843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */,
