@@ -28,8 +28,11 @@ struct InputGroup<Content>: View where Content: View {
             .background {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
                     .strokeBorder(Color.accentColor)
+                    .scaleEffect(focused ? 1 : 1.05)
                     .opacity(focused ? 1 : 0)
             }
+            .animation(.easeInOut(duration: 0.1), value: focused)
+            .animation(.easeInOut(duration: 0.1), value: hovered)
     }
 }
 
