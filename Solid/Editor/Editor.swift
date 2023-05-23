@@ -1,4 +1,5 @@
 import Combine
+import Defaults
 import SwiftUI
 
 typealias ColorPublisher = CurrentValueSubject<
@@ -10,9 +11,9 @@ struct Editor: View {
     @FocusState private var focused: Bool
 
     @State private var colorSpace = ColorSpace.sRGB
-    @State private var colorModel = ColorModel.hsb
+    @Default(.colorModel) private var colorModel
     @State private var colorPublisher =
-        ColorPublisher(.init(color: .red, source: "Root"))
+        ColorPublisher(.init(color: Defaults[.color], source: "Root"))
 
     var body: some View {
         VStack(spacing: 0) {
@@ -50,6 +51,12 @@ struct Editor: View {
         .contentShape(Rectangle())
         .onTapGesture {
             focused = false
+        }
+        .onReceive(
+            NotificationCenter.default
+                .publisher(for: NSApplication.willResignActiveNotification)
+        ) { _ in
+            Defaults[.color] = colorPublisher.value.color
         }
     }
 }

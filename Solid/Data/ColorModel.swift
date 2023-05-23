@@ -1,4 +1,4 @@
-enum ColorModel: CaseIterable, Identifiable {
+enum ColorModel: String, CaseIterable, Identifiable {
     case hsb
     case rgb
     case hsl

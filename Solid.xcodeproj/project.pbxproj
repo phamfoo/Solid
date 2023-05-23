@@ -22,6 +22,8 @@
 		842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842948612A0C97B2001FA318 /* Solid.xcdatamodeld */; };
 		842948652A0C9853001FA318 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842948642A0C9853001FA318 /* PersistenceController.swift */; };
 		8429488C2A0E6E26001FA318 /* ColorSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429488B2A0E6E26001FA318 /* ColorSampler.swift */; };
+		8430593B2A1CC121005C53D8 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8430593A2A1CC121005C53D8 /* Defaults */; };
+		8430593D2A1CC1B1005C53D8 /* EditorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */; };
 		843ADD712A11C92600DCCCF0 /* ComponentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD702A11C92600DCCCF0 /* ComponentInput.swift */; };
 		843ADD732A11DD8200DCCCF0 /* HSBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */; };
 		843D4C562A0F860600C04536 /* SolidTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D4C552A0F860600C04536 /* SolidTabView.swift */; };
@@ -64,6 +66,7 @@
 		842948622A0C97B2001FA318 /* Solid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Solid.xcdatamodel; sourceTree = "<group>"; };
 		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8429488B2A0E6E26001FA318 /* ColorSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSampler.swift; sourceTree = "<group>"; };
+		8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettings.swift; sourceTree = "<group>"; };
 		843ADD702A11C92600DCCCF0 /* ComponentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentInput.swift; sourceTree = "<group>"; };
 		843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBAInputGroup.swift; sourceTree = "<group>"; };
 		843D4C552A0F860600C04536 /* SolidTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTabView.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8430593B2A1CC121005C53D8 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +238,7 @@
 				84757BE72A175956004B9EE0 /* HSLEditor.swift */,
 				84757BE32A17524A004B9EE0 /* HSBEditor.swift */,
 				84757BE52A1755C3004B9EE0 /* RGBEditor.swift */,
+				8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -272,6 +277,9 @@
 			dependencies = (
 			);
 			name = Solid;
+			packageProductDependencies = (
+				8430593A2A1CC121005C53D8 /* Defaults */,
+			);
 			productName = Solid;
 			productReference = 842948492A0C818E001FA318 /* Solid.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +308,9 @@
 				Base,
 			);
 			mainGroup = 842948402A0C818E001FA318;
+			packageReferences = (
+				843059392A1CC121005C53D8 /* XCRemoteSwiftPackageReference "Defaults" */,
+			);
 			productRefGroup = 8429484A2A0C818E001FA318 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -357,6 +368,7 @@
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
 				8402C3B82A0F7BD900CCC582 /* ColorInfo.swift in Sources */,
 				8455B1E52A1632CD00EB335B /* ColorSpace.swift in Sources */,
+				8430593D2A1CC1B1005C53D8 /* EditorSettings.swift in Sources */,
 				84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */,
 				84757BEB2A1759F0004B9EE0 /* SaturationLightnessSlider.swift in Sources */,
 				84757BED2A175A7D004B9EE0 /* NSColor+HSL.swift in Sources */,
@@ -558,6 +570,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		843059392A1CC121005C53D8 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8430593A2A1CC121005C53D8 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 843059392A1CC121005C53D8 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		842948612A0C97B2001FA318 /* Solid.xcdatamodeld */ = {
