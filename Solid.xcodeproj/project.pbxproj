@@ -47,6 +47,7 @@
 		84757BED2A175A7D004B9EE0 /* NSColor+HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84757BEC2A175A7C004B9EE0 /* NSColor+HSL.swift */; };
 		84757BEF2A1776F7004B9EE0 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84757BEE2A1776F7004B9EE0 /* ColorModel.swift */; };
 		84757BF12A177CA6004B9EE0 /* HSLAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84757BF02A177CA6004B9EE0 /* HSLAInputGroup.swift */; };
+		8491FE4C2A1CEF7A00405D2D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 8491FE4B2A1CEF7A00405D2D /* LaunchAtLogin */; };
 		84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323752A146971000292D9 /* ColorModelPicker.swift */; };
 		84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8491FE4C2A1CEF7A00405D2D /* LaunchAtLogin in Frameworks */,
 				8430593B2A1CC121005C53D8 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +290,7 @@
 				842948452A0C818E001FA318 /* Sources */,
 				842948462A0C818E001FA318 /* Frameworks */,
 				842948472A0C818E001FA318 /* Resources */,
+				8491FE4D2A1CEF9200405D2D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -296,6 +299,7 @@
 			name = Solid;
 			packageProductDependencies = (
 				8430593A2A1CC121005C53D8 /* Defaults */,
+				8491FE4B2A1CEF7A00405D2D /* LaunchAtLogin */,
 			);
 			productName = Solid;
 			productReference = 842948492A0C818E001FA318 /* Solid.app */;
@@ -327,6 +331,7 @@
 			mainGroup = 842948402A0C818E001FA318;
 			packageReferences = (
 				843059392A1CC121005C53D8 /* XCRemoteSwiftPackageReference "Defaults" */,
+				8491FE4A2A1CEF7A00405D2D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 8429484A2A0C818E001FA318 /* Products */;
 			projectDirPath = "";
@@ -348,6 +353,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8491FE4D2A1CEF9200405D2D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		842948452A0C818E001FA318 /* Sources */ = {
@@ -600,6 +626,14 @@
 				minimumVersion = 7.2.0;
 			};
 		};
+		8491FE4A2A1CEF7A00405D2D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -607,6 +641,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 843059392A1CC121005C53D8 /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
+		};
+		8491FE4B2A1CEF7A00405D2D /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8491FE4A2A1CEF7A00405D2D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 

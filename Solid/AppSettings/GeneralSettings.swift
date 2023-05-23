@@ -1,14 +1,17 @@
 import Defaults
+import LaunchAtLogin
 import SwiftUI
 
 struct GeneralSettings: View {
     @Default(.stayOnTop) private var stayOnTop
-    @Default(.launchAtLogin) private var launchAtLogin
 
     var body: some View {
         Form {
             Toggle("Stay on top", isOn: $stayOnTop)
-            Toggle("Launch at login", isOn: $launchAtLogin)
+
+            LaunchAtLogin.Toggle {
+                Text("Launch at login")
+            }
         }
         .padding()
     }
@@ -16,7 +19,6 @@ struct GeneralSettings: View {
 
 extension Defaults.Keys {
     static let stayOnTop = Key<Bool>("stayOnTop", default: true)
-    static let launchAtLogin = Key<Bool>("launchAtLogin", default: true)
 }
 
 struct GeneralSettings_Previews: PreviewProvider {
