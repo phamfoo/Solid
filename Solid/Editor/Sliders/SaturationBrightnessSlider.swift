@@ -7,7 +7,7 @@ struct SaturationBrightnessSlider: View {
     var colorSpace: ColorSpace
 
     var body: some View {
-        GeometryReader { geometry in
+        DualAxisSlider(horizontal: $saturation, vertical: $brightness) {
             ZStack {
                 fullySaturatedColor
 
@@ -23,30 +23,13 @@ struct SaturationBrightnessSlider: View {
                     endPoint: .top
                 )
             }
-            .overlay(alignment: .bottomLeading) {
-                Circle()
-                    .fill(currentColor)
-                    .overlay {
-                        Circle()
-                            .strokeBorder(.white, lineWidth: 2)
-                    }
-                    .frame(width: 16, height: 16)
-                    .offset(x: -8, y: 8)
-                    .offset(
-                        x: saturation * geometry.size.width,
-                        y: -brightness * geometry.size.height
-                    )
-            }
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        saturation = (value.location.x / geometry.size.width)
-                            .clamped(to: 0 ... 1)
-                        brightness = 1 -
-                            (value.location.y / geometry.size.height)
-                            .clamped(to: 0 ... 1)
-                    }
-            )
+        } cursor: {
+            Circle()
+                .fill(currentColor)
+                .overlay {
+                    Circle()
+                        .strokeBorder(.white, lineWidth: 2)
+                }
         }
     }
 

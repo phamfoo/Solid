@@ -7,7 +7,7 @@ struct SaturationLightnessSlider: View {
     var colorSpace: ColorSpace
 
     var body: some View {
-        GeometryReader { geometry in
+        DualAxisSlider(horizontal: $saturation, vertical: $lightness) {
             ZStack {
                 // https://www.joshwcomeau.com/css/color-formats/#hsl-4
                 LinearGradient(
@@ -42,30 +42,13 @@ struct SaturationLightnessSlider: View {
                 )
                 .blendMode(.overlay)
             }
-            .overlay(alignment: .bottomLeading) {
-                Circle()
-                    .fill(currentColor)
-                    .overlay {
-                        Circle()
-                            .strokeBorder(.white, lineWidth: 2)
-                    }
-                    .frame(width: 16, height: 16)
-                    .offset(x: -8, y: 8)
-                    .offset(
-                        x: saturation * geometry.size.width,
-                        y: -lightness * geometry.size.height
-                    )
-            }
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        saturation = (value.location.x / geometry.size.width)
-                            .clamped(to: 0 ... 1)
-                        lightness = 1 -
-                            (value.location.y / geometry.size.height)
-                            .clamped(to: 0 ... 1)
-                    }
-            )
+        } cursor: {
+            Circle()
+                .fill(currentColor)
+                .overlay {
+                    Circle()
+                        .strokeBorder(.white, lineWidth: 2)
+                }
         }
     }
 
