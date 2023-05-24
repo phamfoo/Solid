@@ -1,5 +1,4 @@
 import Defaults
-import LaunchAtLogin
 import SwiftUI
 
 struct GeneralSettings: View {
@@ -8,10 +7,6 @@ struct GeneralSettings: View {
     var body: some View {
         Form {
             Toggle("Stay on top", isOn: $stayOnTop)
-
-            LaunchAtLogin.Toggle {
-                Text("Launch at login")
-            }
         }
         .padding()
     }
