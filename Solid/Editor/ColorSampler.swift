@@ -1,6 +1,11 @@
+import Defaults
 import SwiftUI
 
 struct ColorSampler: View {
+    @Default(.copyAfterPicking) private var copyAfterPicking
+    @Default(.includeHashPrefix) private var includeHashPrefix
+    @Default(.lowerCaseHex) private var lowerCaseHex
+
     @State private var sampling = false
 
     var onPick: (NSColor) -> Void
@@ -14,6 +19,14 @@ struct ColorSampler: View {
 
                     if let pickedColor {
                         self.onPick(pickedColor)
+
+                        if copyAfterPicking {
+                            // TODO:
+                            let hexString = hexString(from: pickedColor)
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.clearContents()
+                            pasteboard.setString(hexString, forType: .string)
+                        }
                     }
                 }
         } label: {
@@ -25,6 +38,19 @@ struct ColorSampler: View {
             RoundedRectangle(cornerRadius: 4)
                 .fill(Color.accentColor)
                 .opacity(sampling ? 1 : 0)
+        }
+    }
+
+    // TODO:
+    func hexString(from color: NSColor) -> String {
+        let prefix = includeHashPrefix ? "#" : ""
+
+        let hex = (prefix + color.hexString)
+
+        if lowerCaseHex {
+            return hex
+        } else {
+            return hex.uppercased()
         }
     }
 }
