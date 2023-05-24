@@ -10,15 +10,17 @@ struct SolidTabView: NSViewRepresentable {
 
         for tab in tabs {
             let tabItemView = NSHostingView(rootView: tab.content)
-            tabItemView.translatesAutoresizingMaskIntoConstraints = false
-            tabItemView.setContentCompressionResistancePriority(
-                .defaultHigh,
-                for: .vertical
-            )
-            tabItemView.setContentCompressionResistancePriority(
-                .defaultHigh,
-                for: .horizontal
-            )
+            if tabItemView.intrinsicContentSize.height > 0 {
+                tabItemView.translatesAutoresizingMaskIntoConstraints = false
+                tabItemView.setContentCompressionResistancePriority(
+                    .defaultHigh,
+                    for: .vertical
+                )
+                tabItemView.setContentCompressionResistancePriority(
+                    .defaultHigh,
+                    for: .horizontal
+                )
+            }
 
             let tabItem = NSTabViewItem()
             tabItem.view = tabItemView
