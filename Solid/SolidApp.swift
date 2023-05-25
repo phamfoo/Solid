@@ -19,15 +19,7 @@ struct SolidApp: App {
                 persistenceController.container.viewContext
             )
             .onChange(of: stayOnTop) { stayOnTop in
-                if stayOnTop {
-                    NSApplication.shared.windows
-                        .filter { $0.level == .normal }
-                        .forEach { $0.level = .floating }
-                } else {
-                    NSApplication.shared.windows
-                        .filter { $0.level == .floating }
-                        .forEach { $0.level = .normal }
-                }
+                updateWindowLevel(stayOnTop: stayOnTop)
             }
             .onReceive(
                 NotificationCenter.default
@@ -35,21 +27,25 @@ struct SolidApp: App {
                         for: NSWindow.didBecomeKeyNotification
                     )
             ) { _ in
-                if stayOnTop {
-                    NSApplication.shared.windows
-                        .filter { $0.level == .normal }
-                        .forEach { $0.level = .floating }
-                } else {
-                    NSApplication.shared.windows
-                        .filter { $0.level == .floating }
-                        .forEach { $0.level = .normal }
-                }
+                updateWindowLevel(stayOnTop: stayOnTop)
             }
         }
         .windowToolbarStyle(.unified(showsTitle: false))
 
         Settings {
             AppSettings()
+        }
+    }
+
+    private func updateWindowLevel(stayOnTop: Bool) {
+        if stayOnTop {
+            NSApplication.shared.windows
+                .filter { $0.level == .normal }
+                .forEach { $0.level = .floating }
+        } else {
+            NSApplication.shared.windows
+                .filter { $0.level == .floating }
+                .forEach { $0.level = .normal }
         }
     }
 }
