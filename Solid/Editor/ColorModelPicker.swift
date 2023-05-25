@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ColorModelPicker: View {
-    @State private var hovered = false
+    @State private var isHovered = false
 
     @Binding var colorModel: ColorModel
 
@@ -12,21 +12,21 @@ struct ColorModelPicker: View {
             Image(systemName: "chevron.down")
                 .imageScale(.small)
         }
-        .foregroundColor(hovered ? .primary : .secondary)
+        .foregroundColor(isHovered ? .primary : .secondary)
         .padding(.horizontal, 8)
         .frame(maxHeight: .infinity)
         .background {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .fill(.white)
-                .opacity(hovered ? 0.1 : 0)
+                .opacity(isHovered ? 0.1 : 0)
         }
         .background {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .strokeBorder(.quaternary)
-                .opacity(hovered ? 1 : 0)
+                .opacity(isHovered ? 1 : 0)
         }
-        .onHover { hovered in
-            self.hovered = hovered
+        .onHover { isHovered in
+            self.isHovered = isHovered
         }
         .overlay {
             // I had a layout issue when trying to put the label

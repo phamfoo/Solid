@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SolidButtonStyle: ButtonStyle {
-    @State private var hovered = false
+    @State private var isHovered = false
 
     func makeBody(configuration: Configuration) -> some View {
         configuration
@@ -11,13 +11,13 @@ struct SolidButtonStyle: ButtonStyle {
             .background {
                 RoundedRectangle(cornerRadius: 4)
                     .fill(.quaternary)
-                    .opacity(hovered ? 1 : 0)
+                    .opacity(isHovered ? 1 : 0)
             }
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
-            .onHover { hovered in
-                self.hovered = hovered
+            .onHover { isHovered in
+                self.isHovered = isHovered
             }
-            .animation(.easeInOut(duration: 0.1), value: hovered)
+            .animation(.easeInOut(duration: 0.1), value: isHovered)
             .animation(
                 .easeInOut(duration: 0.1),
                 value: configuration.isPressed

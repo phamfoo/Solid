@@ -1,38 +1,41 @@
 import SwiftUI
 
 struct InputGroup<Content>: View where Content: View {
-    @State private var hovered = false
-    @FocusState private var focused: Bool
+    @State private var isHovered = false
+    @FocusState private var isFocused: Bool
 
     @ViewBuilder var content: Content
 
     var body: some View {
         _VariadicView
-            .Tree(DividedHStackLayout(shouldShowDivider: hovered || focused)) {
+            .Tree(DividedHStackLayout(
+                shouldShowDivider: isHovered ||
+                    isFocused
+            )) {
                 content
             }
-            .focused($focused)
+            .focused($isFocused)
             .textFieldStyle(.plain)
             .multilineTextAlignment(.center)
-            .onHover { hovered in
-                self.hovered = hovered
+            .onHover { isHovered in
+                self.isHovered = isHovered
             }
             .onExitCommand {
-                focused = false
+                isFocused = false
             }
             .background {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
                     .strokeBorder(.quaternary)
-                    .opacity(hovered ? 1 : 0)
+                    .opacity(isHovered ? 1 : 0)
             }
             .background {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
                     .strokeBorder(Color.accentColor)
-                    .scaleEffect(focused ? 1 : 1.05)
-                    .opacity(focused ? 1 : 0)
+                    .scaleEffect(isFocused ? 1 : 1.05)
+                    .opacity(isFocused ? 1 : 0)
             }
-            .animation(.easeInOut(duration: 0.1), value: focused)
-            .animation(.easeInOut(duration: 0.1), value: hovered)
+            .animation(.easeInOut(duration: 0.1), value: isFocused)
+            .animation(.easeInOut(duration: 0.1), value: isHovered)
     }
 }
 

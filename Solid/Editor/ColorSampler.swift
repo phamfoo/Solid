@@ -6,16 +6,16 @@ struct ColorSampler: View {
     @Default(.includeHashPrefix) private var includeHashPrefix
     @Default(.lowerCaseHex) private var lowerCaseHex
 
-    @State private var sampling = false
+    @State private var isSampling = false
 
     var onPick: (NSColor) -> Void
 
     var body: some View {
         Button {
-            sampling = true
+            isSampling = true
             NSColorSampler()
                 .show { pickedColor in
-                    sampling = false
+                    isSampling = false
 
                     if let pickedColor {
                         self.onPick(pickedColor)
@@ -37,7 +37,7 @@ struct ColorSampler: View {
         .background {
             RoundedRectangle(cornerRadius: 4)
                 .fill(Color.accentColor)
-                .opacity(sampling ? 1 : 0)
+                .opacity(isSampling ? 1 : 0)
         }
     }
 

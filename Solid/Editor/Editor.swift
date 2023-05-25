@@ -3,7 +3,7 @@ import Defaults
 import SwiftUI
 
 struct Editor: View {
-    @FocusState private var focused: Bool
+    @FocusState private var isFocused: Bool
 
     @State private var colorSpace = ColorSpace.sRGB
     @Default(.colorModel) private var colorModel
@@ -41,10 +41,10 @@ struct Editor: View {
 
             Spacer()
         }
-        .focused($focused)
+        .focused($isFocused)
         .contentShape(Rectangle())
         .onTapGesture {
-            focused = false
+            isFocused = false
         }
         .onReceive(
             NotificationCenter.default

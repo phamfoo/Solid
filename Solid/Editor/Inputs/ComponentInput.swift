@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NumberInput: View {
-    @FocusState private var focused: Bool
+    @FocusState private var isFocused: Bool
 
     private var label: String
     @Binding private var normalizedValue: Double
@@ -24,11 +24,11 @@ struct NumberInput: View {
 
     var body: some View {
         TextField(label, value: $value, format: .number)
-            .focused($focused)
+            .focused($isFocused)
             .padding(.vertical, 12)
             .contentShape(Rectangle())
             .onTapGesture {
-                focused = true
+                isFocused = true
             }
             .onChange(of: normalizedValue) { newNormalizedValue in
                 value = Self.getValue(
@@ -39,8 +39,8 @@ struct NumberInput: View {
             .onSubmit {
                 syncNormalizedValue()
             }
-            .onChange(of: focused) { focused in
-                if !focused {
+            .onChange(of: isFocused) { isFocused in
+                if !isFocused {
                     syncNormalizedValue()
                 }
             }
@@ -65,7 +65,7 @@ struct NumberInput: View {
 }
 
 struct PercentageInput: View {
-    @FocusState private var focused: Bool
+    @FocusState private var isFocused: Bool
 
     private var label: String
     @Binding private var normalizedValue: Double
@@ -84,11 +84,11 @@ struct PercentageInput: View {
 
     var body: some View {
         TextField(label, value: $value, format: .percent)
-            .focused($focused)
+            .focused($isFocused)
             .padding(.vertical, 12)
             .contentShape(Rectangle())
             .onTapGesture {
-                focused = true
+                isFocused = true
             }
             .onChange(of: normalizedValue) { newNormalizedValue in
                 value = Self.getValue(
@@ -98,8 +98,8 @@ struct PercentageInput: View {
             .onSubmit {
                 normalizedValue = Double(value) / 100
             }
-            .onChange(of: focused) { focused in
-                if !focused {
+            .onChange(of: isFocused) { isFocused in
+                if !isFocused {
                     syncNormalizedValue()
                 }
             }
