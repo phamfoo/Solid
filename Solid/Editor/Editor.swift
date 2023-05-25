@@ -2,18 +2,12 @@ import Combine
 import Defaults
 import SwiftUI
 
-typealias ColorPublisher = CurrentValueSubject<
-    ColorUpdate,
-    Never
->
-
 struct Editor: View {
     @FocusState private var focused: Bool
 
     @State private var colorSpace = ColorSpace.sRGB
     @Default(.colorModel) private var colorModel
-    @State private var colorPublisher =
-        ColorPublisher(.init(color: Defaults[.color], source: "Root"))
+    @EnvironmentObject private var colorPublisher: ColorPublisher
 
     var body: some View {
         VStack(spacing: 0) {
@@ -56,14 +50,9 @@ struct Editor: View {
             NotificationCenter.default
                 .publisher(for: NSApplication.willResignActiveNotification)
         ) { _ in
-            Defaults[.color] = colorPublisher.value.color
+            Defaults[.color] = colorPublisher.currentColor
         }
     }
-}
-
-struct ColorUpdate {
-    var color: NSColor
-    var source: String
 }
 
 struct Editor_Previews: PreviewProvider {

@@ -19,7 +19,7 @@ struct HSBEditor: View {
         _colorModel = colorModel
         self.colorPublisher = colorPublisher
 
-        let color = colorPublisher.value.color
+        let color = colorPublisher.currentColor
         hue = color.hueComponent
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
@@ -76,11 +76,11 @@ struct HSBEditor: View {
             .padding(.horizontal, 16)
         }
         .onChange(of: hsbaColor) { nsColor in
-            colorPublisher.send(.init(color: nsColor, source: "HSBEditor"))
+            colorPublisher.publish(nsColor, source: "HSBEditor")
         }
         .onReceive(
             colorPublisher
-                .filter { $0.source != "HSBEditor" }
+                .updates(excluding: "HSBEditor")
         ) { publishedColor in
             syncComponents(from: publishedColor.color)
         }
@@ -113,7 +113,7 @@ struct HSBEditor_Previews: PreviewProvider {
         HSBEditor(
             colorSpace: .constant(.sRGB),
             colorModel: .constant(.hsb),
-            colorPublisher: .init(.init(color: .red, source: ""))
+            colorPublisher: ColorPublisher()
         )
         .frame(width: 320)
     }

@@ -19,7 +19,7 @@ struct HSLEditor: View {
         _colorModel = colorModel
         self.colorPublisher = colorPublisher
 
-        let color = colorPublisher.value.color
+        let color = colorPublisher.currentColor
         hue = color.hueComponent
         saturation = color.hslSaturation
         lightness = color.lightness
@@ -76,11 +76,11 @@ struct HSLEditor: View {
             .padding(.horizontal, 16)
         }
         .onChange(of: hslaColor) { nsColor in
-            colorPublisher.send(.init(color: nsColor, source: "HSLEditor"))
+            colorPublisher.publish(nsColor, source: "HSLEditor")
         }
         .onReceive(
             colorPublisher
-                .filter { $0.source != "HSLEditor" }
+                .updates(excluding: "HSLEditor")
         ) { publishedColor in
             syncComponents(from: publishedColor.color)
         }
@@ -113,7 +113,7 @@ struct HSLEditor_Previews: PreviewProvider {
         HSLEditor(
             colorSpace: .constant(.sRGB),
             colorModel: .constant(.hsl),
-            colorPublisher: .init(.init(color: .red, source: ""))
+            colorPublisher: ColorPublisher()
         )
         .frame(width: 320)
     }

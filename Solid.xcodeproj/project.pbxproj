@@ -47,6 +47,8 @@
 		84757BED2A175A7D004B9EE0 /* NSColor+HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84757BEC2A175A7C004B9EE0 /* NSColor+HSL.swift */; };
 		84757BEF2A1776F7004B9EE0 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84757BEE2A1776F7004B9EE0 /* ColorModel.swift */; };
 		84757BF12A177CA6004B9EE0 /* HSLAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84757BF02A177CA6004B9EE0 /* HSLAInputGroup.swift */; };
+		8499A7DD2A1F60D600378468 /* AppMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499A7DC2A1F60D600378468 /* AppMenuBar.swift */; };
+		84A2DC362A1F0094002D3A12 /* ColorPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2DC352A1F0094002D3A12 /* ColorPublisher.swift */; };
 		84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323752A146971000292D9 /* ColorModelPicker.swift */; };
 		84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */; };
 		84E903EE2A1DC1BD00E65805 /* DualAxisSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E903ED2A1DC1BD00E65805 /* DualAxisSlider.swift */; };
@@ -94,6 +96,8 @@
 		84757BEC2A175A7C004B9EE0 /* NSColor+HSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+HSL.swift"; sourceTree = "<group>"; };
 		84757BEE2A1776F7004B9EE0 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		84757BF02A177CA6004B9EE0 /* HSLAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLAInputGroup.swift; sourceTree = "<group>"; };
+		8499A7DC2A1F60D600378468 /* AppMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuBar.swift; sourceTree = "<group>"; };
+		84A2DC352A1F0094002D3A12 /* ColorPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPublisher.swift; sourceTree = "<group>"; };
 		84D323752A146971000292D9 /* ColorModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelPicker.swift; sourceTree = "<group>"; };
 		84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBAInputGroup.swift; sourceTree = "<group>"; };
 		84E903ED2A1DC1BD00E65805 /* DualAxisSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualAxisSlider.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				8429484C2A0C818E001FA318 /* SolidApp.swift */,
+				8499A7DB2A1F60C900378468 /* MenuBar */,
 				84BB73572A15C6880017B9DF /* Navigation */,
 				84BB73582A15C6920017B9DF /* Editor */,
 				84BB73592A15C6AB0017B9DF /* ColorList */,
@@ -205,6 +210,7 @@
 				842948642A0C9853001FA318 /* PersistenceController.swift */,
 				8455B1E42A1632CD00EB335B /* ColorSpace.swift */,
 				84757BEE2A1776F7004B9EE0 /* ColorModel.swift */,
+				84A2DC352A1F0094002D3A12 /* ColorPublisher.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -235,6 +241,14 @@
 				84757BE02A170FA9004B9EE0 /* SaveColorButton.swift */,
 			);
 			path = SaveColor;
+			sourceTree = "<group>";
+		};
+		8499A7DB2A1F60C900378468 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				8499A7DC2A1F60D600378468 /* AppMenuBar.swift */,
+			);
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 		84BB73572A15C6880017B9DF /* Navigation */ = {
@@ -365,6 +379,7 @@
 				84D323782A14D2A8000292D9 /* RGBAInputGroup.swift in Sources */,
 				846211E62A1373F90009E048 /* Comparable+Clamped.swift in Sources */,
 				8402C3B42A0F770C00CCC582 /* ColorListRow.swift in Sources */,
+				84A2DC362A1F0094002D3A12 /* ColorPublisher.swift in Sources */,
 				846211EE2A13B7640009E048 /* SolidButtonStyle.swift in Sources */,
 				84757BE12A170FA9004B9EE0 /* SaveColorButton.swift in Sources */,
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
@@ -390,6 +405,7 @@
 				84757BE42A17524A004B9EE0 /* HSBEditor.swift in Sources */,
 				8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */,
 				8429485C2A0C8694001FA318 /* SaturationBrightnessSlider.swift in Sources */,
+				8499A7DD2A1F60D600378468 /* AppMenuBar.swift in Sources */,
 				8402C3B82A0F7BD900CCC582 /* ColorInfo.swift in Sources */,
 				8455B1E52A1632CD00EB335B /* ColorSpace.swift in Sources */,
 				8430593D2A1CC1B1005C53D8 /* EditorSettings.swift in Sources */,

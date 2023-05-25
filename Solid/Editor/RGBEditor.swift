@@ -23,7 +23,7 @@ struct RGBEditor: View {
         _colorModel = colorModel
         self.colorPublisher = colorPublisher
 
-        let color = colorPublisher.value.color
+        let color = colorPublisher.currentColor
         hue = color.hueComponent
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
@@ -50,11 +50,9 @@ struct RGBEditor: View {
                     if let pickedColorInCurrentColorSpace =
                         pickedColor.usingColorSpace(colorSpace.nsColorSpace)
                     {
-                        colorPublisher.send(
-                            .init(
-                                color: pickedColorInCurrentColorSpace,
-                                source: "ColorPicker"
-                            )
+                        colorPublisher.publish(
+                            pickedColorInCurrentColorSpace,
+                            source: "ColorPicker"
                         )
                     }
                 }
@@ -88,29 +86,27 @@ struct RGBEditor: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 16)
         }
-        .onChange(of: rgbaColor) { nsColor in
-            colorPublisher.send(.init(color: nsColor, source: "RGBEditor_RGB"))
+        .onChange(of: rgbaColor) { rgbaColor in
+            colorPublisher.publish(rgbaColor, source: "RGBEditor_RGB")
         }
         .onReceive(
-            colorPublisher
-                .filter { $0.source != "RGBEditor_RGB" }
+            colorPublisher.updates(excluding: "RGBEditor_RGB")
         ) { publishedColor in
             if rgbaColor != publishedColor.color {
                 syncRGBComponents(from: publishedColor.color)
             }
         }
-        .onChange(of: hsbaColor) { nsColor in
-            colorPublisher.send(.init(color: nsColor, source: "RGBEditor_HSB"))
+        .onChange(of: hsbaColor) { hsbaColor in
+            colorPublisher.publish(hsbaColor, source: "RGBEditor_HSB")
         }
         .onReceive(
-            colorPublisher
-                .filter { $0.source != "RGBEditor_HSB" }
+            colorPublisher.updates(excluding: "RGBEditor_HSB")
         ) { publishedColor in
             if hsbaColor != publishedColor.color {
                 syncHSBComponents(from: publishedColor.color)
             }
         }
-        .onReceive(colorPublisher) { publishedColor in
+        .onReceive(colorPublisher.updates()) { publishedColor in
             alpha = publishedColor.color.alphaComponent
         }
     }
@@ -155,7 +151,7 @@ struct RGBEditor_Previews: PreviewProvider {
         RGBEditor(
             colorSpace: .constant(.sRGB),
             colorModel: .constant(.rgb),
-            colorPublisher: .init(.init(color: .red, source: ""))
+            colorPublisher: ColorPublisher()
         )
         .frame(width: 320)
     }

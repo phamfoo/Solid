@@ -10,7 +10,7 @@ struct ColorInfo: View {
     @Default(.lowerCaseHex) private var lowerCaseHex
 
     var body: some View {
-        let color = self.color ?? colorPublisher.value.color
+        let color = self.color ?? colorPublisher.currentColor
 
         VStack(alignment: .leading) {
             CurrentColorProfile()
@@ -60,13 +60,10 @@ struct ColorInfo: View {
                                     hexString: copiedString
                                 )
                             {
-                                colorPublisher
-                                    .send(
-                                        .init(
-                                            color: color,
-                                            source: "Clipboard"
-                                        )
-                                    )
+                                colorPublisher.publish(
+                                    color,
+                                    source: "Clipboard"
+                                )
                             }
                         }
                     } label: {
@@ -79,13 +76,13 @@ struct ColorInfo: View {
                 }
             }
         }
-        .onReceive(colorPublisher) { publishedColor in
+        .onReceive(colorPublisher.updates()) { publishedColor in
             self.color = publishedColor.color
         }
     }
 
     private var hexString: String {
-        let color = self.color ?? colorPublisher.value.color
+        let color = self.color ?? colorPublisher.currentColor
         let prefix = includeHashPrefix ? "#" : ""
 
         let hex = (prefix + color.hexString)
@@ -101,7 +98,7 @@ struct ColorInfo: View {
 struct ColorInfo_Previews: PreviewProvider {
     static var previews: some View {
         ColorInfo(
-            colorPublisher: .init(.init(color: .red, source: "")),
+            colorPublisher: ColorPublisher(),
             colorSpace: .sRGB
         )
         .frame(width: 320)
