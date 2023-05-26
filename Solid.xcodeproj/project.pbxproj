@@ -126,6 +126,35 @@
 			path = ColorSampler;
 			sourceTree = "<group>";
 		};
+		842567572A204EFB00953981 /* HSB */ = {
+			isa = PBXGroup;
+			children = (
+				843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */,
+				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
+				84757BE32A17524A004B9EE0 /* HSBEditor.swift */,
+			);
+			path = HSB;
+			sourceTree = "<group>";
+		};
+		842567582A204F0F00953981 /* HSL */ = {
+			isa = PBXGroup;
+			children = (
+				84757BF02A177CA6004B9EE0 /* HSLAInputGroup.swift */,
+				84757BEA2A1759F0004B9EE0 /* SaturationLightnessSlider.swift */,
+				84757BE72A175956004B9EE0 /* HSLEditor.swift */,
+			);
+			path = HSL;
+			sourceTree = "<group>";
+		};
+		842567592A204F1D00953981 /* RGB */ = {
+			isa = PBXGroup;
+			children = (
+				844488C02A185E4E001F41B0 /* InputGroup.swift */,
+				84757BE52A1755C3004B9EE0 /* RGBEditor.swift */,
+			);
+			path = RGB;
+			sourceTree = "<group>";
+		};
 		842948402A0C818E001FA318 = {
 			isa = PBXGroup;
 			children = (
@@ -184,8 +213,6 @@
 		844A96202A15C8AA00E62376 /* Sliders */ = {
 			isa = PBXGroup;
 			children = (
-				84757BEA2A1759F0004B9EE0 /* SaturationLightnessSlider.swift */,
-				8429485B2A0C8694001FA318 /* SaturationBrightnessSlider.swift */,
 				846211E92A137E3E0009E048 /* Slider.swift */,
 				846211E72A1376A70009E048 /* AlphaSlider.swift */,
 				846211E32A13711A0009E048 /* HueSlider.swift */,
@@ -194,16 +221,13 @@
 			path = Sliders;
 			sourceTree = "<group>";
 		};
-		844A96212A15C90D00E62376 /* Inputs */ = {
+		844A96212A15C90D00E62376 /* ComponentInput */ = {
 			isa = PBXGroup;
 			children = (
 				843ADD702A11C92600DCCCF0 /* ComponentInput.swift */,
 				84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */,
-				843ADD722A11DD8200DCCCF0 /* HSBAInputGroup.swift */,
-				84757BF02A177CA6004B9EE0 /* HSLAInputGroup.swift */,
-				844488C02A185E4E001F41B0 /* InputGroup.swift */,
 			);
-			path = Inputs;
+			path = ComponentInput;
 			sourceTree = "<group>";
 		};
 		8472FCF62A15C9AF00F3B862 /* Extensions */ = {
@@ -275,15 +299,15 @@
 		84BB73582A15C6920017B9DF /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				8429485D2A0C9342001FA318 /* Editor.swift */,
+				8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */,
+				842567592A204F1D00953981 /* RGB */,
+				842567582A204F0F00953981 /* HSL */,
+				842567572A204EFB00953981 /* HSB */,
 				8472FCFA2A161A2B00F3B862 /* ColorInfo */,
-				844A96212A15C90D00E62376 /* Inputs */,
+				844A96212A15C90D00E62376 /* ComponentInput */,
 				844A96202A15C8AA00E62376 /* Sliders */,
 				84D323752A146971000292D9 /* ColorModelPicker.swift */,
-				8429485D2A0C9342001FA318 /* Editor.swift */,
-				84757BE72A175956004B9EE0 /* HSLEditor.swift */,
-				84757BE32A17524A004B9EE0 /* HSBEditor.swift */,
-				84757BE52A1755C3004B9EE0 /* RGBEditor.swift */,
-				8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
