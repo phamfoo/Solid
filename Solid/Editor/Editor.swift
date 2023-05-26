@@ -5,7 +5,7 @@ import SwiftUI
 struct Editor: View {
     @FocusState private var isFocused: Bool
 
-    @State private var colorSpace = ColorSpace.sRGB
+    @Default(.colorSpace) private var colorSpace
     @Default(.colorModel) private var colorModel
     @EnvironmentObject private var colorPublisher: ColorPublisher
 

@@ -38,7 +38,7 @@ struct HSBEditor: View {
             .frame(minWidth: 320, minHeight: 320)
 
             HStack(spacing: 0) {
-                ColorSampler { pickedColor in
+                ColorSamplerView { pickedColor in
                     if let pickedColorInCurrentColorSpace =
                         pickedColor.usingColorSpace(colorSpace.nsColorSpace)
                     {

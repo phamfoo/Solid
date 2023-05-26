@@ -4,6 +4,7 @@ struct AppMenuBar<Content>: View where Content: View {
     @State private var menuBarController: MenuBarController?
 
     @EnvironmentObject private var colorPublisher: ColorPublisher
+    @EnvironmentObject private var colorSampler: ColorSampler
     @ViewBuilder var content: Content
 
     var body: some View {
@@ -12,7 +13,7 @@ struct AppMenuBar<Content>: View where Content: View {
                 menuBarController = MenuBarController(
                     onPickColorSelected: {
                         // TODO:
-                        NSColorSampler()
+                        colorSampler
                             .show { pickedColor in
                                 if let pickedColor {
                                     colorPublisher.publish(

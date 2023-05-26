@@ -7,6 +7,7 @@ struct SolidApp: App {
 
     let persistenceController = PersistenceController.shared
     @StateObject private var colorPublisher = ColorPublisher()
+    @StateObject private var colorSampler = ColorSampler()
 
     var body: some Scene {
         WindowGroup {
@@ -14,6 +15,7 @@ struct SolidApp: App {
                 ContentView()
             }
             .environmentObject(colorPublisher)
+            .environmentObject(colorSampler)
             .environment(
                 \.managedObjectContext,
                 persistenceController.container.viewContext
