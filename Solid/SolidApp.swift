@@ -33,6 +33,9 @@ struct SolidApp: App {
             }
         }
         .windowToolbarStyle(.unified(showsTitle: false))
+        .commands {
+            CommandGroup(replacing: CommandGroupPlacement.newItem) {}
+        }
 
         Settings {
             AppSettings()
