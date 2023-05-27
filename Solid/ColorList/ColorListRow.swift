@@ -2,6 +2,8 @@ import Defaults
 import SwiftUI
 
 struct ColorListRow: View {
+    @Environment(\.managedObjectContext) private var moc
+
     var color: SolidColor
     @Default(.includeHashPrefix) private var includeHashPrefix
     @Default(.lowerCaseHex) private var lowerCaseHex
@@ -18,7 +20,20 @@ struct ColorListRow: View {
                 pasteboard.clearContents()
                 pasteboard.setString(hexString, forType: .string)
             } label: {
-                Label("Copy hex code", systemImage: "square.on.square")
+                // Label doesn't show the icon for some reason
+                Image(systemName: "square.on.square")
+                Text("Copy hex code")
+            }
+
+            Divider()
+
+            Button {
+                moc.delete(color)
+
+                try? moc.save()
+            } label: {
+                Image(systemName: "trash")
+                Text("Delete color")
             }
         }
     }
