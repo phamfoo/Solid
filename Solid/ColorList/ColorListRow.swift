@@ -26,6 +26,8 @@ struct _ColorListRow: View {
     var color: NSColor
     var name: String
 
+    @State private var isHovered = false
+
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
@@ -43,6 +45,20 @@ struct _ColorListRow: View {
             }
 
             Spacer()
+
+            if isHovered {
+                Button {
+                    let pasteboard = NSPasteboard.general
+                    pasteboard.clearContents()
+                    pasteboard.setString(hexString, forType: .string)
+                } label: {
+                    Image(systemName: "square.on.square")
+                }
+                .buttonStyle(.solid)
+            }
+        }
+        .onHover { isHovered in
+            self.isHovered = isHovered
         }
     }
 
