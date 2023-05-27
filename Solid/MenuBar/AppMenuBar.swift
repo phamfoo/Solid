@@ -29,17 +29,7 @@ struct AppMenuBar<Content>: View where Content: View {
 
 class MenuBarController {
     var onPickColorSelected: (() -> Void)?
-    private lazy var statusBarItem = NSStatusBar.system
-        .statusItem(withLength: NSStatusItem.squareLength)
-
-    func setup(onPickColorSelected: @escaping () -> Void) {
-        self.onPickColorSelected = onPickColorSelected
-
-        statusBarItem.button?.image = NSImage(
-            systemSymbolName: "grid",
-            accessibilityDescription: "Color Picker"
-        )
-
+    private lazy var menu: NSMenu = {
         let menu = NSMenu()
         let pickColorItem = NSMenuItem(
             title: "Pick color",
@@ -59,7 +49,36 @@ class MenuBarController {
         quitItem.target = self
         menu.addItem(quitItem)
 
-        statusBarItem.menu = menu
+        return menu
+    }()
+
+    private lazy var statusBarItem = NSStatusBar.system
+        .statusItem(withLength: NSStatusItem.squareLength)
+
+    func setup(onPickColorSelected: @escaping () -> Void) {
+        self.onPickColorSelected = onPickColorSelected
+
+        if let statusBarButton = statusBarItem.button {
+            statusBarButton.image = NSImage(
+                systemSymbolName: "grid",
+                accessibilityDescription: "Color Picker"
+            )
+            statusBarButton.target = self
+            statusBarButton.action = #selector(statusBarButtonClicked(_:))
+            statusBarButton.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        }
+    }
+
+    @objc func statusBarButtonClicked(_: NSStatusBarButton) {
+        let event = NSApp.currentEvent!
+
+        if event.type == .rightMouseUp {
+            pickColorSelected()
+        } else if event.type == .leftMouseUp {
+            statusBarItem.menu = menu
+            statusBarItem.button?.performClick(nil)
+            statusBarItem.menu = nil
+        }
     }
 
     @objc private func pickColorSelected() {
