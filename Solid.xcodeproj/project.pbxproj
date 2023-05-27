@@ -13,6 +13,7 @@
 		8402C3BA2A0F7C6F00CCC582 /* NSColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */; };
 		842423472A17057500056AC5 /* CurrentColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842423462A17057500056AC5 /* CurrentColorProfile.swift */; };
 		842567562A204CD000953981 /* ColorSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842567552A204CD000953981 /* ColorSampler.swift */; };
+		8425675C2A21D6FB00953981 /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425675B2A21D6FB00953981 /* ColorFormatter.swift */; };
 		8429484D2A0C818E001FA318 /* SolidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429484C2A0C818E001FA318 /* SolidApp.swift */; };
 		8429484F2A0C818E001FA318 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429484E2A0C818E001FA318 /* ContentView.swift */; };
 		842948512A0C8190001FA318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842948502A0C8190001FA318 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Hex.swift"; sourceTree = "<group>"; };
 		842423462A17057500056AC5 /* CurrentColorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentColorProfile.swift; sourceTree = "<group>"; };
 		842567552A204CD000953981 /* ColorSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSampler.swift; sourceTree = "<group>"; };
+		8425675B2A21D6FB00953981 /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
 		842948492A0C818E001FA318 /* Solid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8429484C2A0C818E001FA318 /* SolidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidApp.swift; sourceTree = "<group>"; };
 		8429484E2A0C818E001FA318 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 				8430593E2A1CC49C005C53D8 /* AppSettings */,
 				8472FCF72A15C9C100F3B862 /* Data */,
 				84BB735A2A15C6D80017B9DF /* UI */,
-				8472FCF62A15C9AF00F3B862 /* Extensions */,
+				8472FCF62A15C9AF00F3B862 /* Utils */,
 				842948612A0C97B2001FA318 /* Solid.xcdatamodeld */,
 				842948502A0C8190001FA318 /* Assets.xcassets */,
 				842948552A0C8190001FA318 /* Solid.entitlements */,
@@ -230,14 +232,15 @@
 			path = ComponentInput;
 			sourceTree = "<group>";
 		};
-		8472FCF62A15C9AF00F3B862 /* Extensions */ = {
+		8472FCF62A15C9AF00F3B862 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8425675B2A21D6FB00953981 /* ColorFormatter.swift */,
 				8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */,
 				846211E52A1373F90009E048 /* Comparable+Clamped.swift */,
 				84757BEC2A175A7C004B9EE0 /* NSColor+HSL.swift */,
 			);
-			path = Extensions;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		8472FCF72A15C9C100F3B862 /* Data */ = {
@@ -448,6 +451,7 @@
 				84D323762A146971000292D9 /* ColorModelPicker.swift in Sources */,
 				84757BEB2A1759F0004B9EE0 /* SaturationLightnessSlider.swift in Sources */,
 				84757BED2A175A7D004B9EE0 /* NSColor+HSL.swift in Sources */,
+				8425675C2A21D6FB00953981 /* ColorFormatter.swift in Sources */,
 				84757BE62A1755C3004B9EE0 /* RGBEditor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,15 +48,11 @@ struct _ColorListRow: View {
     }
 
     private var hexString: String {
-        let prefix = includeHashPrefix ? "#" : ""
-
-        let hex = (prefix + color.hexString)
-
-        if lowerCaseHex {
-            return hex
-        } else {
-            return hex.uppercased()
-        }
+        ColorFormatter.shared.hex(
+            color: color,
+            includeHashPrefix: includeHashPrefix,
+            lowerCaseHex: lowerCaseHex
+        )
     }
 }
 

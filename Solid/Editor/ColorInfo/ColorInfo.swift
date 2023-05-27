@@ -82,16 +82,13 @@ struct ColorInfo: View {
     }
 
     private var hexString: String {
-        let color = self.color ?? colorPublisher.currentColor
-        let prefix = includeHashPrefix ? "#" : ""
+        let color = colorPublisher.currentColor
 
-        let hex = (prefix + color.hexString)
-
-        if lowerCaseHex {
-            return hex
-        } else {
-            return hex.uppercased()
-        }
+        return ColorFormatter.shared.hex(
+            color: color,
+            includeHashPrefix: includeHashPrefix,
+            lowerCaseHex: lowerCaseHex
+        )
     }
 }
 

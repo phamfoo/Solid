@@ -15,24 +15,16 @@ class ColorSampler: ObservableObject {
             selectionHandler(colorInCurrentColorSpace)
 
             if let colorInCurrentColorSpace, Defaults[.copyAfterPicking] {
-                let hexString = self.hexString(from: colorInCurrentColorSpace)
+                let hexString = ColorFormatter.shared
+                    .hex(
+                        color: colorInCurrentColorSpace,
+                        includeHashPrefix: Defaults[.includeHashPrefix],
+                        lowerCaseHex: Defaults[.lowerCaseHex]
+                    )
                 let pasteboard = NSPasteboard.general
                 pasteboard.clearContents()
                 pasteboard.setString(hexString, forType: .string)
             }
-        }
-    }
-
-    // TODO:
-    private func hexString(from color: NSColor) -> String {
-        let prefix = Defaults[.includeHashPrefix] ? "#" : ""
-
-        let hex = (prefix + color.hexString)
-
-        if Defaults[.lowerCaseHex] {
-            return hex
-        } else {
-            return hex.uppercased()
         }
     }
 }
