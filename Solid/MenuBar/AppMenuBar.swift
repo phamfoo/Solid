@@ -53,16 +53,6 @@ class MenuBarController {
 
         menu.addItem(NSMenuItem.separator())
 
-        let preferencesItem = NSMenuItem(
-            title: "Preferences",
-            action: #selector(preferencesSelected),
-            keyEquivalent: ""
-        )
-        preferencesItem.target = self
-        menu.addItem(preferencesItem)
-
-        menu.addItem(NSMenuItem.separator())
-
         let quitItem = NSMenuItem(
             title: "Quit",
             action: #selector(quitSelected),
@@ -76,22 +66,6 @@ class MenuBarController {
 
     @objc private func pickColorSelected() {
         onPickColorSelected()
-    }
-
-    @objc private func preferencesSelected() {
-        if #available(macOS 13, *) {
-            NSApp.sendAction(
-                Selector(("showSettingsWindow:")),
-                to: nil,
-                from: nil
-            )
-        } else {
-            NSApp.sendAction(
-                Selector(("showPreferencesWindow:")),
-                to: nil,
-                from: nil
-            )
-        }
     }
 
     @objc private func quitSelected() {
