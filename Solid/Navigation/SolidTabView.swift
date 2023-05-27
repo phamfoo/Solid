@@ -10,7 +10,8 @@ struct SolidTabView: NSViewRepresentable {
 
         for tab in tabs {
             let tabItemView = NSHostingView(rootView: tab.content)
-            if tabItemView.intrinsicContentSize.height > 0 {
+            // TODO:
+            if tab.tab == .editor {
                 tabItemView.translatesAutoresizingMaskIntoConstraints = false
                 tabItemView.setContentCompressionResistancePriority(
                     .defaultHigh,

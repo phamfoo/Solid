@@ -8,12 +8,59 @@ struct ColorList: View {
     )
     private var sections: SectionedFetchResults<Date, SolidColor>
 
+    @FocusState private var isFocused: Bool
+    @State private var searchText = ""
+    private var query: Binding<String> {
+        Binding {
+            searchText
+        } set: { newValue in
+            searchText = newValue
+
+            sections.nsPredicate =
+                newValue.isEmpty
+                    ? nil
+                    : NSPredicate(format: "name CONTAINS[c] %@", newValue)
+        }
+    }
+
     var body: some View {
-        List {
-            ForEach(sections) { section in
-                Section(sectionHeader(fromDate: section.id)) {
-                    ForEach(section) { color in
-                        ColorListRow(color: color)
+        VStack {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(
+                        isFocused ? Color.primary : Color
+                            .secondary
+                    )
+
+                TextField("Search", text: query)
+                    .focused($isFocused)
+                    .textFieldStyle(.plain)
+                    .onSubmit {
+                        isFocused = false
+                    }
+
+                if !searchText.isEmpty {
+                    Button {
+                        searchText = ""
+                        isFocused = false
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .onTapGesture {
+                isFocused = true
+            }
+
+            List {
+                ForEach(sections) { section in
+                    Section(sectionHeader(fromDate: section.id)) {
+                        ForEach(section) { color in
+                            ColorListRow(color: color)
+                        }
                     }
                 }
             }
