@@ -3,28 +3,50 @@ import SwiftUI
 
 struct ColorListRow: View {
     var color: SolidColor
+    @Default(.includeHashPrefix) private var includeHashPrefix
+    @Default(.lowerCaseHex) private var lowerCaseHex
 
     var body: some View {
         _ColorListRow(
-            color: NSColor(
-                colorSpace: ColorSpace(rawValue: color.colorSpace!)!
-                    .nsColorSpace,
-                hue: color.hue,
-                saturation: color.saturation,
-                brightness: color.brightness,
-                alpha: color.alpha
-            ),
-            name: color.name ?? ""
+            color: nsColor,
+            name: color.name ?? "",
+            hexString: hexString
+        )
+        .contextMenu {
+            Button {
+                let pasteboard = NSPasteboard.general
+                pasteboard.clearContents()
+                pasteboard.setString(hexString, forType: .string)
+            } label: {
+                Label("Copy hex code", systemImage: "square.on.square")
+            }
+        }
+    }
+
+    private var nsColor: NSColor {
+        NSColor(
+            colorSpace: ColorSpace(rawValue: color.colorSpace!)!
+                .nsColorSpace,
+            hue: color.hue,
+            saturation: color.saturation,
+            brightness: color.brightness,
+            alpha: color.alpha
+        )
+    }
+
+    private var hexString: String {
+        ColorFormatter.shared.hex(
+            color: nsColor,
+            includeHashPrefix: includeHashPrefix,
+            lowerCaseHex: lowerCaseHex
         )
     }
 }
 
 struct _ColorListRow: View {
-    @Default(.includeHashPrefix) private var includeHashPrefix
-    @Default(.lowerCaseHex) private var lowerCaseHex
-
     var color: NSColor
     var name: String
+    var hexString: String
 
     var body: some View {
         HStack {
@@ -44,23 +66,6 @@ struct _ColorListRow: View {
 
             Spacer()
         }
-        .contextMenu {
-            Button {
-                let pasteboard = NSPasteboard.general
-                pasteboard.clearContents()
-                pasteboard.setString(hexString, forType: .string)
-            } label: {
-                Label("Copy hex code", systemImage: "square.on.square")
-            }
-        }
-    }
-
-    private var hexString: String {
-        ColorFormatter.shared.hex(
-            color: color,
-            includeHashPrefix: includeHashPrefix,
-            lowerCaseHex: lowerCaseHex
-        )
     }
 }
 
@@ -68,7 +73,8 @@ struct ColorListRow_Previews: PreviewProvider {
     static var previews: some View {
         _ColorListRow(
             color: .red,
-            name: "red"
+            name: "red",
+            hexString: "#000000"
         )
         .frame(width: 320)
     }
