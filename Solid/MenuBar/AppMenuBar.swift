@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AppMenuBar<Content>: View where Content: View {
-    @State private var menuBarController: MenuBarController?
+    var menuBarController: MenuBarController
 
     @EnvironmentObject private var colorPublisher: ColorPublisher
     @EnvironmentObject private var colorSampler: ColorSampler
@@ -10,9 +10,8 @@ struct AppMenuBar<Content>: View where Content: View {
     var body: some View {
         content
             .onAppear {
-                menuBarController = MenuBarController(
+                menuBarController.setup(
                     onPickColorSelected: {
-                        // TODO:
                         colorSampler
                             .show { pickedColor in
                                 if let pickedColor {
@@ -29,14 +28,13 @@ struct AppMenuBar<Content>: View where Content: View {
 }
 
 class MenuBarController {
-    private var statusBarItem: NSStatusItem
-    var onPickColorSelected: () -> Void
+    var onPickColorSelected: (() -> Void)?
+    private lazy var statusBarItem = NSStatusBar.system
+        .statusItem(withLength: NSStatusItem.squareLength)
 
-    init(onPickColorSelected: @escaping () -> Void) {
+    func setup(onPickColorSelected: @escaping () -> Void) {
         self.onPickColorSelected = onPickColorSelected
 
-        statusBarItem = NSStatusBar.system
-            .statusItem(withLength: NSStatusItem.squareLength)
         statusBarItem.button?.image = NSImage(
             systemSymbolName: "grid",
             accessibilityDescription: "Color Picker"
@@ -65,7 +63,9 @@ class MenuBarController {
     }
 
     @objc private func pickColorSelected() {
-        onPickColorSelected()
+        if let onPickColorSelected {
+            onPickColorSelected()
+        }
     }
 
     @objc private func quitSelected() {
