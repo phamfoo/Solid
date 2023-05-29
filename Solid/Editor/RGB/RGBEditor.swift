@@ -43,7 +43,6 @@ struct RGBEditor: View {
                 colorSpace: colorSpace
             )
             .aspectRatio(1, contentMode: .fit)
-            .frame(minWidth: 320, minHeight: 320)
 
             HStack(spacing: 0) {
                 ColorSamplerView { pickedColor in
