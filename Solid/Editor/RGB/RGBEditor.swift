@@ -153,5 +153,6 @@ struct RGBEditor_Previews: PreviewProvider {
             colorPublisher: ColorPublisher()
         )
         .frame(width: 320)
+        .environmentObject(ColorSampler())
     }
 }

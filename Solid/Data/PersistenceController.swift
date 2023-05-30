@@ -20,6 +20,7 @@ struct PersistenceController {
             newItem.saturation = color.saturationComponent
             newItem.brightness = color.brightnessComponent
             newItem.alpha = color.alphaComponent
+            newItem.colorSpace = ColorSpace.sRGB.rawValue
         }
         do {
             try viewContext.save()
