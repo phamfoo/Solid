@@ -35,6 +35,7 @@ struct HSLEditor: View {
                 colorSpace: colorSpace
             )
             .aspectRatio(1, contentMode: .fit)
+            .frame(minHeight: 320)
 
             HStack(spacing: 0) {
                 ColorSamplerView { pickedColor in
