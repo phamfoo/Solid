@@ -114,7 +114,7 @@ class MenuViewController: NSViewController {
         }
         menu.popUp(
             positioning: nil,
-            at: view.frame.origin,
+            at: NSPoint(x: 0, y: view.frame.height),
             in: view
         )
     }
@@ -132,6 +132,6 @@ protocol MenuViewControllerDelegate: AnyObject {
 struct ColorModelPicker_Previews: PreviewProvider {
     static var previews: some View {
         ColorModelPicker(colorModel: .constant(.hsb))
-            .previewLayout(.sizeThatFits)
+            .frame(height: 32)
     }
 }
