@@ -5,13 +5,17 @@ import SwiftUI
 struct ColorInfo: View {
     var colorPublisher: ColorPublisher
     var colorSpace: ColorSpace
-    @State private var color: NSColor?
+    @State private var color: NSColor
     @Default(.includeHashPrefix) private var includeHashPrefix
     @Default(.lowerCaseHex) private var lowerCaseHex
 
-    var body: some View {
-        let color = self.color ?? colorPublisher.currentColor
+    init(colorPublisher: ColorPublisher, colorSpace: ColorSpace) {
+        self.colorPublisher = colorPublisher
+        self.colorSpace = colorSpace
+        _color = State(wrappedValue: colorPublisher.currentColor)
+    }
 
+    var body: some View {
         VStack(alignment: .leading) {
             CurrentColorProfile()
 
@@ -32,11 +36,18 @@ struct ColorInfo: View {
                     )
                 )
 
-                Text(hexString)
-                    .fontWeight(.medium)
-                    .foregroundColor(.secondary)
-
-                Spacer()
+                HexInput(hexString: hexString) { hexString in
+                    if let color = NSColor(
+                        colorSpace: colorSpace
+                            .nsColorSpace,
+                        hexString: hexString
+                    ) {
+                        colorPublisher.publish(
+                            color,
+                            source: "HexInput"
+                        )
+                    }
+                }
 
                 HStack(spacing: 0) {
                     Button {
@@ -50,32 +61,10 @@ struct ColorInfo: View {
                     .buttonStyle(.solid)
 
                     SaveColorButton(color: color, colorSpace: colorSpace)
-
-                    Menu {
-                        Button("Import from clipboard") {
-                            if let copiedString = NSPasteboard.general
-                                .string(forType: .string),
-                                let color = NSColor(
-                                    colorSpace: colorSpace.nsColorSpace,
-                                    hexString: copiedString
-                                )
-                            {
-                                colorPublisher.publish(
-                                    color,
-                                    source: "Clipboard"
-                                )
-                            }
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .imageScale(.large)
-                    }
-                    .fixedSize()
-                    .menuStyle(.borderlessButton)
-                    .menuIndicator(.hidden)
                 }
             }
         }
+        .fixedSize(horizontal: false, vertical: true)
         .onReceive(colorPublisher.updates()) { publishedColor in
             self.color = publishedColor.color
         }
