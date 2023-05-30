@@ -71,8 +71,6 @@ struct ColorInfo: View {
     }
 
     private var hexString: String {
-        let color = colorPublisher.currentColor
-
         return ColorFormatter.shared.hex(
             color: color,
             includeHashPrefix: includeHashPrefix,
