@@ -24,6 +24,8 @@ struct SolidApp: App {
                 \.managedObjectContext,
                 persistenceController.container.viewContext
             )
+            // Update windows as stayOnTop changes
+            // or when there's a new window
             .onChange(of: stayOnTop) { stayOnTop in
                 updateWindowLevel(stayOnTop: stayOnTop)
             }
@@ -34,6 +36,31 @@ struct SolidApp: App {
                     )
             ) { _ in
                 updateWindowLevel(stayOnTop: stayOnTop)
+            }
+            // Save and restore window frame manually
+            .onReceive(
+                NotificationCenter.default
+                    .publisher(
+                        for: NSWindow.willCloseNotification
+                    )
+            ) { notification in
+                if let window = notification.object as? NSWindow,
+                   window == NSApplication.shared.mainWindow
+                {
+                    Defaults[.mainWindowFrame] = window.frame
+                }
+            }
+            .onReceive(
+                NotificationCenter.default
+                    .publisher(
+                        for: NSWindow.didBecomeKeyNotification
+                    )
+            ) { notification in
+                if let window = notification.object as? NSWindow,
+                   let savedWindowFrame = Defaults[.mainWindowFrame]
+                {
+                    window.setFrame(savedWindowFrame, display: true)
+                }
             }
         }
         .windowToolbarStyle(.unified(showsTitle: false))
@@ -58,3 +85,9 @@ struct SolidApp: App {
         }
     }
 }
+
+extension Defaults.Keys {
+    static let mainWindowFrame = Key<CGRect?>("mainWindowFrame")
+}
+
+extension CGRect: Defaults.Serializable {}
