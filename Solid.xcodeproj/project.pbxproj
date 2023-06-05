@@ -182,7 +182,7 @@
 		8429484B2A0C818E001FA318 /* Solid */ = {
 			isa = PBXGroup;
 			children = (
-				8429484C2A0C818E001FA318 /* SolidApp.swift */,
+				845EEE992A2DD2940074B167 /* App */,
 				8499A7DB2A1F60C900378468 /* MenuBar */,
 				84BB73572A15C6880017B9DF /* Navigation */,
 				84BB73582A15C6920017B9DF /* Editor */,
@@ -238,6 +238,16 @@
 			path = ComponentInput;
 			sourceTree = "<group>";
 		};
+		845EEE992A2DD2940074B167 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				845EEE942A2DCA6C0074B167 /* SyncStayOnTopModifier.swift */,
+				845EEE922A2DCA340074B167 /* RestoreWindowFrameModifier.swift */,
+				8429484C2A0C818E001FA318 /* SolidApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		8472FCF62A15C9AF00F3B862 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,8 +255,6 @@
 				8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */,
 				846211E52A1373F90009E048 /* Comparable+Clamped.swift */,
 				84757BEC2A175A7C004B9EE0 /* NSColor+HSL.swift */,
-				845EEE922A2DCA340074B167 /* RestoreWindowFrameModifier.swift */,
-				845EEE942A2DCA6C0074B167 /* SyncStayOnTopModifier.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
