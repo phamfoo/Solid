@@ -23,7 +23,7 @@ struct NumberInput: View {
     }
 
     var body: some View {
-        TextField(label, value: $value, format: .number)
+        TextField(label, value: $value, format: RangeIntegerStyle(range: range))
             .focused($isFocused)
             .padding(.vertical, 12)
             .contentShape(Rectangle())
@@ -64,6 +64,36 @@ struct NumberInput: View {
     }
 }
 
+extension NumberInput {
+    private struct RangeIntegerStyle: ParseableFormatStyle {
+        var parseStrategy: RangeIntegerStrategy
+
+        init(range: ClosedRange<Int>) {
+            parseStrategy = RangeIntegerStrategy(range: range)
+        }
+
+        func format(_ value: Int) -> String {
+            return "\(value)"
+        }
+    }
+
+    private struct RangeIntegerStrategy: ParseStrategy {
+        private var intParseStrategy =
+            IntegerParseStrategy<IntegerFormatStyle<Int>>(format: .number)
+        var range: ClosedRange<Int>
+
+        init(range: ClosedRange<Int>) {
+            self.range = range
+        }
+
+        func parse(_ value: String) throws -> Int {
+            let intValue = try intParseStrategy.parse(value)
+
+            return intValue.clamped(to: range)
+        }
+    }
+}
+
 struct PercentageInput: View {
     @FocusState private var isFocused: Bool
 
@@ -83,26 +113,30 @@ struct PercentageInput: View {
     }
 
     var body: some View {
-        TextField(label, value: $value, format: .percent)
-            .focused($isFocused)
-            .padding(.vertical, 12)
-            .contentShape(Rectangle())
-            .onTapGesture {
-                isFocused = true
+        TextField(
+            label,
+            value: $value,
+            format: RangePercentageStyle(range: 0 ... 100)
+        )
+        .focused($isFocused)
+        .padding(.vertical, 12)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            isFocused = true
+        }
+        .onChange(of: normalizedValue) { newNormalizedValue in
+            value = Self.getValue(
+                normalizedValue: newNormalizedValue
+            )
+        }
+        .onSubmit {
+            normalizedValue = Double(value) / 100
+        }
+        .onChange(of: isFocused) { isFocused in
+            if !isFocused {
+                syncNormalizedValue()
             }
-            .onChange(of: normalizedValue) { newNormalizedValue in
-                value = Self.getValue(
-                    normalizedValue: newNormalizedValue
-                )
-            }
-            .onSubmit {
-                normalizedValue = Double(value) / 100
-            }
-            .onChange(of: isFocused) { isFocused in
-                if !isFocused {
-                    syncNormalizedValue()
-                }
-            }
+        }
     }
 
     private func syncNormalizedValue() {
@@ -116,5 +150,46 @@ struct PercentageInput: View {
         let roundedValue = Int(round(value))
 
         return roundedValue
+    }
+}
+
+extension PercentageInput {
+    private struct RangePercentageStyle: ParseableFormatStyle {
+        private var percentFormatStyle: IntegerFormatStyle<Int>.Percent
+        var parseStrategy: RangePercentageStrategy
+
+        init(range: ClosedRange<Int>) {
+            percentFormatStyle = IntegerFormatStyle<Int>.Percent()
+            parseStrategy = RangePercentageStrategy(
+                range: range,
+                parseStrategy: percentFormatStyle.parseStrategy
+            )
+        }
+
+        func format(_ value: Int) -> String {
+            percentFormatStyle.format(value)
+        }
+    }
+
+    private struct RangePercentageStrategy: ParseStrategy {
+        var range: ClosedRange<Int>
+        var percentParseStrategy: IntegerParseStrategy<
+            IntegerFormatStyle<Int>
+                .Percent
+        >
+
+        init(
+            range: ClosedRange<Int>,
+            parseStrategy: IntegerParseStrategy<IntegerFormatStyle<Int>.Percent>
+        ) {
+            self.range = range
+            percentParseStrategy = parseStrategy
+        }
+
+        func parse(_ value: String) throws -> Int {
+            let intValue = try percentParseStrategy.parse(value)
+
+            return intValue.clamped(to: range)
+        }
     }
 }
