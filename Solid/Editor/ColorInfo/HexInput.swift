@@ -11,23 +11,36 @@ struct HexInput: View {
     var onSubmit: (String) -> Void
 
     var body: some View {
-        // Had to use ZStack here.
-        // onHover doesn't work properly with Group
-        ZStack {
+        HStack {
+            Group {
+                if isEditing {
+                    TextField("Hex code", text: $inputValue)
+                        .focused($isFocused)
+                        .textFieldStyle(.plain)
+                        .onAppear {
+                            isFocused = true
+                            inputValue = hexString
+                        }
+                } else {
+                    Text(hexString)
+                        .fontWeight(.medium)
+                        .foregroundColor(.secondary)
+                }
+            }
+
+            Spacer()
+
             if isEditing {
-                TextField("Hex code", text: $inputValue)
-                    .focused($isFocused)
-                    .textFieldStyle(.plain)
-                    .onAppear {
-                        isFocused = true
-                        inputValue = hexString
-                    }
-            } else {
-                Text(hexString)
-                    .fontWeight(.medium)
-                    .foregroundColor(.secondary)
+                Button {
+                    stopEditing()
+                    onSubmit(inputValue)
+                } label: {
+                    Image(systemName: "checkmark")
+                }
+                .buttonStyle(.solid)
             }
         }
+
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity,
