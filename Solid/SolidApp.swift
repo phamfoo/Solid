@@ -3,8 +3,6 @@ import SwiftUI
 
 @main
 struct SolidApp: App {
-    @Default(.stayOnTop) private var stayOnTop
-
     let persistenceController = PersistenceController.shared
     @StateObject private var colorPublisher = ColorPublisher()
     @StateObject private var colorSampler = ColorSampler()
@@ -24,6 +22,37 @@ struct SolidApp: App {
                 \.managedObjectContext,
                 persistenceController.container.viewContext
             )
+            .modifier(SyncStayOnTopModifier())
+            .modifier(RestoreWindowFrameModifier(windowGroupID: "main"))
+        }
+        .windowToolbarStyle(.unified(showsTitle: false))
+        .commands {
+            CommandGroup(replacing: CommandGroupPlacement.newItem) {}
+        }
+
+        Settings {
+            AppSettings()
+        }
+    }
+
+    private func updateWindowLevel(stayOnTop: Bool) {
+        if stayOnTop {
+            NSApplication.shared.windows
+                .filter { $0.level == .normal }
+                .forEach { $0.level = .floating }
+        } else {
+            NSApplication.shared.windows
+                .filter { $0.level == .floating }
+                .forEach { $0.level = .normal }
+        }
+    }
+}
+
+struct SyncStayOnTopModifier: ViewModifier {
+    @Default(.stayOnTop) private var stayOnTop
+
+    func body(content: Content) -> some View {
+        content
             // Update windows as stayOnTop changes
             // or when there's a new window
             .onChange(of: stayOnTop) { stayOnTop in
@@ -37,16 +66,6 @@ struct SolidApp: App {
             ) { _ in
                 updateWindowLevel(stayOnTop: stayOnTop)
             }
-            .modifier(RestoreWindowFrameModifier(windowGroupID: "main"))
-        }
-        .windowToolbarStyle(.unified(showsTitle: false))
-        .commands {
-            CommandGroup(replacing: CommandGroupPlacement.newItem) {}
-        }
-
-        Settings {
-            AppSettings()
-        }
     }
 
     private func updateWindowLevel(stayOnTop: Bool) {
