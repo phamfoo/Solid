@@ -30,17 +30,19 @@ struct NumberInput: View {
             .onTapGesture {
                 isFocused = true
             }
-            .onChange(of: normalizedValue) { newNormalizedValue in
+            .onChange(of: normalizedValue) { newValue in
                 value = Self.getValue(
-                    normalizedValue: newNormalizedValue,
+                    normalizedValue: newValue,
                     in: range
                 )
             }
             .onSubmit {
                 syncNormalizedValue()
             }
-            .onChange(of: isFocused) { isFocused in
-                if !isFocused {
+            .onChange(of: isFocused) { newValue in
+                let hasLostFocus = !newValue
+                
+                if hasLostFocus {
                     syncNormalizedValue()
                 }
             }
@@ -124,16 +126,18 @@ struct PercentageInput: View {
         .onTapGesture {
             isFocused = true
         }
-        .onChange(of: normalizedValue) { newNormalizedValue in
+        .onChange(of: normalizedValue) { newValue in
             value = Self.getValue(
-                normalizedValue: newNormalizedValue
+                normalizedValue: newValue
             )
         }
         .onSubmit {
             normalizedValue = Double(value) / 100
         }
-        .onChange(of: isFocused) { isFocused in
-            if !isFocused {
+        .onChange(of: isFocused) { newValue in
+            let hasLostFocus = !newValue
+            
+            if hasLostFocus {
                 syncNormalizedValue()
             }
         }

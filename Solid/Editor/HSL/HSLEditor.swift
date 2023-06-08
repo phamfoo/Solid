@@ -75,8 +75,8 @@ struct HSLEditor: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 16)
         }
-        .onChange(of: hslaColor) { nsColor in
-            colorPublisher.publish(nsColor, source: "HSLEditor")
+        .onChange(of: hslaColor) { newValue in
+            colorPublisher.publish(newValue, source: "HSLEditor")
         }
         .onReceive(
             colorPublisher

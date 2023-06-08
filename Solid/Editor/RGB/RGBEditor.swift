@@ -86,8 +86,8 @@ struct RGBEditor: View {
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 16)
         }
-        .onChange(of: rgbaColor) { rgbaColor in
-            colorPublisher.publish(rgbaColor, source: "RGBEditor_RGB")
+        .onChange(of: rgbaColor) { newValue in
+            colorPublisher.publish(newValue, source: "RGBEditor_RGB")
         }
         .onReceive(
             colorPublisher.updates(excluding: "RGBEditor_RGB")
@@ -96,8 +96,8 @@ struct RGBEditor: View {
                 syncRGBComponents(from: publishedColor.color)
             }
         }
-        .onChange(of: hsbaColor) { hsbaColor in
-            colorPublisher.publish(hsbaColor, source: "RGBEditor_HSB")
+        .onChange(of: hsbaColor) { newValue in
+            colorPublisher.publish(newValue, source: "RGBEditor_HSB")
         }
         .onReceive(
             colorPublisher.updates(excluding: "RGBEditor_HSB")

@@ -8,8 +8,8 @@ struct SyncStayOnTopModifier: ViewModifier {
         content
             // Update windows as stayOnTop changes
             // or when there's a new window
-            .onChange(of: stayOnTop) { stayOnTop in
-                updateWindowLevel(stayOnTop: stayOnTop)
+            .onChange(of: stayOnTop) { newValue in
+                updateWindowLevel(stayOnTop: newValue)
             }
             .onReceive(
                 NotificationCenter.default
