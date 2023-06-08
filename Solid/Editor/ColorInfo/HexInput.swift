@@ -4,7 +4,6 @@ import SwiftUI
 struct HexInput: View {
     @State private var isHovered = false
     @FocusState private var isFocused: Bool
-    @State private var isEditing = false
     @State private var inputValue = ""
 
     var hexString: String
@@ -12,27 +11,32 @@ struct HexInput: View {
 
     var body: some View {
         HStack {
-            Group {
-                if isEditing {
-                    TextField("Hex code", text: $inputValue)
-                        .focused($isFocused)
-                        .textFieldStyle(.plain)
-                        .onAppear {
-                            isFocused = true
-                            inputValue = hexString
-                        }
-                } else {
-                    Text(hexString)
-                        .fontWeight(.medium)
-                        .foregroundColor(.secondary)
+            TextField("Hex code", text: $inputValue)
+                .focused($isFocused)
+                .foregroundColor(isFocused ? .primary : .secondary)
+                .font(isFocused ? .body : .body.weight(.medium))
+                .textFieldStyle(.plain)
+                .onAppear {
+                    inputValue = hexString
                 }
-            }
-
+                .onChange(of: hexString) { newValue in
+                    inputValue = newValue
+                }
+                .onChange(of: isFocused) { _ in
+                    inputValue = hexString
+                }
+                .onExitCommand {
+                    isFocused = false
+                }
+                .onSubmit {
+                    isFocused = false
+                    onSubmit(inputValue)
+                }
             Spacer()
 
-            if isEditing {
+            if isFocused {
                 Button {
-                    stopEditing()
+                    isFocused = false
                     onSubmit(inputValue)
                 } label: {
                     Image(systemName: "checkmark")
@@ -40,13 +44,12 @@ struct HexInput: View {
                 .buttonStyle(.solid)
             }
         }
-
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity,
             alignment: .leading
         )
-        .padding(.horizontal, 6)
+        .padding(.horizontal, 8)
         .background {
             RoundedRectangle(
                 cornerRadius: 6,
@@ -69,30 +72,10 @@ struct HexInput: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            startEditing()
-        }
-        .onExitCommand {
-            stopEditing()
-        }
-        .onSubmit {
-            stopEditing()
-            onSubmit(inputValue)
-        }
-        .onChange(of: isFocused) { newValue in
-            isEditing = newValue
+            isFocused = true
         }
         .animation(.easeInOut(duration: 0.1), value: isHovered)
         .animation(.easeInOut(duration: 0.1), value: isFocused)
-    }
-
-    private func startEditing() {
-        isEditing = true
-        isFocused = true
-    }
-
-    private func stopEditing() {
-        isFocused = false
-        isEditing = false
     }
 }
 
