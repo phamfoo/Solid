@@ -3,7 +3,7 @@ import SwiftUI
 struct SaveColorForm: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var moc
-    @State private var colorName = "New color"
+    @State private var colorName = ""
 
     var color: NSColor
     var colorSpace: ColorSpace
@@ -35,6 +35,29 @@ struct SaveColorForm: View {
             .buttonStyle(.borderedProminent)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .onAppear {
+            colorName = generateColorName()
+        }
+    }
+
+    private func generateColorName() -> String {
+        var closestDistance = Double.infinity
+        var closestColorName = ""
+
+        for (colorName, _) in CSSColors.namedColors {
+            let cssColor = NSColor(cssNamedColor: colorName)!
+            // We don't need the real distance so I'm skipping sqrt
+            let distance = pow(color.redComponent - cssColor.redComponent, 2)
+                + pow(color.greenComponent - cssColor.greenComponent, 2)
+                + pow(color.blueComponent - cssColor.blueComponent, 2)
+
+            if distance < closestDistance {
+                closestColorName = colorName
+                closestDistance = distance
+            }
+        }
+
+        return closestColorName
     }
 }
 
