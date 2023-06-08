@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ColorListRow: View {
     @Environment(\.managedObjectContext) private var moc
+    @State private var isEditing = false
 
     var color: SolidColor
     @Default(.includeHashPrefix) private var includeHashPrefix
@@ -25,6 +26,13 @@ struct ColorListRow: View {
                 Text("Copy hex code")
             }
 
+            Button {
+                isEditing = true
+            } label: {
+                Image(systemName: "square.and.pencil")
+                Text("Edit Color")
+            }
+
             Divider()
 
             Button {
@@ -35,6 +43,10 @@ struct ColorListRow: View {
                 Image(systemName: "trash")
                 Text("Delete color")
             }
+        }
+        .popover(isPresented: $isEditing) {
+            ColorUpdateView(color: color)
+                .frame(width: 320)
         }
     }
 

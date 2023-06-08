@@ -11,26 +11,11 @@ struct Editor: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            switch colorModel {
-            case .hsb:
-                HSBEditor(
-                    colorSpace: $colorSpace,
-                    colorModel: $colorModel,
-                    colorPublisher: colorPublisher
-                )
-            case .rgb:
-                RGBEditor(
-                    colorSpace: $colorSpace,
-                    colorModel: $colorModel,
-                    colorPublisher: colorPublisher
-                )
-            case .hsl:
-                HSLEditor(
-                    colorSpace: $colorSpace,
-                    colorModel: $colorModel,
-                    colorPublisher: colorPublisher
-                )
-            }
+            ColorEditorView(
+                colorSpace: $colorSpace,
+                colorModel: $colorModel,
+                colorPublisher: colorPublisher
+            )
 
             Divider()
                 .padding(.vertical)
@@ -58,10 +43,8 @@ struct Editor: View {
 struct Editor_Previews: PreviewProvider {
     static var previews: some View {
         Editor()
-            .previewLayout(.fixed(width: 320, height: 640))
-            .environment(
-                \.managedObjectContext,
-                PersistenceController.preview.container.viewContext
-            )
+            .environmentObject(ColorPublisher())
+            .environmentObject(ColorSampler())
+            .frame(width: 320)
     }
 }
