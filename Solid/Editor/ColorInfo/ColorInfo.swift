@@ -36,12 +36,8 @@ struct ColorInfo: View {
                     )
                 )
 
-                HexInput(hexString: hexString) { hexString in
-                    if let color = NSColor(
-                        colorSpace: colorSpace
-                            .nsColorSpace,
-                        hexString: hexString
-                    ) {
+                HexInput(hexString: hexString) { newValue in
+                    if let color = parseColorString(newValue) {
                         colorPublisher.publish(
                             color,
                             source: "HexInput"
@@ -76,6 +72,15 @@ struct ColorInfo: View {
             includeHashPrefix: includeHashPrefix,
             lowerCaseHex: lowerCaseHex
         )
+    }
+
+    private func parseColorString(_ string: String) -> NSColor? {
+        NSColor(
+            colorSpace: colorSpace
+                .nsColorSpace,
+            hexString: string
+        )
+            ?? NSColor(cssNamedColor: string)
     }
 }
 

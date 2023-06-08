@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8400BE0D2A31C87400C2029E /* NSColor+CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400BE0C2A31C87400C2029E /* NSColor+CSS.swift */; };
 		8402C3B22A0F752500CCC582 /* SaveColorForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B12A0F752500CCC582 /* SaveColorForm.swift */; };
 		8402C3B42A0F770C00CCC582 /* ColorListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B32A0F770C00CCC582 /* ColorListRow.swift */; };
 		8402C3B82A0F7BD900CCC582 /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402C3B72A0F7BD900CCC582 /* ColorInfo.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8400BE0C2A31C87400C2029E /* NSColor+CSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+CSS.swift"; sourceTree = "<group>"; };
 		8402C3B12A0F752500CCC582 /* SaveColorForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveColorForm.swift; sourceTree = "<group>"; };
 		8402C3B32A0F770C00CCC582 /* ColorListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListRow.swift; sourceTree = "<group>"; };
 		8402C3B72A0F7BD900CCC582 /* ColorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				8402C3B92A0F7C6F00CCC582 /* NSColor+Hex.swift */,
 				846211E52A1373F90009E048 /* Comparable+Clamped.swift */,
 				84757BEC2A175A7C004B9EE0 /* NSColor+HSL.swift */,
+				8400BE0C2A31C87400C2029E /* NSColor+CSS.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				845EEE952A2DCA6C0074B167 /* SyncStayOnTopModifier.swift in Sources */,
 				84757BED2A175A7D004B9EE0 /* NSColor+HSL.swift in Sources */,
 				8425675C2A21D6FB00953981 /* ColorFormatter.swift in Sources */,
+				8400BE0D2A31C87400C2029E /* NSColor+CSS.swift in Sources */,
 				84757BE62A1755C3004B9EE0 /* RGBEditor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
