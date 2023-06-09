@@ -41,7 +41,7 @@ struct NumberInput: View {
             }
             .onChange(of: isFocused) { newValue in
                 let hasLostFocus = !newValue
-                
+
                 if hasLostFocus {
                     syncNormalizedValue()
                 }
@@ -49,6 +49,10 @@ struct NumberInput: View {
     }
 
     private func syncNormalizedValue() {
+        if value == Self.getValue(normalizedValue: normalizedValue, in: range) {
+            return
+        }
+
         normalizedValue = Double(value) /
             Double(range.upperBound - range.lowerBound)
     }
@@ -136,7 +140,7 @@ struct PercentageInput: View {
         }
         .onChange(of: isFocused) { newValue in
             let hasLostFocus = !newValue
-            
+
             if hasLostFocus {
                 syncNormalizedValue()
             }
@@ -144,6 +148,10 @@ struct PercentageInput: View {
     }
 
     private func syncNormalizedValue() {
+        if value == Self.getValue(normalizedValue: normalizedValue) {
+            return
+        }
+
         normalizedValue = Double(value) / 100
     }
 
