@@ -31,15 +31,10 @@ struct ColorUpdateView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
 
-            ColorEditorView(
-                colorSpace: $colorSpace,
-                colorModel: $colorModel,
-                colorPublisher: colorPublisher
-            )
-            .environmentObject(colorPublisher)
-            .environmentObject(colorSampler)
+            Editor()
+                .environmentObject(colorPublisher)
+                .environmentObject(colorSampler)
         }
-        .padding(.bottom, 16)
         .onAppear {
             colorName = color.name ?? ""
 
