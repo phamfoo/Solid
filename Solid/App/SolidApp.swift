@@ -2,13 +2,13 @@ import SwiftUI
 
 @main
 struct SolidApp: App {
-    let persistenceController = PersistenceController.shared
+    private let persistenceController = PersistenceController.shared
     @StateObject private var colorPublisher = ColorPublisher()
     @StateObject private var colorSampler = ColorSampler()
 
     // We need to keep this at the application level
     // so that the menu bar only gets initialized once.
-    @State private var menuBarController = MenuBarController()
+    private let menuBarController = MenuBarController()
 
     var body: some Scene {
         WindowGroup(id: "main") {
