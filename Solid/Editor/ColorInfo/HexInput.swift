@@ -13,6 +13,7 @@ struct HexInput: View {
         HStack {
             TextField("Hex code", text: $inputValue)
                 .focused($isFocused)
+                .allowsHitTesting(isFocused)
                 .foregroundColor(isFocused ? .primary : .secondary)
                 .font(isFocused ? .body : .body.weight(.medium))
                 .textFieldStyle(.plain)
