@@ -8,7 +8,6 @@ struct ColorList: View {
     )
     private var sections: SectionedFetchResults<Date, SolidColor>
 
-    @FocusState private var isFocused: Bool
     @State private var searchText = ""
     private var query: Binding<String> {
         Binding {
@@ -53,35 +52,7 @@ struct ColorList: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(
-                        isFocused ? Color.primary : Color
-                            .secondary
-                    )
-
-                TextField("Search", text: query)
-                    .focused($isFocused)
-                    .textFieldStyle(.plain)
-                    .onSubmit {
-                        isFocused = false
-                    }
-
-                if !searchText.isEmpty {
-                    Button {
-                        searchText = ""
-                        isFocused = false
-                    } label: {
-                        Image(systemName: "x.circle.fill")
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
-            .onTapGesture {
-                isFocused = true
-            }
+            SearchBar(text: query)
 
             List {
                 ForEach(sections) { section in
