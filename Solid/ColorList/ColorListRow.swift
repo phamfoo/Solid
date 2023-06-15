@@ -77,9 +77,7 @@ struct _ColorListRow: View {
 
     var body: some View {
         HStack {
-            RoundedRectangle(cornerRadius: 6, style: .continuous)
-                .fill(Color(nsColor: color))
-                .frame(width: 44, height: 44)
+            ColorSwatch(color: color)
 
             VStack(alignment: .leading) {
                 Text(name)

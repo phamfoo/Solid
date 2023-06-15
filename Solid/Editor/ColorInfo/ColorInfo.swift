@@ -20,21 +20,7 @@ struct ColorInfo: View {
             CurrentColorProfile()
 
             HStack {
-                HStack(spacing: 0) {
-                    Color(nsColor: color.withAlphaComponent(1))
-                    Color(nsColor: color)
-                }
-                .background {
-                    CheckerBoardBackground(numberOfRows: 8)
-                }
-                .frame(width: 44, height: 44)
-                .drawingGroup()
-                .clipShape(
-                    RoundedRectangle(
-                        cornerRadius: 6,
-                        style: .continuous
-                    )
-                )
+                ColorSwatch(color: color)
 
                 HexInput(hexString: hexString) { newValue in
                     if let color = parseColorString(newValue) {

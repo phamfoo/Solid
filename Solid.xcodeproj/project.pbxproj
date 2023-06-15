@@ -27,6 +27,7 @@
 		842948632A0C97B2001FA318 /* Solid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842948612A0C97B2001FA318 /* Solid.xcdatamodeld */; };
 		842948652A0C9853001FA318 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842948642A0C9853001FA318 /* PersistenceController.swift */; };
 		8429488C2A0E6E26001FA318 /* ColorSamplerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429488B2A0E6E26001FA318 /* ColorSamplerView.swift */; };
+		842CFD172A3B062100406EB0 /* ColorSwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CFD162A3B062100406EB0 /* ColorSwatch.swift */; };
 		8430593B2A1CC121005C53D8 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8430593A2A1CC121005C53D8 /* Defaults */; };
 		8430593D2A1CC1B1005C53D8 /* EditorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */; };
 		843059402A1CC4AA005C53D8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430593F2A1CC4AA005C53D8 /* AppSettings.swift */; };
@@ -85,6 +86,7 @@
 		842948622A0C97B2001FA318 /* Solid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Solid.xcdatamodel; sourceTree = "<group>"; };
 		842948642A0C9853001FA318 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8429488B2A0E6E26001FA318 /* ColorSamplerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSamplerView.swift; sourceTree = "<group>"; };
+		842CFD162A3B062100406EB0 /* ColorSwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatch.swift; sourceTree = "<group>"; };
 		8430593C2A1CC1B1005C53D8 /* EditorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSettings.swift; sourceTree = "<group>"; };
 		8430593F2A1CC4AA005C53D8 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		843059432A1CC61C005C53D8 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			children = (
 				846211EB2A1380B90009E048 /* CheckerBoardBackground.swift */,
 				846211ED2A13B7640009E048 /* SolidButtonStyle.swift */,
+				842CFD162A3B062100406EB0 /* ColorSwatch.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				8429485E2A0C9342001FA318 /* Editor.swift in Sources */,
 				846211E82A1376A70009E048 /* AlphaSlider.swift in Sources */,
 				844488C12A185E4E001F41B0 /* InputGroup.swift in Sources */,
+				842CFD172A3B062100406EB0 /* ColorSwatch.swift in Sources */,
 				84E903EE2A1DC1BD00E65805 /* DualAxisSlider.swift in Sources */,
 				84757BE82A175956004B9EE0 /* HSLEditor.swift in Sources */,
 				843059462A1CC7BE005C53D8 /* ColorSettings.swift in Sources */,
