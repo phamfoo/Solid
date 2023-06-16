@@ -9,21 +9,20 @@ class ColorSampler: ObservableObject {
         isSampling = true
         colorSampler.show { color in
             self.isSampling = false
-            let colorInCurrentColorSpace = color?
-                .usingColorSpace(Defaults[.colorSpace].nsColorSpace)
+            selectionHandler(color)
 
-            selectionHandler(colorInCurrentColorSpace)
-
-            if let colorInCurrentColorSpace, Defaults[.copyAfterPicking] {
-                let hexString = ColorFormatter.shared
-                    .hex(
-                        color: colorInCurrentColorSpace,
-                        includeHashPrefix: Defaults[.includeHashPrefix],
-                        lowerCaseHex: Defaults[.lowerCaseHex]
-                    )
-                let pasteboard = NSPasteboard.general
-                pasteboard.clearContents()
-                pasteboard.setString(hexString, forType: .string)
+            if Defaults[.copyAfterPicking] {
+                if let sRGBColor = color?.usingColorSpace(.sRGB) {
+                    let hexString = ColorFormatter.shared
+                        .hex(
+                            color: sRGBColor,
+                            includeHashPrefix: Defaults[.includeHashPrefix],
+                            lowerCaseHex: Defaults[.lowerCaseHex]
+                        )
+                    let pasteboard = NSPasteboard.general
+                    pasteboard.clearContents()
+                    pasteboard.setString(hexString, forType: .string)
+                }
             }
         }
     }

@@ -9,7 +9,10 @@ struct GeneralSettings: View {
         Form {
             Toggle("Stay on top", isOn: $stayOnTop)
 
-            Toggle("Copy hex code after picking", isOn: $copyAfterPicking)
+            Toggle(
+                "Copy hex code (sRGB) after picking",
+                isOn: $copyAfterPicking
+            )
         }
         .padding()
     }
