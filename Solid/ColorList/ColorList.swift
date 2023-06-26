@@ -9,11 +9,22 @@ struct ColorList: View {
     private var sections: SectionedFetchResults<Date, SolidColor>
 
     @State private var searchText = ""
-    private var query: Binding<String> {
-        Binding {
-            searchText
-        } set: { newValue in
-            searchText = newValue
+
+    var body: some View {
+        VStack {
+            SearchBar(text: $searchText)
+
+            List {
+                ForEach(sections) { section in
+                    Section(sectionHeader(fromDate: section.id)) {
+                        ForEach(section) { color in
+                            ColorListRow(color: color)
+                        }
+                    }
+                }
+            }
+        }
+        .onChange(of: searchText) { newValue in
             var predicates: [NSPredicate] = []
 
             if !newValue.isEmpty {
@@ -47,22 +58,6 @@ struct ColorList: View {
                     : NSCompoundPredicate(
                         orPredicateWithSubpredicates: predicates
                     )
-        }
-    }
-
-    var body: some View {
-        VStack {
-            SearchBar(text: query)
-
-            List {
-                ForEach(sections) { section in
-                    Section(sectionHeader(fromDate: section.id)) {
-                        ForEach(section) { color in
-                            ColorListRow(color: color)
-                        }
-                    }
-                }
-            }
         }
     }
 
