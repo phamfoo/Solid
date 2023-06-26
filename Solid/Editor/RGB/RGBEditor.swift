@@ -46,15 +46,10 @@ struct RGBEditor: View {
             .frame(minHeight: 320)
 
             HStack(spacing: 0) {
-                ColorSamplerView { pickedColor in
-                    if let pickedColorInCurrentColorSpace =
-                        pickedColor.usingColorSpace(colorSpace.nsColorSpace)
-                    {
-                        colorPublisher.publish(
-                            pickedColorInCurrentColorSpace,
-                            source: "ColorPicker"
-                        )
-                    }
+                ColorSamplerView(
+                    colorSpace: colorSpace.nsColorSpace
+                ) { pickedColor in
+                    syncRGBAComponents(from: pickedColor)
                 }
                 .padding(8)
 
@@ -93,7 +88,7 @@ struct RGBEditor: View {
             colorPublisher.updates(excluding: "RGBEditor_RGB")
         ) { publishedColor in
             if rgbaColor != publishedColor.color {
-                syncRGBComponents(from: publishedColor.color)
+                syncRGBAComponents(from: publishedColor.color)
             }
         }
         .onChange(of: hsbaColor) { newValue in
@@ -103,11 +98,8 @@ struct RGBEditor: View {
             colorPublisher.updates(excluding: "RGBEditor_HSB")
         ) { publishedColor in
             if hsbaColor != publishedColor.color {
-                syncHSBComponents(from: publishedColor.color)
+                syncHSBAComponents(from: publishedColor.color)
             }
-        }
-        .onReceive(colorPublisher.updates()) { publishedColor in
-            alpha = publishedColor.color.alphaComponent
         }
     }
 
@@ -133,16 +125,18 @@ struct RGBEditor: View {
         Color(nsColor: rgbaColor.withAlphaComponent(1))
     }
 
-    private func syncHSBComponents(from color: NSColor) {
+    private func syncHSBAComponents(from color: NSColor) {
         hue = color.hueComponent
         saturation = color.saturationComponent
         brightness = color.brightnessComponent
+        alpha = color.alphaComponent
     }
 
-    private func syncRGBComponents(from color: NSColor) {
+    private func syncRGBAComponents(from color: NSColor) {
         red = color.redComponent
         green = color.greenComponent
         blue = color.blueComponent
+        alpha = color.alphaComponent
     }
 }
 

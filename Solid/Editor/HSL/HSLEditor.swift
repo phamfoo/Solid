@@ -38,12 +38,10 @@ struct HSLEditor: View {
             .frame(minHeight: 320)
 
             HStack(spacing: 0) {
-                ColorSamplerView { pickedColor in
-                    if let pickedColorInCurrentColorSpace =
-                        pickedColor.usingColorSpace(colorSpace.nsColorSpace)
-                    {
-                        syncComponents(from: pickedColorInCurrentColorSpace)
-                    }
+                ColorSamplerView(
+                    colorSpace: colorSpace.nsColorSpace
+                ) { pickedColor in
+                    syncComponents(from: pickedColor)
                 }
                 .padding(8)
 
