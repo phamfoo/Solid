@@ -167,7 +167,7 @@
 		842567592A204F1D00953981 /* RGB */ = {
 			isa = PBXGroup;
 			children = (
-				844488C02A185E4E001F41B0 /* InputGroup.swift */,
+				84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */,
 				84757BE52A1755C3004B9EE0 /* RGBEditor.swift */,
 			);
 			path = RGB;
@@ -242,8 +242,8 @@
 		844A96212A15C90D00E62376 /* ComponentInput */ = {
 			isa = PBXGroup;
 			children = (
+				844488C02A185E4E001F41B0 /* InputGroup.swift */,
 				843ADD702A11C92600DCCCF0 /* ComponentInput.swift */,
-				84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */,
 			);
 			path = ComponentInput;
 			sourceTree = "<group>";
