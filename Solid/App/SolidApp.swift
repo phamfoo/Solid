@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct SolidApp: App {
-    private let persistenceController = PersistenceController.shared
+    private let persistenceController = PersistenceController()
     @StateObject private var colorPublisher = ColorPublisher()
     @StateObject private var colorSampler = ColorSampler()
 
