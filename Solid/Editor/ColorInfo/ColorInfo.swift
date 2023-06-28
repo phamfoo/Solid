@@ -32,15 +32,7 @@ struct ColorInfo: View {
                 }
 
                 HStack(spacing: 0) {
-                    Button {
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.clearContents()
-                        pasteboard.setString(hexString, forType: .string)
-                    } label: {
-                        Image(systemName: "square.on.square")
-                            .imageScale(.large)
-                    }
-                    .buttonStyle(.solid)
+                    CopyHexButton(hexString: hexString)
 
                     SaveColorButton(color: color, colorSpace: colorSpace)
                 }
