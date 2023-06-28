@@ -4,6 +4,7 @@ import SwiftUI
 struct ColorListRow: View {
     @Environment(\.managedObjectContext) private var moc
     @State private var isEditing = false
+    @State private var isShowingDeleteConfirmation = false
 
     var color: SolidColor
     @Default(.includeHashPrefix) private var includeHashPrefix
@@ -36,9 +37,7 @@ struct ColorListRow: View {
             Divider()
 
             Button {
-                moc.delete(color)
-
-                try? moc.save()
+                isShowingDeleteConfirmation = true
             } label: {
                 Image(systemName: "trash")
                 Text("Delete color")
@@ -47,6 +46,19 @@ struct ColorListRow: View {
         .popover(isPresented: $isEditing) {
             ColorUpdateView(color: color)
                 .frame(width: 320)
+        }
+        .confirmationDialog(
+            "Are you sure you want to delete this color?",
+            isPresented: $isShowingDeleteConfirmation
+        ) {
+            Button("Delete", role: .destructive) {
+                moc.delete(color)
+            }
+        }
+        .onDisappear {
+            if color.isDeleted {
+                try? moc.save()
+            }
         }
     }
 
