@@ -8,11 +8,11 @@ struct SolidApp: App {
 
     // We need to keep this at the application level
     // so that the menu bar only gets initialized once.
-    private let menuBarController = MenuBarController()
+    private let menuBarProvider = MenuBarProvider()
 
     var body: some Scene {
         WindowGroup(id: "main") {
-            AppMenuBar(menuBarController: menuBarController) {
+            AppMenuBar(menuBarProvider: menuBarProvider) {
                 ContentView()
             }
             .environmentObject(colorPublisher)
