@@ -6,6 +6,7 @@ struct AppMenuBar<Content>: View where Content: View {
     @EnvironmentObject private var colorPublisher: ColorPublisher
     @EnvironmentObject private var colorSampler: ColorSampler
     @ViewBuilder var content: Content
+    @Environment(\.openURL) var openURL
 
     var body: some View {
         content
@@ -28,6 +29,14 @@ struct AppMenuBar<Content>: View where Content: View {
                     }
             }, onQuitSelected: {
                 NSApp.terminate(nil)
+            }, onShowWindowSelected: {
+                let application = NSApplication.shared
+
+                if application.windows.filter({ $0.level == .normal }).isEmpty {
+                    openURL(URL(string: "solidapp://newwindow")!)
+                } else {
+                    application.activate(ignoringOtherApps: true)
+                }
             }
         )
     }

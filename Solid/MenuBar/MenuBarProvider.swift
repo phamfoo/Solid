@@ -4,6 +4,7 @@ class MenuBarProvider {
     private var statusBarItem: NSStatusItem?
 
     var onPickColorSelected: (() -> Void)?
+    var onShowWindowSelected: (() -> Void)?
     var onQuitSelected: (() -> Void)?
 
     private lazy var menu: NSMenu = {
@@ -15,6 +16,14 @@ class MenuBarProvider {
         )
         pickColorItem.target = self
         menu.addItem(pickColorItem)
+
+        let showItem = NSMenuItem(
+            title: "Show",
+            action: #selector(handleShowWindow),
+            keyEquivalent: ""
+        )
+        showItem.target = self
+        menu.addItem(showItem)
 
         menu.addItem(NSMenuItem.separator())
 
@@ -31,7 +40,8 @@ class MenuBarProvider {
 
     func setup(
         onPickColorSelected: @escaping () -> Void,
-        onQuitSelected: @escaping () -> Void
+        onQuitSelected: @escaping () -> Void,
+        onShowWindowSelected: @escaping () -> Void
     ) {
         if statusBarItem == nil {
             let newStatusBarItem = NSStatusBar.system
@@ -51,6 +61,7 @@ class MenuBarProvider {
 
         self.onPickColorSelected = onPickColorSelected
         self.onQuitSelected = onQuitSelected
+        self.onShowWindowSelected = onShowWindowSelected
     }
 
     @objc private func statusBarButtonClicked(_: NSStatusBarButton) {
@@ -66,6 +77,12 @@ class MenuBarProvider {
     @objc private func handlePickColor() {
         if let onPickColorSelected {
             onPickColorSelected()
+        }
+    }
+
+    @objc private func handleShowWindow() {
+        if let onShowWindowSelected {
+            onShowWindowSelected()
         }
     }
 

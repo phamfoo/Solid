@@ -124,6 +124,7 @@
 		84A7EEBC2A259FF300A5C532 /* HexInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexInput.swift; sourceTree = "<group>"; };
 		84AF1BD72A4C136800EBC3B2 /* CopyHexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyHexButton.swift; sourceTree = "<group>"; };
 		84AF1BD92A4C1F3B00EBC3B2 /* MenuBarProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarProvider.swift; sourceTree = "<group>"; };
+		84AF1BDB2A4C310000EBC3B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84D323752A146971000292D9 /* ColorModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelPicker.swift; sourceTree = "<group>"; };
 		84D323772A14D2A8000292D9 /* RGBAInputGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBAInputGroup.swift; sourceTree = "<group>"; };
 		84E903ED2A1DC1BD00E65805 /* DualAxisSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualAxisSlider.swift; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 		8429484B2A0C818E001FA318 /* Solid */ = {
 			isa = PBXGroup;
 			children = (
+				84AF1BDB2A4C310000EBC3B2 /* Info.plist */,
 				845EEE992A2DD2940074B167 /* App */,
 				8499A7DB2A1F60C900378468 /* MenuBar */,
 				84BB73572A15C6880017B9DF /* Navigation */,
@@ -638,6 +640,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Solid/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -666,6 +669,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Solid/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

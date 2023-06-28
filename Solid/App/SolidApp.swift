@@ -28,6 +28,7 @@ struct SolidApp: App {
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.newItem) {}
         }
+        .handlesExternalEvents(matching: ["solidapp://newwindow"])
 
         Settings {
             AppSettings()
