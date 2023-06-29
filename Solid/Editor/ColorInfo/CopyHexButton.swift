@@ -17,13 +17,15 @@ struct CopyHexButton: View {
                     isShowingHexCopiedIndicator = false
                 }
         } label: {
-            Image(
-                systemName: isShowingHexCopiedIndicator
-                    ? "checkmark"
-                    : "square.on.square"
-            )
-            .imageScale(.large)
-            .foregroundColor(isShowingHexCopiedIndicator ? .green : .primary)
+            Image(systemName: "square.on.square")
+                .imageScale(.large)
+                .opacity(isShowingHexCopiedIndicator ? 0 : 1)
+                .overlay {
+                    Image(systemName: "checkmark")
+                        .imageScale(.large)
+                        .foregroundColor(.green)
+                        .opacity(isShowingHexCopiedIndicator ? 1 : 0)
+                }
         }
         .buttonStyle(.solid)
     }
