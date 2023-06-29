@@ -82,7 +82,9 @@ struct RGBEditor: View {
             .padding(.horizontal, 16)
         }
         .onChange(of: rgbaColor) { newValue in
-            colorPublisher.publish(newValue, source: "RGBEditor_RGB")
+            if newValue != colorPublisher.currentColor {
+                colorPublisher.publish(newValue, source: "RGBEditor_RGB")
+            }
         }
         .onReceive(
             colorPublisher.updates(excluding: "RGBEditor_RGB")
@@ -92,7 +94,9 @@ struct RGBEditor: View {
             }
         }
         .onChange(of: hsbaColor) { newValue in
-            colorPublisher.publish(newValue, source: "RGBEditor_HSB")
+            if newValue != colorPublisher.currentColor {
+                colorPublisher.publish(newValue, source: "RGBEditor_HSB")
+            }
         }
         .onReceive(
             colorPublisher.updates(excluding: "RGBEditor_HSB")
@@ -126,17 +130,21 @@ struct RGBEditor: View {
     }
 
     private func syncHSBAComponents(from color: NSColor) {
-        hue = color.hueComponent
-        saturation = color.saturationComponent
-        brightness = color.brightnessComponent
-        alpha = color.alphaComponent
+        DispatchQueue.main.async {
+            hue = color.hueComponent
+            saturation = color.saturationComponent
+            brightness = color.brightnessComponent
+            alpha = color.alphaComponent
+        }
     }
 
     private func syncRGBAComponents(from color: NSColor) {
-        red = color.redComponent
-        green = color.greenComponent
-        blue = color.blueComponent
-        alpha = color.alphaComponent
+        DispatchQueue.main.async {
+            red = color.redComponent
+            green = color.greenComponent
+            blue = color.blueComponent
+            alpha = color.alphaComponent
+        }
     }
 }
 
