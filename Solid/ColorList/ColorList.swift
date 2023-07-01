@@ -14,11 +14,16 @@ struct ColorList: View {
         VStack {
             SearchBar(text: $searchText)
 
-            List {
-                ForEach(sections) { section in
-                    Section(sectionHeader(fromDate: section.id)) {
-                        ForEach(section) { color in
-                            ColorListRow(color: color)
+            if sections.isEmpty && searchText.isEmpty {
+                Text("You haven't saved any colors yet.")
+                    .frame(maxHeight: .infinity)
+            } else {
+                List {
+                    ForEach(sections) { section in
+                        Section(sectionHeader(fromDate: section.id)) {
+                            ForEach(section) { color in
+                                ColorListRow(color: color)
+                            }
                         }
                     }
                 }
