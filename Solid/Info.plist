@@ -8,7 +8,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>foo.pham.Solid</string>
+			<string>foo.pham.solid</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>solidapp</string>
