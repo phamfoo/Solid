@@ -75,8 +75,8 @@ struct HexInput: View {
         .onTapGesture {
             isFocused = true
         }
-        .animation(.easeInOut(duration: 0.1), value: isHovered)
-        .animation(.easeInOut(duration: 0.1), value: isFocused)
+        .animation(.easeOut(duration: 0.1), value: isHovered)
+        .animation(.easeOut(duration: 0.1), value: isFocused)
     }
 }
 

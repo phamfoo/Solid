@@ -34,8 +34,8 @@ struct InputGroup<Content>: View where Content: View {
                     .scaleEffect(isFocused ? 1 : 1.05)
                     .opacity(isFocused ? 1 : 0)
             }
-            .animation(.easeInOut(duration: 0.1), value: isFocused)
-            .animation(.easeInOut(duration: 0.1), value: isHovered)
+            .animation(.easeOut(duration: 0.1), value: isFocused)
+            .animation(.easeOut(duration: 0.1), value: isHovered)
     }
 }
 

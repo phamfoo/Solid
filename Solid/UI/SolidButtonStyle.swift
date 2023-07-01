@@ -17,9 +17,9 @@ struct SolidButtonStyle: ButtonStyle {
             .onHover { isHovered in
                 self.isHovered = isHovered
             }
-            .animation(.easeInOut(duration: 0.1), value: isHovered)
+            .animation(.easeOut(duration: 0.1), value: isHovered)
             .animation(
-                .easeInOut(duration: 0.1),
+                .easeOut(duration: 0.1),
                 value: configuration.isPressed
             )
     }
