@@ -11,17 +11,18 @@ struct DualAxisSlider<Background, Cursor>: View where Background: View,
     var body: some View {
         GeometryReader { geometry in
             background
-                // Without this, if I use the color sampler to pick a color on
-                // the gradient background, the cursor won't land exactly where
-                // the mouse is.
+                // Without `.drawingGroup()`, if I use the color sampler to pick
+                // a color on the gradient background, the cursor won't land
+                // exactly where the mouse is.
                 // Not sure why but the colors aren't accurate unless
                 // we composite the layers of the gradient background
                 // into a single bitmap
                 .drawingGroup()
                 .overlay(alignment: .bottomLeading) {
                     cursor
-                        .frame(width: 16, height: 16)
-                        .offset(x: -8, y: 8)
+                        .frame(width: 20, height: 20)
+                        .shadow(radius: 0.5)
+                        .offset(x: -10, y: 10)
                         .offset(
                             x: horizontal * geometry.size.width,
                             y: -vertical * geometry.size.height
