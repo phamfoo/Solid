@@ -47,13 +47,11 @@ struct HSBEditor: View {
 
                 VStack {
                     HueSlider(hue: $hue, colorSpace: colorSpace)
-                        .frame(height: 24)
 
                     AlphaSlider(
                         alpha: $alpha,
                         color: fullyOpaqueColor
                     )
-                    .frame(height: 24)
                 }
                 .padding(8)
             }

@@ -27,9 +27,11 @@ struct HueSlider: View {
                 .overlay {
                     Circle()
                         .strokeBorder(Color.white, lineWidth: 2)
-                        .padding(2)
                 }
+                .shadow(radius: 0.5)
+                .padding(2)
         }
+        .frame(height: 24)
     }
 
     private var colors: [Color] {

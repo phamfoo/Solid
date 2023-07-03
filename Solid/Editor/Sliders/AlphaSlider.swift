@@ -29,8 +29,10 @@ struct AlphaSlider: View {
                     Circle()
                         .strokeBorder(Color.white, lineWidth: 2)
                 }
+                .shadow(radius: 0.5)
                 .padding(2)
         }
+        .frame(height: 24)
     }
 }
 
