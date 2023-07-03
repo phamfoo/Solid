@@ -1,8 +1,10 @@
+import Defaults
 import SwiftUI
 
 struct AppMenuBar<Content>: View where Content: View {
     var menuBarProvider: MenuBarProvider
 
+    @Default(.colorSpace) private var colorSpace
     @EnvironmentObject private var colorPublisher: ColorPublisher
     @EnvironmentObject private var colorSampler: ColorSampler
     @ViewBuilder var content: Content
@@ -20,9 +22,11 @@ struct AppMenuBar<Content>: View where Content: View {
             onPickColorSelected: {
                 colorSampler
                     .show { pickedColor in
-                        if let pickedColor {
+                        if let pickedColorInCurrentColorSpace = pickedColor?
+                            .usingColorSpace(colorSpace.nsColorSpace)
+                        {
                             colorPublisher.publish(
-                                pickedColor,
+                                pickedColorInCurrentColorSpace,
                                 source: "PickColorMenu"
                             )
                         }
