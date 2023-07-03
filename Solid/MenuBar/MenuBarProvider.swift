@@ -1,4 +1,5 @@
 import AppKit
+import Defaults
 
 class MenuBarProvider {
     private var statusBarItem: NSStatusItem?
@@ -68,7 +69,11 @@ class MenuBarProvider {
         let event = NSApp.currentEvent!
 
         if event.type == .rightMouseUp {
-            handlePickColor()
+            if Defaults[.rightClickMenuBarToPick] {
+                handlePickColor()
+            } else {
+                simulateMenuBarClick()
+            }
         } else if event.type == .leftMouseUp {
             simulateMenuBarClick()
         }
