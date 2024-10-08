@@ -4,10 +4,6 @@
 
 > Color picker app for macOS inspired by Figma.
 
-# Download
-
-[![](https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x830)](https://apps.apple.com/app/solid-color-picker/id6450880566)
-
 # Features
 
 - Pick a color on screen on paste from clipboard.
